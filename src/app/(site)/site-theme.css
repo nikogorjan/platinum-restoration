@@ -1,0 +1,11 @@
+/* Platinum Restoration & Construction brand colors.
+   Loaded after the template CSS, only on (site) routes — template demo
+   pages keep the original orange theme.
+
+   - --theme-color (red) → buttons, icons, accents, links on hover
+   - Headings and body text keep the template's dark color.
+   - --brand-blue is available for selective accents where wanted.      */
+:root {
+  --theme-color: #BE0B30;
+  --brand-blue: #063EAC;
+}
