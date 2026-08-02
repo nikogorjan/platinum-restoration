@@ -127,6 +127,13 @@
   border-color: var(--theme-color);
 }
 
+/* Hide the template's floating orange-excavator/machinery decoration
+   photos (shape-mockup images) on our pages. */
+img[src*="sec-bg-shape"],
+img[src*="client_shape"] {
+  display: none;
+}
+
 /* ---------------------------------------------------------------------
    Mobile menu — right-hand drawer with drill-down sub-panels.
    --------------------------------------------------------------------- */
