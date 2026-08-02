@@ -9,3 +9,16 @@
   --theme-color: #BE0B30;
   --brand-blue: #063EAC;
 }
+
+/* Carousel arrows (Our Work slider) — suppress slick-theme's glyph and
+   center the remixicon inside the template's .slick-arrow square. */
+.work-arrow::before {
+  display: none;
+}
+
+.work-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  --icon-size: 52px;
+}
