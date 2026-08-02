@@ -17,10 +17,20 @@ export const metadata = {
   },
 };
 import "~/public/main-assets/css/fonts.css";
+import { Inter } from "next/font/google";
+
+// Defines the --font-inter CSS variable on <body>. Only the (site) routes
+// consume it (via site-theme.css); template pages keep their own fonts.
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className={inter.variable}>
         {children}
       </body>
     </html>

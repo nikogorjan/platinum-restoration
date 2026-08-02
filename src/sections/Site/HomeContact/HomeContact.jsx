@@ -1,4 +1,4 @@
-import ContactDropdown from "../../Common/ContactDropdown";
+import SiteContactDropdown from "../SiteContactDropdown";
 import { SITE } from "../siteData";
 
 // Home-3 contact/quote section with real contact details.
@@ -8,28 +8,21 @@ const HomeContact = () => {
         <section className="contact-area-2 space-bottom space-top overflow-hidden" id="contact-sec">
             <div className="container">
                 <div
-                    className="contact-wrap2 space overflow-hidden shape-mockup-wrap background-image"
-                    style={{ backgroundImage: "url('/main-assets/img/bg/contact-bg3-1.png')" }}
+                    className="contact-wrap2 space overflow-hidden shape-mockup-wrap"
+                    style={{ backgroundColor: "var(--smoke-color3)" }}
                 >
-                    <div
-                        className="section-animation-shape1-1 shape-mockup animation-infinite background-image"
-                        style={{
-                            backgroundImage: "url('/main-assets/img/shape/global-line-shape1.png')",
-                            top: '0px',
-                            left: '0px'
-                        }}
-                    ></div>
-                    <div className="row gy-60 justify-content-lg-end justify-content-center">
-                        <div className="col-xl-7">
+                    <div className="row gy-60 justify-content-center">
+                        <div className="col-xl-8">
                             <div className="contact-form-wrap">
-                                <div className="title-area">
+                                <div className="title-area text-center">
                                     <span className="sub-title text-theme">
                                         Get a Free Consultation <i className="ri-arrow-right-down-line"></i>
                                     </span>
                                     <h2 className="sec-title">Ready to take the first step?</h2>
                                     <p>
-                                        Call us at <a href={SITE.phoneHref}><strong>{SITE.phone}</strong></a> or
-                                        send a message — we&apos;ll get back to you quickly.
+                                        Call us at{" "}
+                                        <a href={SITE.phoneHref}><strong>{SITE.phone}</strong></a>
+                                        {" "}or send a message — we&apos;ll get back to you quickly.
                                     </p>
                                 </div>
                                 <form className="contact-form">
@@ -49,7 +42,7 @@ const HomeContact = () => {
                                                 <input type="tel" className="form-control" name="number" id="number" placeholder="Phone Number" />
                                             </div>
                                         </div>
-                                        <ContactDropdown></ContactDropdown>
+                                        <SiteContactDropdown />
                                         <div className="col-12">
                                             <div className="form-group ">
                                                 <textarea name="message" id="message" cols="30" rows="3" className="form-control" placeholder="Tell us about your project..."></textarea>

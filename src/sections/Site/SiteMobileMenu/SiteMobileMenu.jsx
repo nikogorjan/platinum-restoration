@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     SITE,
     RESTORATION_SERVICES,
@@ -9,65 +9,125 @@ import {
     TEMPLATE_INNERPAGES,
 } from "../siteData";
 
-const SubMenu = ({ id, label, links, openMenu, toggle }) => {
-    const isOpen = openMenu === id;
-    return (
-        <li className={`menu-item-has-children submenu-item-has-children ${isOpen ? "active-class" : ""}`}>
-            <Link onClick={(e) => { e.preventDefault(); toggle(id); }} href="#">
-                {label} <span className="mean-expand-class"></span>
-            </Link>
-            <ul
-                className={`sub-menu submenu-class ${isOpen ? "menu-open" : ""}`}
-                style={{ display: isOpen ? "block" : "none" }}
-            >
-                {links.map((link) => (
-                    <li key={link.href}>
-                        <Link href={link.href}>{link.title}</Link>
-                    </li>
-                ))}
-            </ul>
-        </li>
-    );
+// Right-hand slide-in drawer with iOS-style drill-down sub-panels.
+// Styles live in site-theme.css under .pm-menu-*.
+const GROUPS = {
+    restoration: {
+        title: "Restoration",
+        links: [
+            { title: "All Restoration Services", href: "/restoration-services" },
+            ...RESTORATION_SERVICES.map((s) => ({ title: s.title, href: `/restoration-services/${s.slug}` })),
+        ],
+    },
+    construction: {
+        title: "Construction",
+        links: [
+            { title: "All Construction Services", href: "/construction-services" },
+            ...CONSTRUCTION_SERVICES.map((s) => ({ title: s.title, href: `/construction-services/${s.slug}` })),
+        ],
+    },
+    // TEMPORARY — template browsing, remove before launch
+    "template-home": { title: "Template: Homepages", links: TEMPLATE_HOMEPAGES },
+    "template-inner": { title: "Template: Inner Pages", links: TEMPLATE_INNERPAGES },
 };
 
 const SiteMobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
-    const [openMenu, setOpenMenu] = useState(null);
-    const toggle = (id) => setOpenMenu(openMenu === id ? null : id);
+    const [activeGroup, setActiveGroup] = useState(null);
 
-    const restorationLinks = [
-        { title: "All Restoration Services", href: "/restoration-services" },
-        ...RESTORATION_SERVICES.map((s) => ({ title: s.title, href: `/restoration-services/${s.slug}` })),
-    ];
-    const constructionLinks = [
-        { title: "All Construction Services", href: "/construction-services" },
-        ...CONSTRUCTION_SERVICES.map((s) => ({ title: s.title, href: `/construction-services/${s.slug}` })),
-    ];
+    const close = () => {
+        setIsMenuOpen(false);
+        setActiveGroup(null);
+    };
+
+    useEffect(() => {
+        document.body.style.overflow = isMenuOpen ? "hidden" : "";
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isMenuOpen]);
+
+    useEffect(() => {
+        const onKey = (e) => {
+            if (e.key === "Escape") close();
+        };
+        document.addEventListener("keydown", onKey);
+        return () => document.removeEventListener("keydown", onKey);
+    });
+
+    const group = activeGroup ? GROUPS[activeGroup] : null;
 
     return (
-        <div className={`mobile-menu-wrapper ${isMenuOpen ? "body-visible" : ""}`}>
-            <div className="mobile-menu-area">
-                <div className="mobile-logo">
-                    <Link href="/">
-                        <img src={SITE.logo} alt={SITE.name} style={{ maxWidth: "200px", height: "auto" }} />
+        <div className={`pm-mobile-menu ${isMenuOpen ? "open" : ""}`} aria-hidden={!isMenuOpen}>
+            <div className="pm-menu-backdrop" onClick={close}></div>
+            <aside className="pm-menu-panel" role="dialog" aria-label="Menu">
+                <div className="pm-menu-head">
+                    <Link href="/" onClick={close}>
+                        <img src={SITE.logo} alt={SITE.name} />
                     </Link>
-                    <button onClick={() => setIsMenuOpen(false)} className="menu-toggle">
+                    <button type="button" className="pm-menu-close" onClick={close} aria-label="Close menu">
                         <i className="ri-close-line"></i>
                     </button>
                 </div>
-                <div className="mobile-menu">
-                    <ul>
-                        <li><Link href="/">Home</Link></li>
-                        <li><Link href="/about">About</Link></li>
-                        <SubMenu id="restoration" label="Restoration" links={restorationLinks} openMenu={openMenu} toggle={toggle} />
-                        <SubMenu id="construction" label="Construction" links={constructionLinks} openMenu={openMenu} toggle={toggle} />
-                        <li><Link href="/property-management">Property Management</Link></li>
-                        <li><Link href="/contact">Contact</Link></li>
-                        {/* TEMPORARY: template page links — remove before launch */}
-                        <SubMenu id="template-home" label="Template: Homepages" links={TEMPLATE_HOMEPAGES} openMenu={openMenu} toggle={toggle} />
-                        <SubMenu id="template-inner" label="Template: Inner pages" links={TEMPLATE_INNERPAGES} openMenu={openMenu} toggle={toggle} />
-                    </ul>
+                <div className={`pm-menu-levels ${activeGroup ? "sub-active" : ""}`}>
+                    <nav className="pm-menu-level pm-menu-root">
+                        <ul>
+                            <li><Link href="/" onClick={close}>Home</Link></li>
+                            <li><Link href="/about" onClick={close}>About</Link></li>
+                            <li>
+                                <button type="button" className="pm-menu-item" onClick={() => setActiveGroup("restoration")}>
+                                    Restoration <i className="ri-arrow-right-s-line"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" className="pm-menu-item" onClick={() => setActiveGroup("construction")}>
+                                    Construction <i className="ri-arrow-right-s-line"></i>
+                                </button>
+                            </li>
+                            <li><Link href="/property-management" onClick={close}>Property Management</Link></li>
+                            <li><Link href="/contact" onClick={close}>Contact</Link></li>
+                        </ul>
+                        {/* TEMPORARY — template browsing, remove before launch */}
+                        <p className="pm-menu-note">Template preview (temporary)</p>
+                        <ul>
+                            <li>
+                                <button type="button" className="pm-menu-item" onClick={() => setActiveGroup("template-home")}>
+                                    Homepages <i className="ri-arrow-right-s-line"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" className="pm-menu-item" onClick={() => setActiveGroup("template-inner")}>
+                                    Inner Pages <i className="ri-arrow-right-s-line"></i>
+                                </button>
+                            </li>
+                        </ul>
+                        <div className="pm-menu-cta">
+                            <a href={SITE.phoneHref} className="btn w-100">
+                                <i className="ri-phone-fill"></i> {SITE.phone}
+                            </a>
+                            <Link href="/contact" onClick={close} className="btn style2 w-100">
+                                GET A QUOTE <i className="ri-arrow-right-up-line"></i>
+                            </Link>
+                        </div>
+                    </nav>
+                    <nav className="pm-menu-level pm-menu-sub">
+                        <button type="button" className="pm-menu-back" onClick={() => setActiveGroup(null)}>
+                            <i className="ri-arrow-left-s-line"></i> Back
+                        </button>
+                        {group && (
+                            <>
+                                <h4 className="pm-menu-sub-title">{group.title}</h4>
+                                <ul>
+                                    {group.links.map((link) => (
+                                        <li key={link.href}>
+                                            <Link href={link.href} onClick={close}>{link.title}</Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </>
+                        )}
+                    </nav>
                 </div>
-            </div>
+            </aside>
         </div>
     );
 };

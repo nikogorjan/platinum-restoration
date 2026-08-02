@@ -84,7 +84,6 @@ const HomeWork = () => {
                   </div>
                   <div className="portfolio-card-details">
                     <div className="media-left">
-                      <span className="portfolio-card-subtitle">Platinum</span>
                       <h4 className="portfolio-card-title">
                         <Link href={work.href}>{work.title}</Link>
                       </h4>

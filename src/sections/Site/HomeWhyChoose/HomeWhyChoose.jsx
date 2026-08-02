@@ -11,13 +11,13 @@ const HomeWhyChoose = () => {
         <div className="why-area-3 space-top overflow-hidden" id="service-sec">
             <div className="container">
                 <div className="row justify-content-center">
-                    <div className="col-lg-6 why-three-extra">
+                    <div className="col-lg-8">
                         <div className="title-area text-center">
                             <span className="sub-title text-theme">
                                 Why choose Platinum <i className="ri-arrow-right-down-line"></i>
                             </span>
-                            <h2 className="homeThree-custom-titleOne">
-                                When you choose Platinum, you're choosing a team <br /> that prioritizes your needs
+                            <h2 className="sec-title">
+                                When you choose Platinum, you're choosing a team that prioritizes your needs
                             </h2>
                         </div>
                     </div>
@@ -52,7 +52,7 @@ const HomeWhyChoose = () => {
                                     role="tabpanel"
                                     aria-labelledby={`why-pill-${index}-tab`}
                                 >
-                                    <div className="row gx-80 gy-40 align-items-center">
+                                    <div className="row gx-40 gy-40 align-items-center justify-content-center">
                                         <div className="col-lg-5">
                                             <div className="why-thumb-wrap3-1">
                                                 <div className="why-tab-thumb">

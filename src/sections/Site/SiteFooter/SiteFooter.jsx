@@ -8,10 +8,7 @@ import {
 const SiteFooter = () => {
     return (
         <div>
-            <footer
-                className="footer-wrapper footer-layout1 background-image"
-                style={{ backgroundImage: "url('/main-assets/img/bg/footer-bg1-1.png')" }}
-            >
+            <footer className="footer-wrapper footer-layout1">
                 <div className="container">
                     <div className="footer-top-1">
                         <div className="footer-logo">
@@ -40,8 +37,14 @@ const SiteFooter = () => {
                                         With over 30 years of experience, we combine expertise, integrity,
                                         and personalized care to transform and protect your property.
                                     </p>
-                                    <h4 className="about-year">30+ Years of Experience</h4>
-                                    <p className="about-text">{SITE.serviceArea}</p>
+                                    <div className="footer-stat">
+                                        <span className="footer-stat-number">30+</span>
+                                        <span className="footer-stat-label">Years of Experience</span>
+                                    </div>
+                                    <p className="about-text">
+                                        <i className="ri-map-pin-2-line" style={{ marginRight: "8px" }}></i>
+                                        {SITE.serviceArea}
+                                    </p>
                                 </div>
                             </div>
                             <div className="col-md-6 col-xl-auto">

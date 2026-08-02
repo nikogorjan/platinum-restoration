@@ -8,17 +8,323 @@
 :root {
   --theme-color: #BE0B30;
   --brand-blue: #063EAC;
+  /* Inter (self-hosted via next/font) replaces the template's
+     Titillium Web / Archivo across the site. The fallback lives INSIDE
+     var() so a missing variable degrades to Helvetica, never the
+     browser's default serif. */
+  --title-font: var(--font-inter, "Helvetica Neue", Helvetica, Arial), sans-serif;
+  --body-font: var(--font-inter, "Helvetica Neue", Helvetica, Arial), sans-serif;
 }
 
-/* Carousel arrows (Our Work slider) — suppress slick-theme's glyph and
-   center the remixicon inside the template's .slick-arrow square. */
-.work-arrow::before {
+/* Carousel arrows (Our Work slider). slick-theme.css loads after the
+   template CSS and collapses arrows to 20px transparent buttons, so these
+   rules use higher specificity + !important to restore a visible button. */
+.slick-arrow.work-arrow {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 52px !important;
+  height: 52px !important;
+  background-color: var(--smoke-color) !important;
+  color: var(--theme-color) !important;
+  opacity: 1 !important;
+  z-index: 3;
+  box-shadow: 0px 6px 20px rgba(37, 37, 37, 0.12);
+}
+
+.slick-arrow.work-arrow::before {
+  display: none !important;
+}
+
+.slick-arrow.work-arrow i {
+  font-size: 24px !important;
+  line-height: 1;
+}
+
+.slick-arrow.work-arrow:hover {
+  background-color: var(--theme-color) !important;
+  color: var(--white-color) !important;
+}
+
+/* Testimonial cards — permanently in the template's dark "hover" look,
+   with no transition or hover effects. */
+.testi-card.style3.testi-static {
+  background: var(--title-color);
+  transition: none;
+}
+
+.testi-card.style3.testi-static .testi-card_title,
+.testi-card.style3.testi-static .testi-card_text,
+.testi-card.style3.testi-static .testi-profile-title {
+  color: var(--white-color);
+  transition: none;
+}
+
+.testi-card.style3.testi-static .testi-profile-desig {
+  color: var(--white-color);
+  opacity: 0.8;
+}
+
+.testi-card.style3.testi-static .quote-icon {
+  filter: brightness(9) contrast(9);
+  transition: none;
+}
+
+/* Footer "30+ Years of Experience" stat — replaces the template's
+   outlined .about-year style. */
+.footer-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 22px 0 24px;
+}
+
+.footer-stat-number {
+  font-family: var(--title-font);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--white-color);
+}
+
+.footer-stat-label {
+  font-size: 15px;
+  color: var(--white-color);
+  opacity: 0.75;
+}
+
+/* Scroll-to-top — sharp solid square instead of the progress ring. */
+.scroll-top {
+  border-radius: 0;
+  background: var(--theme-color);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+  transition: background 0.3s, opacity 300ms linear, visibility 300ms linear, transform 300ms linear;
+}
+
+.scroll-top:after {
+  color: var(--white-color);
+  border: none;
+  border-radius: 0;
+}
+
+.scroll-top svg {
   display: none;
 }
 
-.work-arrow {
-  display: inline-flex;
+.scroll-top:hover {
+  background: var(--brand-blue);
+}
+
+/* Consultation form on the light panel — white fields with a crisp border
+   so they don't blend into the background. */
+.contact-wrap2 .form-control,
+.contact-wrap2 .nice-select {
+  background-color: var(--white-color);
+  border: 1px solid var(--smoke-color2);
+}
+
+.contact-wrap2 .form-control:focus {
+  border-color: var(--theme-color);
+}
+
+/* ---------------------------------------------------------------------
+   Mobile menu — right-hand drawer with drill-down sub-panels.
+   --------------------------------------------------------------------- */
+.pm-mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  pointer-events: none;
+}
+
+.pm-mobile-menu.open {
+  pointer-events: auto;
+}
+
+.pm-menu-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 16, 20, 0.55);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pm-mobile-menu.open .pm-menu-backdrop {
+  opacity: 1;
+}
+
+.pm-menu-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(360px, 88vw);
+  background: var(--white-color);
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -12px 0 40px rgba(0, 0, 0, 0.18);
+}
+
+.pm-mobile-menu.open .pm-menu-panel {
+  transform: translateX(0);
+}
+
+.pm-menu-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--smoke-color2);
+  flex-shrink: 0;
+}
+
+.pm-menu-head img {
+  max-width: 180px;
+  height: auto;
+}
+
+.pm-menu-close {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border: none;
+  background: var(--theme-color);
+  color: var(--white-color);
+  font-size: 20px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  --icon-size: 52px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pm-menu-close:hover {
+  background: var(--brand-blue);
+}
+
+.pm-menu-levels {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+.pm-menu-level {
+  position: absolute;
+  inset: 0;
+  background: var(--white-color);
+  overflow-y: auto;
+  scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 0 20px;
+  transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.pm-menu-level::-webkit-scrollbar {
+  display: none;
+}
+
+.sub-active .pm-menu-root {
+  transform: translateX(-30%);
+}
+
+.pm-menu-sub {
+  transform: translateX(100%);
+}
+
+.sub-active .pm-menu-sub {
+  transform: translateX(0);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.08);
+}
+
+.pm-menu-level ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pm-menu-level li {
+  border-bottom: 1px solid var(--smoke-color3);
+}
+
+.pm-menu-level li a,
+.pm-menu-item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 22px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--title-font);
+  color: var(--title-color);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.pm-menu-level li a:hover,
+.pm-menu-item:hover {
+  color: var(--theme-color);
+}
+
+.pm-menu-item i {
+  color: var(--theme-color);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.pm-menu-note {
+  margin: 22px 22px 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--body-color);
+  opacity: 0.7;
+}
+
+.pm-menu-back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 18px;
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--body-color);
+  cursor: pointer;
+}
+
+.pm-menu-back i {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.pm-menu-back:hover {
+  color: var(--theme-color);
+}
+
+.pm-menu-sub-title {
+  margin: 0 0 6px;
+  padding: 0 22px 12px;
+  font-size: 20px;
+  border-bottom: 2px solid var(--theme-color);
+}
+
+.pm-menu-cta {
+  margin-top: auto;
+  padding: 24px 22px 4px;
+  display: grid;
+  gap: 10px;
+}
+
+.pm-menu-cta .btn {
+  justify-content: center;
 }

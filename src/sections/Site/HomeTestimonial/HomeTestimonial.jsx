@@ -23,7 +23,7 @@ const HomeTestimonial = () => {
   return (
     <div className="testimonial-area-3 overflow-hidden space-top">
       <div className="container">
-        <div className="row justify-content-between">
+        <div className="row">
           <div className="col-lg-7">
             <div className="title-area blog-area-content-text-extra-style">
               <span className="sub-title text-theme">
@@ -32,24 +32,14 @@ const HomeTestimonial = () => {
               <h2 className="sec-title">What our clients say about us</h2>
             </div>
           </div>
-          <div className="col-lg-auto">
-            <div className="sec-btn btn-wrap">
-              <div className="testi-counter-wrap">
-                <h3 className="testi-counter-number">
-                  <span className="counter-number">30</span>+
-                </h3>
-                <p className="testi-counter-text">Years of Experience</p>
-              </div>
-            </div>
-          </div>
         </div>
 
         <Slider {...settings} className="row global-carousel testi-slider3 slider-shadow">
           {TESTIMONIALS.map((testimonial) => (
             <div className="col-lg-6" key={testimonial.name}>
-              <div className="testi-card style3">
+              <div className="testi-card style3 testi-static">
                 <div className="testi-card-thumb">
-                  <img src={SITE.favicon} alt="Platinum" style={{ maxWidth: "60px" }} />
+                  <img src={SITE.favicon} alt="Platinum" style={{ maxWidth: "70px", background: "#fff", padding: "10px" }} />
                   <div className="media-body">
                     <h4 className="testi-card_title">{testimonial.title}</h4>
                     <div className="testi-card_review">
