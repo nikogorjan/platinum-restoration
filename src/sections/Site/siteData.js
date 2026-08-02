@@ -1,4 +1,4 @@
-// Single source of truth for the Platinum Restoration & Construction draft site.
+﻿// Single source of truth for the Platinum Restoration & Construction draft site.
 // Copy is taken verbatim from platinumrestorationandconstruction.com (old site)
 // wherever it existed; anything invented is marked [Draft].
 
@@ -19,8 +19,12 @@ export const HERO = {
     titleLine1: "Your Home. Your Vision.",
     titleLine2: "Our Expertise.",
     text: "Transforming Your Property Into a Sanctuary and Investment You Can Trust. We bring your vision to life with expert craftsmanship, reliable service, and a commitment to excellence.",
-    image: "/aditional-assets/images/repair-water-damaged-home-scaled.jpeg",
+    image: "/aditional-assets/images/Gallery-5.png",
 };
+
+// Side-by-side composite (left = before, right = after) shown in the
+// interactive comparison widget in the About section.
+export const BEFORE_AFTER_IMAGE = "/aditional-assets/images/repair-water-damaged-home-scaled.jpeg";
 
 export const ABOUT = {
     title: "Building Trust, Restoring Value, Transforming Spaces",
@@ -127,44 +131,51 @@ export const CONSTRUCTION_OVERVIEW = {
 export const RESTORATION_SERVICES = [
     {
         slug: "water-damage-repairs",
+        icon: "ri-drop-line",
         title: "Water Damage Repairs",
         image: "/aditional-assets/images/water-damage-repair.jpeg",
         blurb: "Quickly addressing leaks, flooding, and water damage to prevent further issues and restore your home.",
     },
     {
         slug: "mold-inspections",
+        icon: "ri-search-eye-line",
         title: "Mold Inspections",
         image: "/aditional-assets/images/Mold-Inspection.jpg",
         blurb: "Thorough assessments to identify and address mold problems before they escalate.",
     },
     {
         slug: "mold-remediation",
+        icon: "ri-shield-cross-line",
         title: "Mold Remediation",
         image: "/aditional-assets/images/home-mold-treatment.jpeg",
         blurb: "Safely removing mold and preventing future growth for a healthier living space.",
     },
     {
         slug: "crawlspace-remediation",
+        icon: "ri-home-2-line",
         title: "Crawlspace Remediation",
         image: "/aditional-assets/images/crawl-space-sealing-scaled.jpeg",
         blurb: "Eliminating moisture, mold, and pests to protect your home from the ground up.",
     },
     {
         slug: "insulation-removal-installation",
+        icon: "ri-stack-line",
         title: "Insulation Removal & Installation",
         image: "/aditional-assets/images/insulation-removal-installation.png",
         blurb: "Upgrading insulation to improve energy efficiency and comfort.",
     },
     {
         slug: "vapor-barrier-installation",
+        icon: "ri-layout-bottom-2-line",
         title: "Vapor Barrier Installation",
         image: "/aditional-assets/images/Vapor-Barrier-Installation.jpg",
         blurb: "Sealing your crawlspace to block moisture and maintain a dry, stable environment.",
     },
     {
         slug: "dehumidifier-installation",
+        icon: "ri-water-percent-line",
         title: "Dehumidifier Installation",
-        image: "/aditional-assets/images/repair-water-damaged-home-scaled.jpeg",
+        image: "/aditional-assets/images/Gallery-8.png",
         blurb: "Managing humidity levels to protect your home and improve indoor air quality.",
     },
 ];
@@ -172,30 +183,35 @@ export const RESTORATION_SERVICES = [
 export const CONSTRUCTION_SERVICES = [
     {
         slug: "residential-remodels",
+        icon: "ri-home-heart-line",
         title: "Residential Remodels",
         image: "/aditional-assets/images/Gallery-6.webp",
         blurb: "Update and upgrade your living spaces with designs that reflect your style and enhance functionality.",
     },
     {
         slug: "sheetrock-painting",
+        icon: "ri-brush-line",
         title: "Sheetrock & Painting",
         image: "/aditional-assets/images/Sheetrock.png",
         blurb: "Achieve flawless walls and vibrant finishes with professional drywall and painting services.",
     },
     {
         slug: "windows-doors",
+        icon: "ri-door-open-line",
         title: "Windows & Doors",
         image: "/aditional-assets/images/Gallery-4.png",
         blurb: "Enhance energy efficiency, security, and style with expertly installed and customized options.",
     },
     {
         slug: "roofing-repairs",
+        icon: "ri-home-4-line",
         title: "Roofing & Repairs",
         image: "/aditional-assets/images/Gallery-5.png",
         blurb: "Protect your home with durable roofing solutions, including repairs, replacements, and inspections.",
     },
     {
         slug: "drainage-solutions",
+        icon: "ri-water-flash-line",
         title: "Drainage Solutions",
         image: "/aditional-assets/images/Gallery-8.png",
         blurb: "[Draft — no copy on old site] Grading, drains and gutter solutions that move water away from your home.",
@@ -204,6 +220,7 @@ export const CONSTRUCTION_SERVICES = [
 
 export const PROPERTY_MANAGEMENT = {
     slug: "property-management",
+        icon: "ri-home-gear-line",
     title: "Property Management & Repairs",
     image: "/aditional-assets/images/Gallery-3.webp",
     blurb: "Hassle-free maintenance, repairs, and tenant-focused management to keep your property running smoothly. Most routine requests are scheduled and resolved within 24 to 48 hours, with 24/7 emergency response for critical situations.",
@@ -213,16 +230,19 @@ export const SERVICE_AREAS = [
     {
         title: "Restoration Services",
         href: "/restoration-services",
+        icon: "ri-drop-line",
         blurb: "Comprehensive solutions for water damage repairs, mold remediation, crawlspace repairs, insulation installation, vapor barrier installation, and dehumidifier installation.",
     },
     {
         title: "Construction Services",
         href: "/construction-services",
+        icon: "ri-hammer-line",
         blurb: "From residential remodels to roofing, sheetrock, painting, and windows and doors, we turn your dream home into a reality.",
     },
     {
         title: "Property Management",
         href: "/property-management",
+        icon: "ri-home-gear-line",
         blurb: "Hassle-free maintenance, repairs, and tenant-focused management to keep your property running smoothly.",
     },
 ];

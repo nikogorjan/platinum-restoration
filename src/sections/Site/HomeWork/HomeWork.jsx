@@ -10,6 +10,27 @@ import 'slick-carousel/slick/slick-theme.css';
 import Link from 'next/link';
 import { WORK_GALLERY } from '../siteData';
 
+// Prev/next buttons for the slider — react-slick injects className/onClick;
+// "work-arrow" gets template-matching styling from site-theme.css.
+const WorkArrow = ({ className, style, onClick, icon, side }) => (
+  <button
+    type="button"
+    className={`${className || ""} work-arrow`}
+    style={{
+      ...style,
+      left: side === "left" ? "20px" : "auto",
+      right: side === "right" ? "20px" : "auto",
+      top: "50%",
+      marginTop: 0,
+      transform: "translateY(-50%)",
+    }}
+    onClick={onClick}
+    aria-label={side === "left" ? "Previous slide" : "Next slide"}
+  >
+    <i className={icon}></i>
+  </button>
+);
+
 // Home-3 portfolio slider using the photos pulled from the old Platinum site.
 const HomeWork = () => {
   const [photoIndex, setPhotoIndex] = useState(-1);
@@ -20,7 +41,9 @@ const HomeWork = () => {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: false,
+    arrows: true,
+    prevArrow: <WorkArrow icon="ri-arrow-left-line" side="left" />,
+    nextArrow: <WorkArrow icon="ri-arrow-right-line" side="right" />,
     centerMode: true,
     centerPadding: "20%",
     autoplay: true,
@@ -42,8 +65,8 @@ const HomeWork = () => {
     <div className="portfolio-area-1 space">
       <div className="container">
         <div className="title-area text-center">
-          <span className="sub-title">
-            <img src="/main-assets/img/icon/section-subtitle-icon.svg" alt="img" /> Our Work
+          <span className="sub-title text-theme">
+            Our Work <i className="ri-arrow-right-down-line"></i>
           </span>
           <h2 className="sec-title">See the difference we make</h2>
           <p className="sec-text">From emergency restoration to finished remodels — photos from real Platinum projects</p>

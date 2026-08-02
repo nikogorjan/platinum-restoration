@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { SITE, ABOUT } from "../siteData";
+import BeforeAfter from "../BeforeAfter";
+import { SITE, ABOUT, BEFORE_AFTER_IMAGE } from "../siteData";
 
 // Home-3 About section with the real Platinum story and old-site photos.
 // The template's video popup and founder-signature block are dropped.
@@ -20,7 +21,7 @@ const HomeAbout = () => {
                                     <ul>
                                         {ABOUT.checklist.map((item) => (
                                             <li key={item}>
-                                                <img src="/main-assets/img/icon/about-checklsit-icon1-1.svg" alt="img" />
+                                                <i className="ri-checkbox-circle-fill text-theme"></i>
                                                 {item}
                                             </li>
                                         ))}
@@ -44,9 +45,11 @@ const HomeAbout = () => {
                                 </div>
                             </div>
                             <div className="about-thumb3 mt-70">
-                                <div className="about-img-1">
-                                    <img src={ABOUT.image1} alt="Our work" />
-                                </div>
+                                <BeforeAfter
+                                    image={BEFORE_AFTER_IMAGE}
+                                    altBefore="Water-damaged room before restoration"
+                                    altAfter="Fully restored living space"
+                                />
                             </div>
                         </div>
                         <div className="col-xl-5 col-md-8">

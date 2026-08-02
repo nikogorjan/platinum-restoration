@@ -9,10 +9,6 @@ const HomeWhyChoose = () => {
 
     return (
         <div className="why-area-3 space-top overflow-hidden" id="service-sec">
-            <div
-                className="why-sec-bg3-1"
-                style={{ backgroundImage: "url('/main-assets/img/bg/why-bg3-1.png')" }}
-            ></div>
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-lg-6 why-three-extra">
@@ -77,7 +73,7 @@ const HomeWhyChoose = () => {
                                                 <div className="checklist mb-35">
                                                     <ul>
                                                         <li>
-                                                            <img src="/main-assets/img/icon/about-checklsit-icon1-1.svg" alt="img" />
+                                                            <i className="ri-checkbox-circle-fill text-theme"></i>
                                                             Honesty, transparency, and respect guide every interaction
                                                         </li>
                                                     </ul>

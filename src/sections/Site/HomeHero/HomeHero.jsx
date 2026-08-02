@@ -9,7 +9,7 @@ const HomeHero = () => {
             {/* dark navy overlay keeps the template's white hero text readable on the light photo */}
             <div className="hero-bg-3-1 background-image bg-mask"
                 style={{
-                    backgroundImage: `linear-gradient(90deg, rgba(6, 18, 42, 0.88) 0%, rgba(6, 18, 42, 0.72) 45%, rgba(6, 18, 42, 0.35) 100%), url('${HERO.image}')`,
+                    backgroundImage: `linear-gradient(90deg, rgba(6, 18, 42, 0.78) 0%, rgba(6, 18, 42, 0.55) 45%, rgba(6, 18, 42, 0.25) 100%), url('${HERO.image}')`,
                     backgroundPosition: "center",
                     maskImage: "url('/main-assets/img/hero/hero_bg_mask_3_1.png')",
                     backgroundRepeat: "no-repeat",
