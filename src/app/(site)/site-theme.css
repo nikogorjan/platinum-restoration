@@ -480,9 +480,13 @@ img[src*="client_shape"] {
 /* The floating header is ~78px tall (54px logo + 12px padding each side).
    The template reserved 116px under it on breadcrumb pages and 100px on
    the homepage hero — trim both so dark sections sit flush under the bar. */
-.breadcumb-wrapper,
+.breadcumb-wrapper {
+  margin-top: var(--pm-header-h, 78px);
+}
+
+/* Hero sits 16px below the bar so its rounded top corners fully show. */
 .hero-3 {
-  margin-top: 78px;
+  margin-top: calc(var(--pm-header-h, 78px) + 16px);
 }
 
 @media (max-width: 575px) {
@@ -705,6 +709,23 @@ img[src*="client_shape"] {
   display: flex;
   gap: 28px;
   font-size: 14px;
+}
+
+/* Home hero — small side inset so the shape's rounded top corners are
+   actually visible (its top edge is otherwise full-bleed). ~8px corner
+   radius at every viewport. */
+.pm-hero-round {
+  filter: url(#pm-round-corners);
+}
+
+.hero-3 .hero-bg-3-1 {
+  inset: 0 24px;
+}
+
+@media (max-width: 767px) {
+  .hero-3 .hero-bg-3-1 {
+    inset: 0 12px;
+  }
 }
 
 /* No outlined (text-stroke) typography anywhere on the site. */
@@ -1970,4 +1991,104 @@ img[src*="client_shape"] {
 
 .pm-menu-cta .btn {
   justify-content: center;
+}
+
+/* ---------------------------------------------------------------------
+   Radius system — size-proportional rounding across the whole site.
+   sm (6px): buttons, inputs, chips, icon tiles
+   md (10px): cards, panels, accordion items, dropdowns
+   lg (14px): large images, media blocks, in-container bands
+   Full-bleed surfaces (footer, map, breadcrumb, dark bands) stay square;
+   the hero keeps its own ~8px filter; brand diamonds stay sharp.
+   --------------------------------------------------------------------- */
+:root {
+  /* Hero (largest surface) is 8px — the scale caps there. */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+/* Small controls */
+/* The template sets .btn { border-radius: 0 !important } — match it. */
+.btn {
+  border-radius: var(--radius-sm) !important;
+}
+
+.pm-btn-white,
+.pm-btn-ghost,
+.icon-btn,
+.contact-wrap2 .form-control,
+.contact-wrap2 .form-select,
+.pm-menu-close,
+.pm-footer-social a,
+.pm2-spec-icon,
+.pm2-trust-item .num,
+.pm2-mission-quote,
+.pm-faq-contact > i,
+.pm-footer-phone i,
+.pm3-cta-phone i {
+  border-radius: var(--radius-sm);
+}
+
+.header-layout3 .navbar-right-desc .icon-btn {
+  border-radius: var(--radius-sm);
+}
+
+.slick-arrow.work-arrow {
+  border-radius: var(--radius-sm) !important;
+}
+
+.scroll-top,
+.scroll-top:after {
+  border-radius: var(--radius-sm);
+}
+
+/* Cards, panels, dropdowns */
+.service-card.style3.w-100,
+.testi-card.style3.testi-static,
+.pm-why-card,
+.pm-owner-card,
+.pm-faq-contact,
+.pm-why-rail,
+.pm2-ledger-row,
+.accordion-area .accordion-card,
+.accordion-area .accordion-card.accordion-item:not(:first-of-type),
+.main-menu ul.sub-menu {
+  border-radius: var(--radius-md);
+}
+
+.pm-why-rail,
+.pm2-ledger-row,
+.accordion-area .accordion-card,
+.main-menu ul.sub-menu {
+  overflow: hidden;
+}
+
+/* Large media & in-container panels */
+.pm-why-media,
+.pm2-story-media > img,
+.pm2-story-media::before,
+.pm2-ledger-thumb,
+.pm2-spec,
+.portfolio-card-thumb,
+.cta-wrap3,
+.contact-wrap2 {
+  border-radius: var(--radius-lg);
+}
+
+.pm2-spec,
+.cta-wrap3 {
+  overflow: hidden;
+}
+
+.portfolio-card-thumb {
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden !important;
+}
+
+/* The 30+ badge floats inset so it nests inside the rounded image corner. */
+.pm-about-badge {
+  left: 14px;
+  bottom: 14px;
+  border-radius: var(--radius-md);
 }

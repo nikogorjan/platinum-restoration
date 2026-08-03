@@ -29,7 +29,7 @@ const BeforeAfter = ({ image, altBefore = "Before", altAfter = "After" }) => {
 
     return (
         <div
-            style={{ position: "relative", overflow: "hidden", aspectRatio: "16 / 10" }}
+            style={{ position: "relative", overflow: "hidden", aspectRatio: "16 / 10", borderRadius: "var(--radius-lg)" }}
             role="img"
             aria-label={`${altBefore} and ${altAfter} comparison`}
         >

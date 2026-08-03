@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SiteMobileMenu from "../SiteMobileMenu";
 import {
     SITE,
@@ -13,6 +13,7 @@ import {
 const SiteHeader = () => {
     const [isSticky, setIsSticky] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const headerRef = useRef(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -24,10 +25,26 @@ const SiteHeader = () => {
         };
     }, []);
 
+    // Publish the header's actual rendered height as --pm-header-h so the
+    // hero/breadcrumb offsets below the floating bar are always exact.
+    useEffect(() => {
+        const setHeaderHeight = () => {
+            if (headerRef.current) {
+                document.documentElement.style.setProperty(
+                    "--pm-header-h",
+                    `${headerRef.current.offsetHeight}px`
+                );
+            }
+        };
+        setHeaderHeight();
+        window.addEventListener("resize", setHeaderHeight);
+        return () => window.removeEventListener("resize", setHeaderHeight);
+    }, []);
+
     return (
         <div>
             <SiteMobileMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-            <header className="nav-header header-layout3">
+            <header className="nav-header header-layout3" ref={headerRef}>
                 <div className={`sticky-wrapper ${isSticky ? "sticky" : ""}`}>
                     <div className="menu-area">
                         <div className="container">

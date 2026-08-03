@@ -9,7 +9,7 @@ export const SITE = {
     email: "platinumrestorationandconstruction@outlook.com",
     address: "267 Timber Dr. Unit 407, Garner NC 27529",
     serviceArea: "Serving the Triangle area, North Carolina",
-    facebook: "#", // old site links to Facebook — need the exact page URL
+    facebook: "https://www.facebook.com/p/Platinum-Restoration-Construction-100091479665177/",
     logo: "/aditional-assets/logo/Platinum-Restoration-and-Construction-horizontal.webp",
     favicon: "/aditional-assets/logo/favicon.png",
 };
