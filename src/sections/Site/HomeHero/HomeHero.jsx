@@ -16,13 +16,11 @@ const HomeHero = () => {
                     backgroundSize: "cover",
                 }}>
             </div>
-            <div className="hero-shadow-text">platinum</div>
-
             <div className="container">
                 <div className="hero-style3">
                     <div className="row">
                         <div className="col-lg-12">
-                            <span className="hero-subtitle">{HERO.subtitle} <img src="/main-assets/img/icon/long-arrow-right2.svg" alt="img" /></span>
+                            <span className="hero-subtitle">{HERO.subtitle}</span>
                             <h1 className="hero-title">{HERO.titleLine1}</h1>
                             <h1 className="hero-title style2">{HERO.titleLine2}</h1>
                             <p className="hero-text">{HERO.text}</p>

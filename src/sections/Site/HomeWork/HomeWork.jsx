@@ -62,7 +62,7 @@ const HomeWork = () => {
   };
 
   return (
-    <div className="portfolio-area-1 space">
+    <div className="portfolio-area-1 space-top">
       <div className="container">
         <div className="title-area text-center">
           <span className="sub-title text-theme">

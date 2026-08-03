@@ -111,6 +111,96 @@ export const FAQS = [
     },
 ];
 
+// About page content — verbatim from the old site's About page.
+export const ABOUT_PAGE = {
+    headline: "Building Trust, Restoring Value, Transforming Spaces",
+    intro: "At Platinum Restoration and Construction, we believe your property is more than just a structure — it's your sanctuary, your investment, and a reflection of who you are.",
+    experience: "With over 30 years of experience, we have built a reputation for delivering high-quality restoration, property management, and construction services throughout the Triangle area.",
+    team: "Our team combines deep expertise, faith-driven values, and a commitment to personalized service to ensure your property is protected, enhanced, and transformed with care and precision.",
+    localHeadline: "A Local, Faith-Based Company Serving the Triangle with Integrity",
+    ownerLine: "Our owner, Jayson Chatham, born and raised here, understands the unique needs of our community and takes pride in serving all clients with integrity and excellence.",
+    image: "/aditional-assets/images/Gallery-6.webp",
+    imageSecondary: "/aditional-assets/images/crawl-space-sealing-scaled.jpeg",
+    values: [
+        {
+            icon: "ri-hand-heart-line",
+            title: "Faith and Integrity",
+            text: "Honesty, transparency, and respect guide every interaction and project we undertake.",
+            image: "/aditional-assets/images/home-mold-treatment.jpeg",
+        },
+        {
+            icon: "ri-user-heart-line",
+            title: "Client-Centered Approach",
+            text: "Your satisfaction is our top priority, and we strive to exceed your expectations at every step.",
+            image: "/aditional-assets/images/Gallery-4.png",
+        },
+        {
+            icon: "ri-award-line",
+            title: "Unmatched Expertise",
+            text: "With decades of experience, we bring the knowledge and skill needed to deliver exceptional results.",
+            image: "/aditional-assets/images/Gallery-5.png",
+        },
+    ],
+    servicesIntro: "We specialize in a wide range of services designed to protect, restore, and elevate your property:",
+    servicesOutro: "No matter the project, we're here to make your property the best it can be.",
+    serviceColumns: [
+        {
+            icon: "ri-drop-line",
+            title: "Restoration",
+            href: "/restoration-services",
+            image: "/aditional-assets/images/water-damage-repair.jpeg",
+            items: [
+                "Water damage repairs",
+                "Mold inspections and remediation",
+                "Crawlspace remediation and vapor barrier installation",
+                "Dehumidifier installation and insulation services",
+            ],
+        },
+        {
+            icon: "ri-hammer-line",
+            title: "Construction",
+            href: "/construction-services",
+            image: "/aditional-assets/images/Sheetrock.png",
+            items: [
+                "Residential remodels tailored to your vision",
+                "Roofing repairs and replacements",
+                "Sheetrock and painting solutions",
+                "Custom windows and doors",
+            ],
+        },
+        {
+            icon: "ri-home-gear-line",
+            title: "Property Management",
+            href: "/property-management",
+            image: "/aditional-assets/images/Gallery-3.webp",
+            items: [
+                "Routine maintenance and proactive care",
+                "Tenant-focused services that simplify property ownership",
+                "Emergency response for urgent repair needs",
+            ],
+        },
+    ],
+    trustHeadline: "Why Homeowners and Property Owners Trust Platinum",
+    trust: [
+        {
+            title: "Transparent and Fair Pricing",
+            text: "No hidden fees — just honest estimates and competitive rates.",
+        },
+        {
+            title: "Reliable and Timely Service",
+            text: "We deliver on time without compromising quality.",
+        },
+        {
+            title: "Long-Term Value",
+            text: "Our solutions are built to last, enhancing your property's performance and appeal.",
+        },
+    ],
+    mission: "Our mission is simple: to protect and enhance the properties of our clients while fostering trust and delivering unparalleled service.",
+    missionEmphasis: "We treat every property as if it were our own, ensuring exceptional results that you can rely on.",
+    ctaHeadline: "Let's Build a Better Future for Your Property",
+    ctaText: "We're passionate about turning your vision into reality and solving your property's challenges with expertise and care. Contact us today to learn more about how we can help you protect, restore, and transform your space.",
+};
+
 export const CTA_SECTION = {
     subtitle: "Ready to Take the First Step?",
     titleLine1: "Your Vision",

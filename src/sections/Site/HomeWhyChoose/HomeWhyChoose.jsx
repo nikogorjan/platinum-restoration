@@ -1,14 +1,32 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { KEY_BENEFITS } from "../siteData";
 
-// Home-3 WhyChoose tabs, data-driven with the five real Platinum benefits.
+// "Why choose Platinum" — numbered rail + animated showcase stage.
+// The stage remounts on tab change (key={active}) so its CSS reveal
+// animations replay: image wipe, ken-burns settle, ghost number drop,
+// staggered card content. Auto-advances every 6s (progress bar on the
+// active rail item), pauses on hover. Styles: site-theme.css (.pm-why-*).
+const AUTO_ADVANCE_MS = 6000;
+
 const HomeWhyChoose = () => {
-    const [activeTab, setActiveTab] = useState(0);
+    const [active, setActive] = useState(0);
+    const [paused, setPaused] = useState(false);
+
+    useEffect(() => {
+        if (paused) return;
+        const timer = setInterval(
+            () => setActive((current) => (current + 1) % KEY_BENEFITS.length),
+            AUTO_ADVANCE_MS
+        );
+        return () => clearInterval(timer);
+    }, [paused, active]);
+
+    const benefit = KEY_BENEFITS[active];
 
     return (
-        <div className="why-area-3 space-top overflow-hidden" id="service-sec">
+        <div className="why-area-3 space-top" id="service-sec">
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-lg-8">
@@ -22,72 +40,45 @@ const HomeWhyChoose = () => {
                         </div>
                     </div>
                 </div>
-                <div className="row gy-50">
-                    <div className="col-xl-4">
-                        <ul className="why-tab-wrap nav nav-pills" role="tablist">
-                            {KEY_BENEFITS.map((benefit, index) => (
-                                <li className="nav-item" key={benefit.tab} role="presentation">
-                                    <button
-                                        className={`nav-link ${activeTab === index ? "active" : ""}`}
-                                        id={`why-pill-${index}-tab`}
-                                        onClick={() => setActiveTab(index)}
-                                        type="button"
-                                        role="tab"
-                                        aria-controls={`why-pill-${index}`}
-                                        aria-selected={activeTab === index}
-                                    >
-                                        {benefit.tab} <i className="ri-arrow-right-down-line"></i>
-                                    </button>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className="col-xl-8">
-                        <div className="tab-content custom-animation">
-                            {KEY_BENEFITS.map((benefit, index) => (
-                                <div
-                                    key={benefit.tab}
-                                    className={`tab-pane fade ${activeTab === index ? "show active custom-fadeIn" : ""}`}
-                                    id={`why-pill-${index}`}
-                                    role="tabpanel"
-                                    aria-labelledby={`why-pill-${index}-tab`}
+
+                <div
+                    className="pm-why-grid"
+                    onMouseEnter={() => setPaused(true)}
+                    onMouseLeave={() => setPaused(false)}
+                >
+                    <ul className="pm-why-rail" role="tablist" aria-label="Why choose Platinum">
+                        {KEY_BENEFITS.map((item, index) => (
+                            <li key={item.tab} className={active === index ? "active" : ""}>
+                                <button
+                                    type="button"
+                                    role="tab"
+                                    aria-selected={active === index}
+                                    onClick={() => setActive(index)}
                                 >
-                                    <div className="row gx-40 gy-40 align-items-center justify-content-center">
-                                        <div className="col-lg-5">
-                                            <div className="why-thumb-wrap3-1">
-                                                <div className="why-tab-thumb">
-                                                    <img src={benefit.image} alt={benefit.title} style={{ objectFit: "cover" }} />
-                                                </div>
-                                                <div className="why-text-wrap">
-                                                    <h4 className="title">Platinum</h4>
-                                                    <hr className="line" />
-                                                    <div className="number">{String(index + 1).padStart(2, "0")}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-lg-7">
-                                            <div className="why-content-wrap">
-                                                <h4 className="title">Why choose us</h4>
-                                                <h5 className="subtitle">{benefit.title}</h5>
-                                                <p className="text">{benefit.text}</p>
-                                                <div className="checklist mb-35">
-                                                    <ul>
-                                                        <li>
-                                                            <i className="ri-checkbox-circle-fill text-theme"></i>
-                                                            Honesty, transparency, and respect guide every interaction
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div className="btn-group mt-35">
-                                                    <Link href="/about" className="btn style3">
-                                                        More Details <i className="ri-arrow-right-up-line"></i>
-                                                    </Link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+                                    <span className="pm-why-num">{String(index + 1).padStart(2, "0")}</span>
+                                    <span className="pm-why-label">{item.tab}</span>
+                                    <i className="ri-arrow-right-line"></i>
+                                </button>
+                                {active === index && <span className="pm-why-progress" aria-hidden="true"></span>}
+                            </li>
+                        ))}
+                    </ul>
+
+                    <div className="pm-why-stage" key={active} role="tabpanel">
+                        <div className="pm-why-media">
+                            <img src={benefit.image} alt={benefit.title} />
+                            <span className="pm-why-ghost">{String(active + 1).padStart(2, "0")}</span>
+                        </div>
+                        <div className="pm-why-card">
+                            <h4 className="pm-why-card-title">{benefit.title}</h4>
+                            <p className="pm-why-card-text">{benefit.text}</p>
+                            <p className="pm-why-card-check">
+                                <i className="ri-checkbox-circle-fill"></i>
+                                Honesty, transparency, and respect guide every interaction
+                            </p>
+                            <Link href="/about" className="btn">
+                                More Details <i className="ri-arrow-right-up-line"></i>
+                            </Link>
                         </div>
                     </div>
                 </div>

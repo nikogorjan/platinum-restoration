@@ -5,7 +5,7 @@ import { SITE } from "../siteData";
 // service: { title, image, blurb } — copy below is draft placeholder text.
 const ServiceDetailDraft = ({ service, related }) => {
     return (
-        <div className="service-details-area space overflow-hidden">
+        <div className="service-details-area space-top overflow-hidden">
             <div className="container3">
                 <div className="row gy-30 gx-30">
                     <div className="col-12">

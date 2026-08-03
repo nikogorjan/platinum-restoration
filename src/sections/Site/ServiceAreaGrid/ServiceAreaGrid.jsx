@@ -13,11 +13,11 @@ const FALLBACK_ICONS = [
 
 const ServiceAreaGrid = ({ subTitle = "What We Do", title, text, items }) => {
     return (
-        <div className="service-area-4 space overflow-hidden">
+        <div className="service-area-4 space-top overflow-hidden">
             <div className="container">
-                <div className="row gy-30 gx-30">
-                    <div className="col-xl-4 col-md-6">
-                        <div className="title-area mb-0 text-left content-text-extra-style">
+                <div className="row justify-content-center">
+                    <div className="col-lg-8">
+                        <div className="title-area text-center">
                             <span className="sub-title text-theme">
                                 {subTitle} <i className="ri-arrow-right-down-line"></i>
                             </span>
@@ -25,12 +25,11 @@ const ServiceAreaGrid = ({ subTitle = "What We Do", title, text, items }) => {
                             {text && <p>{text}</p>}
                         </div>
                     </div>
+                </div>
+                <div className="row gy-30 gx-30 justify-content-center">
                     {items.map((item, index) => (
-                        <div className="col-xl-4 col-md-6" key={item.href}>
-                            <div className="service-card style3">
-                                <div className="service-card-shadow-text">
-                                    SERVICES - {String(index + 1).padStart(2, "0")}
-                                </div>
+                        <div className="col-xl-4 col-md-6 d-flex" key={item.href}>
+                            <div className="service-card style3 w-100">
                                 <div className="service-card_content">
                                     <div className="service-card_icon">
                                         {/* box matches the 52px circle drawn by .service-card_icon:after,

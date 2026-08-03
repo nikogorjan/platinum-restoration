@@ -7,9 +7,9 @@ import { SITE, ABOUT, BEFORE_AFTER_IMAGE } from "../siteData";
 const HomeAbout = () => {
     return (
         <div>
-            <div className="about-area-3 space overflow-hidden" id="about-sec">
+            <div className="about-area-3 space-top overflow-hidden" id="about-sec">
                 <div className="container">
-                    <div className="row gy-80 gx-100 align-items-end">
+                    <div className="row gy-60 gx-100 align-items-center">
                         <div className="col-xl-7">
                             <div className="about-wrap3">
                                 <div className="title-area mb-25">
@@ -44,19 +44,14 @@ const HomeAbout = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="about-thumb3 mt-70">
+                        </div>
+                        <div className="col-xl-5 col-md-8">
+                            <div className="mb-30">
                                 <BeforeAfter
                                     image={BEFORE_AFTER_IMAGE}
                                     altBefore="Water-damaged room before restoration"
                                     altAfter="Fully restored living space"
                                 />
-                            </div>
-                        </div>
-                        <div className="col-xl-5 col-md-8">
-                            <div className="about-thumb3 mb-30">
-                                <div className="about-img-2" style={{ maskImage: "url('/main-assets/img/normal/about_mask3-2.png')" }}>
-                                    <img src={ABOUT.image2} alt="Our work" />
-                                </div>
                             </div>
                             <p>{ABOUT.text2}</p>
                             <div className="btn-group mt-35">

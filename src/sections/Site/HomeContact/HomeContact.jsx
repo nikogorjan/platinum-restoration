@@ -5,7 +5,7 @@ import { SITE } from "../siteData";
 // The form is wireframe-only — it does not submit anywhere yet.
 const HomeContact = () => {
     return (
-        <section className="contact-area-2 space-bottom space-top overflow-hidden" id="contact-sec">
+        <section className="contact-area-2 space-top overflow-hidden" id="contact-sec">
             <div className="container">
                 <div
                     className="contact-wrap2 space overflow-hidden shape-mockup-wrap"

@@ -1,32 +1,27 @@
-"use client";
+import {
+    RESTORATION_SERVICES,
+    CONSTRUCTION_SERVICES,
+    PROPERTY_MANAGEMENT,
+} from "../siteData";
 
-import { useEffect } from "react";
-import niceSelect from "react-nice-select";
-
-// Inquiry dropdown with Platinum's actual service areas (replaces the
-// template's ContactDropdown, which lists web-design services). Uses
-// defaultValue instead of a `selected` attribute so React stays quiet.
+// Inquiry dropdown listing every Platinum service (built from siteData, so
+// it stays in sync automatically). Plain native <select> — no nice-select
+// library, which cloned itself into duplicate dropdowns.
 const OPTIONS = [
-    "Water Damage / Emergency",
-    "Mold Inspection & Remediation",
-    "Crawlspace / Moisture Control",
-    "Construction & Remodeling",
-    "Property Management & Repairs",
+    ...RESTORATION_SERVICES.map((s) => s.title),
+    ...CONSTRUCTION_SERVICES.map((s) => s.title),
+    PROPERTY_MANAGEMENT.title,
     "Other",
 ];
 
 const SiteContactDropdown = () => {
-    useEffect(() => {
-        niceSelect();
-    }, []);
-
     return (
         <div className="col-md-6">
-            <div className="form-group custom-form-design">
+            <div className="form-group">
                 <select
                     name="subject"
                     id="subject"
-                    className="single-select nice-select form-select"
+                    className="form-select form-control"
                     defaultValue=""
                 >
                     <option value="" disabled hidden>
