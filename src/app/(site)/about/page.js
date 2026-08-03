@@ -9,6 +9,7 @@ import {
     AboutMission,
     AboutCTA,
 } from "~/sections/Site/About";
+import SiteMap from "~/sections/Site/SiteMap";
 import Scroll from "~/sections/Common/Scroll";
 
 export const metadata = { title: "About Us" };
@@ -24,6 +25,7 @@ export default function AboutPage() {
             <AboutTrust />
             <AboutMission />
             <AboutCTA />
+            <SiteMap />
             <SiteFooter />
             <Scroll />
         </div>

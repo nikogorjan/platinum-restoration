@@ -17,20 +17,21 @@ export const metadata = {
   },
 };
 import "~/public/main-assets/css/fonts.css";
-import { Inter } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 
-// Defines the --font-inter CSS variable on <body>. Only the (site) routes
-// consume it (via site-theme.css); template pages keep their own fonts.
-const inter = Inter({
+// The site's single font family. Defines the --font-primary CSS variable
+// on <body>; only the (site) routes consume it (via site-theme.css) —
+// template pages keep their own fonts.
+const primaryFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-primary",
 });
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.variable}>
+      <body className={primaryFont.variable}>
         {children}
       </body>
     </html>

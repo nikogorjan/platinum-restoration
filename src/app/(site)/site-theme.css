@@ -11,12 +11,12 @@
   /* Larger, consistent gap between sections (template default: 100px). */
   --section-space: 140px;
   --section-space-mobile: 100px;
-  /* Inter (self-hosted via next/font) replaces the template's
-     Titillium Web / Archivo across the site. The fallback lives INSIDE
-     var() so a missing variable degrades to Helvetica, never the
-     browser's default serif. */
-  --title-font: var(--font-inter, "Helvetica Neue", Helvetica, Arial), sans-serif;
-  --body-font: var(--font-inter, "Helvetica Neue", Helvetica, Arial), sans-serif;
+  /* One font for the whole site: Plus Jakarta Sans (self-hosted via
+     next/font), replacing the template's Titillium Web / Archivo pair.
+     The fallback lives INSIDE var() so a missing variable degrades to
+     Helvetica, never the browser's default serif. */
+  --title-font: var(--font-primary, "Helvetica Neue", Helvetica, Arial), sans-serif;
+  --body-font: var(--font-primary, "Helvetica Neue", Helvetica, Arial), sans-serif;
 }
 
 /* Carousel arrows (Our Work slider). slick-theme.css loads after the
@@ -404,6 +404,309 @@ img[src*="client_shape"] {
   margin-top: auto;
 }
 
+/* Header — full-width bar with clean flex layout: logo hard left,
+   nav/hamburger hard right, phone+CTA at the far right on wide screens.
+   Replaces the template's 1820px container + left-packed columns, which
+   left huge dead margins at in-between widths. */
+.header-layout3 .menu-area > .container {
+  max-width: 100%;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+.header-layout3 .menu-area .row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.header-layout3 .menu-area .row > [class*="col-"] {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.header-layout3 .menu-area .menu-bar {
+  margin-left: auto;
+}
+
+/* Right-side header extras: nothing below 1500px, phone chip from
+   1500px, GET A QUOTE button only from 1800px. */
+.header-layout3 .menu-area .space-left {
+  display: none;
+  margin-left: 32px;
+  padding-left: 0;
+}
+
+@media (min-width: 1500px) {
+  .header-layout3 .menu-area .space-left {
+    display: block;
+  }
+}
+
+.header-layout3 .header-quote-btn {
+  display: none;
+}
+
+@media (min-width: 1800px) {
+  .header-layout3 .header-quote-btn {
+    display: inline-flex;
+  }
+}
+
+.header-layout3 .header-logo {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.header-layout3 .main-menu > ul {
+  display: flex;
+  align-items: center;
+}
+
+.header-layout3 .main-menu > ul > li {
+  margin: 0 13px;
+}
+
+@media (max-width: 767px) {
+  .header-layout3 .menu-area > .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* The floating header is ~78px tall (54px logo + 12px padding each side).
+   The template reserved 116px under it on breadcrumb pages and 100px on
+   the homepage hero — trim both so dark sections sit flush under the bar. */
+.breadcumb-wrapper,
+.hero-3 {
+  margin-top: 78px;
+}
+
+@media (max-width: 575px) {
+  .breadcumb-wrapper {
+    margin-top: 78px;
+  }
+}
+
+/* Nav dropdown hover — color change only, no arrow icon or text push. */
+.main-menu ul.sub-menu li a:hover {
+  padding-left: 0;
+  color: var(--theme-color);
+}
+
+.main-menu ul.sub-menu li a:before {
+  display: none;
+}
+
+/* ---------------------------------------------------------------------
+   Footer (.pm-footer) — deep blue-black, blueprint grid, diamond bullets.
+   --------------------------------------------------------------------- */
+.pm-footer {
+  background-color: #0B1424;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 44px 44px;
+  color: rgba(255, 255, 255, 0.68);
+  padding-top: 90px;
+}
+
+.pm-footer a {
+  color: rgba(255, 255, 255, 0.68);
+  transition: color 0.25s;
+}
+
+.pm-footer a:hover {
+  color: var(--white-color);
+}
+
+.pm-footer-top {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: 64px;
+  padding-bottom: 80px;
+}
+
+@media (max-width: 1199px) {
+  .pm-footer-top {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+.pm-footer-logo {
+  display: inline-block;
+}
+
+.pm-footer-logo img {
+  background: var(--white-color);
+  padding: 10px 16px;
+  max-height: 62px;
+  width: auto;
+}
+
+.pm-footer-brand p {
+  margin: 26px 0 0;
+  max-width: 330px;
+}
+
+.pm-footer-serving {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pm-footer-serving i {
+  color: var(--theme-color);
+}
+
+.pm-footer-social {
+  margin-top: 26px;
+  display: flex;
+  gap: 10px;
+}
+
+.pm-footer-social a {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.pm-footer-social a:hover {
+  background: var(--theme-color);
+  border-color: var(--theme-color);
+  color: var(--white-color);
+}
+
+.pm-footer-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr;
+  gap: 40px;
+}
+
+@media (max-width: 767px) {
+  .pm-footer-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pm-footer-title {
+  color: var(--white-color);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.pm-footer-title .d {
+  width: 8px;
+  height: 8px;
+  background: var(--theme-color);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.pm-footer-cols ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pm-footer-cols ul li {
+  margin-bottom: 12px;
+}
+
+.pm-footer-cols ul a {
+  font-size: 15px;
+}
+
+.pm-footer-phone {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.pm-footer-phone i {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  background: var(--theme-color);
+  color: var(--white-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.pm-footer-phone .label {
+  display: block;
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+.pm-footer-phone .num {
+  display: block;
+  font-family: var(--title-font);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white-color);
+}
+
+.pm-footer-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 15px;
+  margin-bottom: 12px;
+  word-break: break-word;
+}
+
+.pm-footer-line i {
+  color: var(--theme-color);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.pm-footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 22px 0;
+}
+
+.pm-footer-bottom .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.pm-footer-bottom p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.pm-footer-bottom p a {
+  color: var(--white-color);
+}
+
+.pm-footer-bottom-links {
+  display: flex;
+  gap: 28px;
+  font-size: 14px;
+}
+
 /* No outlined (text-stroke) typography anywhere on the site. */
 .hero-style3 .hero-title.style2 {
   -webkit-text-stroke: 0;
@@ -769,27 +1072,6 @@ img[src*="client_shape"] {
   position: relative;
 }
 
-.pm2-story-side {
-  position: absolute;
-  left: -70px;
-  top: 50%;
-  transform: rotate(180deg) translateY(-50%);
-  writing-mode: vertical-rl;
-  font-family: var(--title-font);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.32em;
-  color: var(--title-color);
-  opacity: 0.25;
-  white-space: nowrap;
-}
-
-@media (max-width: 1500px) {
-  .pm2-story-side {
-    display: none;
-  }
-}
-
 .pm2-story-title {
   display: flex;
   flex-direction: column;
@@ -842,6 +1124,109 @@ img[src*="client_shape"] {
   border: 3px solid var(--theme-color);
   transform: rotate(45deg);
   z-index: 2;
+}
+
+/* FAQ accordion — consistent 1px border on all sides (Bootstrap removes
+   the top border on every item after the first), white cards, red accent
+   on the open item. */
+.accordion-area .accordion-card,
+.accordion-area .accordion-card.accordion-item:not(:first-of-type) {
+  border: 1px solid var(--smoke-color2);
+  background: var(--white-color);
+  margin-bottom: 14px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.accordion-area .accordion-card:has(.accordion-button:not(.collapsed)) {
+  background: var(--white-color);
+  border: 1px solid var(--smoke-color2);
+  border-left: 4px solid var(--theme-color);
+}
+
+.accordion-area .accordion-card .accordion-button {
+  text-transform: none;
+  font-size: 18px;
+  padding: 24px 70px 24px 28px;
+  min-height: 0;
+}
+
+.accordion-area .accordion-card .accordion-button:after {
+  height: auto;
+  width: auto;
+  line-height: 1;
+  font-size: 22px;
+}
+
+.accordion-area .accordion-card .accordion-body {
+  padding: 0 26px 24px;
+  margin-top: 0;
+}
+
+.accordion-area .accordion-card .accordion-body p {
+  font-size: 16px;
+  font-family: var(--body-font);
+  margin-bottom: 0;
+}
+
+/* FAQ contact tile */
+.pm-faq-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 34px;
+  padding: 20px 26px;
+  border: 1px solid var(--smoke-color2);
+  border-left: 4px solid var(--theme-color);
+  transition: box-shadow 0.3s;
+}
+
+.pm-faq-contact:hover {
+  box-shadow: 0 16px 40px rgba(4, 4, 35, 0.1);
+}
+
+.pm-faq-contact > i {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  background: var(--theme-color);
+  color: var(--white-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.pm-faq-contact .label {
+  display: block;
+  font-size: 13px;
+  color: var(--body-color);
+}
+
+.pm-faq-contact .phone {
+  display: block;
+  font-family: var(--title-font);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--title-color);
+}
+
+/* Full-bleed location map — flush against neighboring sections. */
+.pm-map {
+  line-height: 0;
+}
+
+.pm-map iframe {
+  display: block;
+  width: 100%;
+  height: 440px;
+  border: 0;
+  filter: grayscale(1) contrast(1.05);
+}
+
+@media (max-width: 767px) {
+  .pm-map iframe {
+    height: 320px;
+  }
 }
 
 /* Dark signature CTA */

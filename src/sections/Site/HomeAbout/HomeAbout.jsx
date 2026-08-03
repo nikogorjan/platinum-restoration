@@ -9,7 +9,7 @@ const HomeAbout = () => {
         <div>
             <div className="about-area-3 space-top overflow-hidden" id="about-sec">
                 <div className="container">
-                    <div className="row gy-60 gx-100 align-items-center">
+                    <div className="row gy-60 gx-40 align-items-center">
                         <div className="col-xl-7">
                             <div className="about-wrap3">
                                 <div className="title-area mb-25">

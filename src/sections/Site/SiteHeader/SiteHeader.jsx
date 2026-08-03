@@ -44,7 +44,7 @@ const SiteHeader = () => {
                                     </div>
                                 </div>
                                 <div className="col-auto menu-bar ms-xxl-0">
-                                    <nav className="main-menu d-none d-lg-inline-block">
+                                    <nav className="main-menu d-none d-xl-inline-block">
                                         <ul>
                                             <li>
                                                 <Link href="/">HOME</Link>
@@ -108,13 +108,13 @@ const SiteHeader = () => {
                                             </li>
                                         </ul>
                                     </nav>
-                                    <div className="navbar-right d-inline-flex d-lg-none">
+                                    <div className="navbar-right d-inline-flex d-xl-none">
                                         <button onClick={() => setIsMenuOpen(true)} type="button" className="menu-toggle icon-btn">
                                             <i className="ri-menu-line"></i>
                                         </button>
                                     </div>
                                 </div>
-                                <div className="col-auto d-xl-block d-none space-left">
+                                <div className="col-auto space-left">
                                     <div className="header-button">
                                         <div className="navbar-right-desc">
                                             <div className="icon-btn">
@@ -125,7 +125,7 @@ const SiteHeader = () => {
                                                 <Link className="link" href={SITE.phoneHref}>{SITE.phone}</Link>
                                             </div>
                                         </div>
-                                        <Link href="/contact" className="btn d-xxl-flex d-none">
+                                        <Link href="/contact" className="btn header-quote-btn">
                                             GET A QUOTE <i className="ri-arrow-right-up-line"></i>
                                         </Link>
                                     </div>

@@ -12,9 +12,6 @@ export const AboutStory = () => {
         <div className="space-top overflow-hidden">
             <div className="container">
                 <div className="pm2-story">
-                    <span className="pm2-story-side" aria-hidden="true">
-                        FAITH · INTEGRITY · CRAFT — TRIANGLE, NC
-                    </span>
                     <div className="row gy-50 gx-60 align-items-center">
                         <div className="col-xl-6">
                             <Reveal>
