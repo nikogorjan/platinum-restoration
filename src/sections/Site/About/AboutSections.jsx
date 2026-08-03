@@ -36,6 +36,7 @@ export const AboutStory = () => {
                                     <img src={SITE.favicon} alt="Platinum mark" />
                                     <div>
                                         <h6>{A.localHeadline}</h6>
+                                        <p>{A.localIntro}</p>
                                         <p>{A.ownerLine}</p>
                                     </div>
                                 </div>
@@ -71,7 +72,7 @@ export const AboutValues = () => (
                             <span className="sub-title text-theme">
                                 OUR CORE VALUES <i className="ri-arrow-right-down-line"></i>
                             </span>
-                            <h2 className="sec-title">What guides every project we take on</h2>
+                            <h2 className="sec-title">What Makes Us Different</h2>
                         </div>
                     </Reveal>
                 </div>
@@ -161,6 +162,7 @@ export const AboutTrust = () => (
                         <Reveal>
                             <span className="pm2-blueprint-label">WHY PLATINUM</span>
                             <h2 className="pm2-blueprint-title">{A.trustHeadline}</h2>
+                            <p className="pm2-blueprint-intro">{A.trustIntro}</p>
                         </Reveal>
                     </div>
                 </div>
