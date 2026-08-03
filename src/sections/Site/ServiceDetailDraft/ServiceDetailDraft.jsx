@@ -1,9 +1,13 @@
 import Link from "next/link";
-import { SITE } from "../siteData";
+import { SITE, DETAIL_CONTENT } from "../siteData";
 
-// Wireframe service-detail body using the template's single-page markup.
-// service: { title, image, blurb } — copy below is draft placeholder text.
-const ServiceDetailDraft = ({ service, related }) => {
+// Service detail body assembled from real old-site content: category
+// description, what's-included checklist, expected timeline (from the FAQ
+// articles), and the warranty promise.
+// service: { title, image, blurb } · area: "restoration" | "construction" | "property"
+const ServiceDetailDraft = ({ service, area = "restoration" }) => {
+    const content = DETAIL_CONTENT[area];
+
     return (
         <div className="service-details-area space-top overflow-hidden">
             <div className="container3">
@@ -15,26 +19,37 @@ const ServiceDetailDraft = ({ service, related }) => {
                                     className="w-100"
                                     src={service.image}
                                     alt={service.title}
-                                    style={{ maxHeight: "520px", objectFit: "cover" }}
+                                    style={{ maxHeight: "520px", objectFit: "cover", borderRadius: "var(--radius-lg)" }}
                                 />
                             </div>
                             <h2 className="sec-title2 mb-25">{service.title}</h2>
-                            <p className="mb-30">{service.blurb}</p>
-                            <p className="mb-50">
-                                [Draft copy] This paragraph will explain how Platinum Restoration &
-                                Construction approaches {service.title.toLowerCase()} — what the
-                                process looks like, how fast we respond, and what homeowners can
-                                expect from start to finish. Final copy comes later; this is
-                                wireframe placeholder text.
-                            </p>
-                            <div className="checklist mb-50">
-                                <ul>
-                                    <li><i className="ri-check-double-line"></i> [Draft] Key benefit or inclusion one</li>
-                                    <li><i className="ri-check-double-line"></i> [Draft] Key benefit or inclusion two</li>
-                                    <li><i className="ri-check-double-line"></i> [Draft] Key benefit or inclusion three</li>
-                                    <li><i className="ri-check-double-line"></i> [Draft] Licensed, insured, and locally trusted</li>
-                                </ul>
+                            <p className="mb-3">{service.blurb}</p>
+                            <p className="mb-40">{content.description}</p>
+
+                            <div className="row gy-30 gx-30 mb-40">
+                                <div className="col-lg-6 d-flex">
+                                    <div className="pm-detail-box">
+                                        <h4><i className="ri-checkbox-multiple-line"></i> What&apos;s included</h4>
+                                        <ul>
+                                            {content.includes.map((item) => (
+                                                <li key={item}>
+                                                    <i className="ri-check-line"></i>
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6 d-flex">
+                                    <div className="pm-detail-box">
+                                        <h4><i className="ri-time-line"></i> What to expect</h4>
+                                        <p>{content.timeline}</p>
+                                        <h4 className="mt-4"><i className="ri-shield-check-line"></i> Backed by real warranties</h4>
+                                        <p className="mb-0">{DETAIL_CONTENT.warranty}</p>
+                                    </div>
+                                </div>
                             </div>
+
                             <div className="row gy-4 align-items-center">
                                 <div className="col-auto">
                                     <Link href="/contact" className="btn">

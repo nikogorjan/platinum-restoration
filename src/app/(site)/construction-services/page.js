@@ -3,6 +3,8 @@ import SiteFooter from "~/sections/Site/SiteFooter";
 import SiteBreadcrumb from "~/sections/Site/SiteBreadcrumb";
 import ServiceAreaGrid from "~/sections/Site/ServiceAreaGrid";
 import { CONSTRUCTION_SERVICES, CONSTRUCTION_OVERVIEW } from "~/sections/Site/siteData";
+import CoverageList from "~/sections/Site/CoverageList";
+import TrustStrip from "~/sections/Site/TrustStrip";
 import Process from "~/sections/Service/Process";
 import HomeTestimonial from "~/sections/Site/HomeTestimonial";
 import Contact from "~/sections/Service/Contact";
@@ -25,6 +27,8 @@ export default function ConstructionServicesPage() {
                     blurb: s.blurb,
                 }))}
             />
+            <CoverageList title={CONSTRUCTION_OVERVIEW.coverageTitle} items={CONSTRUCTION_OVERVIEW.coverage} />
+            <TrustStrip />
             <Process />
             <HomeTestimonial />
             <Contact />

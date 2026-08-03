@@ -29,7 +29,7 @@ export default async function RestorationServicePage({ params }) {
                 title={service.title}
                 parent={{ label: "Restoration Services", href: "/restoration-services" }}
             />
-            <ServiceDetailDraft service={service} />
+            <ServiceDetailDraft service={service} area="restoration" />
             <SiteFaq />
             <SiteFooter />
             <Scroll />

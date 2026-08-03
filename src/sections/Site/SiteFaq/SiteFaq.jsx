@@ -37,6 +37,16 @@ const SiteFaq = () => {
                   </Accordion.Header>
                   <Accordion.Body>
                     <p className="faq-text">{faq.answer}</p>
+                    {faq.points && (
+                      <ul className="pm-faq-points">
+                        {faq.points.map((point) => (
+                          <li key={point}>
+                            <i className="ri-check-line"></i>
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </Accordion.Body>
                 </Accordion.Item>
               ))}

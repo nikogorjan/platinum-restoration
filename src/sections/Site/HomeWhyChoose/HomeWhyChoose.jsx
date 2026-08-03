@@ -72,10 +72,14 @@ const HomeWhyChoose = () => {
                         <div className="pm-why-card">
                             <h4 className="pm-why-card-title">{benefit.title}</h4>
                             <p className="pm-why-card-text">{benefit.text}</p>
-                            <p className="pm-why-card-check">
-                                <i className="ri-checkbox-circle-fill"></i>
-                                Honesty, transparency, and respect guide every interaction
-                            </p>
+                            <ul className="pm-why-card-points">
+                                {benefit.points.map((point) => (
+                                    <li key={point}>
+                                        <i className="ri-checkbox-circle-fill"></i>
+                                        {point}
+                                    </li>
+                                ))}
+                            </ul>
                             <Link href="/about" className="btn">
                                 More Details <i className="ri-arrow-right-up-line"></i>
                             </Link>

@@ -1618,7 +1618,13 @@ img[src*="client_shape"] {
 
 .pm2-blueprint-title {
   color: var(--white-color);
-  margin: 12px 0 56px;
+  margin: 12px 0 16px;
+}
+
+.pm2-blueprint-intro {
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0 0 48px;
+  max-width: 640px;
 }
 
 .pm2-trust-item .num {
@@ -2091,4 +2097,522 @@ img[src*="client_shape"] {
   left: 14px;
   bottom: 14px;
   border-radius: var(--radius-md);
+}
+
+/* ---------------------------------------------------------------------
+   Content integration: challenges section, trust strip, detail boxes,
+   coverage list, contact tiles, testimonial expander, FAQ points.
+   --------------------------------------------------------------------- */
+/* Challenges panel — dark canvas echoing the hero */
+.pm-chal-panel {
+  background-color: #0C1526;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+  border-radius: var(--radius-lg);
+  padding: 72px 64px;
+}
+
+@media (max-width: 991px) {
+  .pm-chal-panel {
+    padding: 48px 24px;
+  }
+}
+
+.pm-chal-head {
+  margin-bottom: 44px;
+}
+
+.pm-chal-panel h2 {
+  color: var(--white-color);
+  margin: 18px 0 0;
+}
+
+.pm-chal-lead {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.pm-chal-panel .sub-title {
+  background: rgba(190, 11, 48, 0.35);
+  color: var(--white-color);
+}
+
+.pm-pain-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.pm-pain-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
+}
+
+.pm-pain-card > i {
+  width: 48px;
+  height: 48px;
+  background: var(--theme-color);
+  color: var(--white-color);
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 18px;
+}
+
+.pm-pain-card h5 {
+  color: var(--white-color);
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.pm-pain-card p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.pm-chal-divider {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 52px 0;
+}
+
+.pm-chal-divider span {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.pm-chal-divider i {
+  width: 40px;
+  height: 40px;
+  background: var(--theme-color);
+  color: var(--white-color);
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.pm-chal-solutions-head {
+  margin-bottom: 40px;
+}
+
+.pm-chal-solutions-head h3 {
+  color: var(--white-color);
+  font-size: 30px;
+  margin: 18px 0 0;
+}
+
+/* Challenge → solution pair cards (white cards on the dark panel) */
+.pm-pair-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.pm-pair-card:hover {
+  transform: translateY(-4px);
+}
+
+.pm-pair-problem {
+  background: var(--smoke-color3);
+  padding: 28px 28px 34px;
+}
+
+.pm-pair-problem h4 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.pm-pair-problem p {
+  color: var(--body-color);
+  margin: 0;
+  font-size: 15px;
+}
+
+.pm-pair-tag {
+  display: block;
+  font-family: var(--title-font);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--theme-color);
+  margin-bottom: 10px;
+}
+
+.pm-pair-solution .pm-pair-tag {
+  color: var(--brand-blue);
+}
+
+.pm-pair-arrow {
+  align-self: center;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0;
+  z-index: 2;
+  background: var(--theme-color);
+  color: var(--white-color);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.pm-pair-solution {
+  background: var(--white-color);
+  padding: 34px 28px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pm-pair-solution h4 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.pm-pair-solution p {
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+.pm-pair-link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--title-font);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--theme-color);
+}
+
+.pm-pair-link:hover {
+  color: var(--brand-blue);
+}
+
+.pm-chal-cta {
+  text-align: center;
+  max-width: 720px;
+  margin: 48px auto 0;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.pm-chal-cta strong {
+  color: var(--white-color);
+  display: block;
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+/* Trust strip */
+.pm-trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px 32px;
+  background: var(--title-color);
+  border-radius: var(--radius-lg);
+  padding: 26px 32px;
+}
+
+.pm-trust-strip-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--white-color);
+  font-family: var(--title-font);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.pm-trust-strip-item i {
+  font-size: 24px;
+  color: var(--theme-color);
+}
+
+/* Why-choose benefit bullets */
+.pm-why-card-points {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+}
+
+.pm-why-card-points li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  color: var(--title-color);
+  font-size: 15px;
+  line-height: 1.55;
+  animation: pmWhyUp 0.55s 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.pm-why-card-points li i {
+  color: var(--theme-color);
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+/* FAQ answer bullets */
+.pm-faq-points {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+
+.pm-faq-points li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--title-color);
+}
+
+.pm-faq-points li i {
+  color: var(--theme-color);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+/* Testimonial read-more toggle */
+.pm-testi-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 14px 0 4px;
+  cursor: pointer;
+  font-family: var(--title-font);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--theme-color);
+}
+
+.pm-testi-toggle:hover {
+  color: var(--white-color);
+}
+
+/* Service detail info boxes */
+.pm-detail-box {
+  border: 1px solid var(--smoke-color2);
+  border-radius: var(--radius-md);
+  padding: 28px 30px;
+  width: 100%;
+}
+
+.pm-detail-box h4 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 19px;
+  margin-bottom: 16px;
+}
+
+.pm-detail-box h4 i {
+  color: var(--theme-color);
+  font-size: 22px;
+}
+
+.pm-detail-box ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pm-detail-box ul li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  color: var(--title-color);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.pm-detail-box ul li i {
+  color: var(--theme-color);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+/* Coverage checklist (overview pages) */
+.pm-coverage {
+  border: 1px solid var(--smoke-color2);
+  border-left: 4px solid var(--theme-color);
+  border-radius: var(--radius-md);
+  padding: 34px 38px;
+}
+
+.pm-coverage h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.pm-coverage ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 32px;
+}
+
+@media (max-width: 767px) {
+  .pm-coverage ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pm-coverage ul li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: var(--title-color);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.pm-coverage ul li i {
+  color: var(--theme-color);
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+/* Contact info tiles */
+.pm-contact-tile {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+  border: 1px solid var(--smoke-color2);
+  border-radius: var(--radius-md);
+  padding: 24px 26px;
+}
+
+.pm-contact-tile > i {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  background: var(--theme-color);
+  color: var(--white-color);
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.pm-contact-tile .label {
+  display: block;
+  font-size: 13px;
+  color: var(--body-color);
+}
+
+.pm-contact-tile .value {
+  display: block;
+  font-family: var(--title-font);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--title-color);
+  word-break: break-word;
+}
+
+a.value:hover {
+  color: var(--theme-color);
+}
+
+/* ---------------------------------------------------------------------
+   Modernization layer — consistent contemporary look site-wide.
+   --------------------------------------------------------------------- */
+/* Eyebrow labels become pill chips (every section uses .sub-title). */
+.sub-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(190, 11, 48, 0.08);
+  color: var(--theme-color);
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.sub-title i {
+  font-size: 15px;
+  line-height: 1;
+}
+
+/* Chips on dark/image backgrounds */
+.cta-wrap3 .sub-title {
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--white-color);
+}
+
+/* Tinted surfaces instead of hairline borders. */
+.pm-detail-box,
+.pm-contact-tile,
+.pm-value-card {
+  border: none;
+  background: var(--smoke-color3);
+}
+
+.pm-value-card {
+  border-top: 4px solid var(--theme-color);
+}
+
+.pm-owner-card,
+.pm-faq-contact,
+.pm-coverage {
+  border: none;
+  border-left: 4px solid var(--theme-color);
+  background: var(--smoke-color3);
+}
+
+.accordion-area .accordion-card,
+.accordion-area .accordion-card.accordion-item:not(:first-of-type) {
+  border: none;
+  background: var(--smoke-color3);
+}
+
+.accordion-area .accordion-card:has(.accordion-button:not(.collapsed)) {
+  border: none;
+  border-left: 4px solid var(--theme-color);
+  background: var(--white-color);
+  box-shadow: 0 18px 40px rgba(4, 4, 35, 0.08);
+}
+
+/* Gentle lift on interactive tiles */
+.pm-contact-tile,
+.pm-detail-box,
+.pm-value-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pm-contact-tile:hover,
+.pm-value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(4, 4, 35, 0.08);
 }

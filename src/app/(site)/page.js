@@ -4,6 +4,8 @@ import ServiceAreaGrid from "~/sections/Site/ServiceAreaGrid";
 import { SERVICE_AREAS } from "~/sections/Site/siteData";
 import HomeHero from "~/sections/Site/HomeHero";
 import HomeAbout from "~/sections/Site/HomeAbout";
+import HomeChallenges from "~/sections/Site/HomeChallenges";
+import TrustStrip from "~/sections/Site/TrustStrip";
 import HomeWhyChoose from "~/sections/Site/HomeWhyChoose";
 import HomeWork from "~/sections/Site/HomeWork";
 import HomeTestimonial from "~/sections/Site/HomeTestimonial";
@@ -18,12 +20,14 @@ export default function HomePage() {
             <SiteHeader />
             <HomeHero />
             <HomeAbout />
+            <HomeChallenges />
             <ServiceAreaGrid
                 title="Restoration, construction & property care"
                 text="Whether it's restoration, property management, or construction, we're your one-stop shop for expert services."
                 items={SERVICE_AREAS}
             />
             <HomeWhyChoose />
+            <TrustStrip />
             <HomeWork />
             <HomeTestimonial />
             <HomeContact />

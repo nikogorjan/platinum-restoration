@@ -3,6 +3,8 @@ import SiteFooter from "~/sections/Site/SiteFooter";
 import SiteBreadcrumb from "~/sections/Site/SiteBreadcrumb";
 import ServiceAreaGrid from "~/sections/Site/ServiceAreaGrid";
 import { RESTORATION_SERVICES, RESTORATION_OVERVIEW } from "~/sections/Site/siteData";
+import CoverageList from "~/sections/Site/CoverageList";
+import TrustStrip from "~/sections/Site/TrustStrip";
 import Process from "~/sections/Service/Process";
 import HomeTestimonial from "~/sections/Site/HomeTestimonial";
 import Contact from "~/sections/Service/Contact";
@@ -25,6 +27,8 @@ export default function RestorationServicesPage() {
                     blurb: s.blurb,
                 }))}
             />
+            <CoverageList title={RESTORATION_OVERVIEW.coverageTitle} items={RESTORATION_OVERVIEW.coverage} />
+            <TrustStrip />
             <Process />
             <HomeTestimonial />
             <Contact />

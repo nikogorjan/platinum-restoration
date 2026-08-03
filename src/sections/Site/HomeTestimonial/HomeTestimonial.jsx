@@ -1,11 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import Slider from "react-slick";
 import { SITE, TESTIMONIALS } from "../siteData";
 
 // Home-3 testimonial slider with the two real reviews from the old site
 // (shortened for card display — full text lives in siteData.js).
 const HomeTestimonial = () => {
+  const [expanded, setExpanded] = useState(null);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -35,7 +38,7 @@ const HomeTestimonial = () => {
         </div>
 
         <Slider {...settings} className="row global-carousel testi-slider3 slider-shadow">
-          {TESTIMONIALS.map((testimonial) => (
+          {TESTIMONIALS.map((testimonial, index) => (
             <div className="col-lg-6" key={testimonial.name}>
               <div className="testi-card style3 testi-static">
                 <div className="testi-card-thumb">
@@ -52,7 +55,19 @@ const HomeTestimonial = () => {
                   </div>
                 </div>
                 <div className="testi-card_content">
-                  <p className="testi-card_text">{testimonial.text}</p>
+                  <p className="testi-card_text">
+                    {expanded === index ? testimonial.fullText : testimonial.text}
+                  </p>
+                  {testimonial.fullText && (
+                    <button
+                      type="button"
+                      className="pm-testi-toggle"
+                      onClick={() => setExpanded(expanded === index ? null : index)}
+                    >
+                      {expanded === index ? "Show less" : "Read full review"}{" "}
+                      <i className={expanded === index ? "ri-arrow-up-s-line" : "ri-arrow-down-s-line"}></i>
+                    </button>
+                  )}
                   <div className="testi-card-profile">
                     <h4 className="testi-profile-title">{testimonial.name}</h4>
                     <span className="testi-profile-desig">/ {testimonial.location}</span>

@@ -13,7 +13,7 @@ export default function PropertyManagementPage() {
         <div style={{ overflow: "hidden" }}>
             <SiteHeader />
             <SiteBreadcrumb title="Property Management & Repairs" />
-            <ServiceDetailDraft service={PROPERTY_MANAGEMENT} />
+            <ServiceDetailDraft service={PROPERTY_MANAGEMENT} area="property" />
             <SiteFaq />
             <SiteFooter />
             <Scroll />
