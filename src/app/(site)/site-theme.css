@@ -3147,6 +3147,125 @@ img[src*="client_shape"] {
   line-height: 1.6;
 }
 
+/* ---------------------------------------------------------------------
+   Legal pages (privacy policy): sticky contents + numbered sections.
+   --------------------------------------------------------------------- */
+.pm-legal-toc {
+  position: sticky;
+  top: 110px;
+  background: var(--smoke-color3);
+  border-left: 4px solid var(--theme-color);
+  border-radius: var(--radius-md);
+  padding: 28px 30px;
+}
+
+.pm-legal-toc h4 {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.pm-legal-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pm-legal-toc li {
+  margin-bottom: 12px;
+}
+
+.pm-legal-toc a {
+  font-size: 15px;
+  color: var(--body-color);
+  transition: color 0.25s;
+}
+
+.pm-legal-toc a:hover {
+  color: var(--theme-color);
+}
+
+.pm-legal-intro {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--title-color);
+}
+
+.pm-legal-date {
+  display: inline-block;
+  font-size: 14px;
+  color: var(--body-color);
+  background: var(--smoke-color3);
+  border-radius: var(--radius-sm);
+  padding: 8px 16px;
+  margin-bottom: 10px;
+}
+
+.pm-legal-section {
+  padding-top: 40px;
+  scroll-margin-top: 110px;
+}
+
+.pm-legal-section h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.pm-legal-section h3 .num {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--theme-color);
+  letter-spacing: 0.06em;
+}
+
+.pm-legal-section ul {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+
+.pm-legal-section ul li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  line-height: 1.65;
+}
+
+.pm-legal-section ul li i {
+  color: var(--theme-color);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.pm-legal-contact {
+  background: var(--smoke-color3);
+  border-radius: var(--radius-md);
+  padding: 26px 30px;
+  margin-top: 18px;
+}
+
+.pm-legal-contact p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.pm-legal-contact p:last-child {
+  margin-bottom: 0;
+}
+
+.pm-legal-contact i {
+  color: var(--theme-color);
+  font-size: 18px;
+}
+
 /* Pricing / timeline table */
 .pm-pricing {
   border-radius: var(--radius-md);

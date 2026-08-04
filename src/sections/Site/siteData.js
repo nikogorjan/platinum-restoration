@@ -19,12 +19,15 @@ export const HERO = {
     titleLine1: "Your Home. Your Vision.",
     titleLine2: "Our Expertise.",
     text: "Transforming Your Property Into a Sanctuary and Investment You Can Trust. We bring your vision to life with expert craftsmanship, reliable service, and a commitment to excellence.",
-    image: "/aditional-assets/images/Gallery-5.png",
+    image: "/aditional-assets/images/construction-workers-silhouette-on-roof-of-buildin-2026-03-09-03-26-34-utc.webp",
 };
+
+// Ultra-wide banner behind the page titles on inner pages.
+export const PAGE_HEADER_IMAGE = "/aditional-assets/images/rear-view-of-young-workman-wearing-blue-overalls-u-2026-03-24-23-15-33-utc.webp";
 
 // Side-by-side composite (left = before, right = after) shown in the
 // interactive comparison widget in the About section.
-export const BEFORE_AFTER_IMAGE = "/aditional-assets/images/repair-water-damaged-home-scaled.jpeg";
+export const BEFORE_AFTER_IMAGE = "/aditional-assets/images/renovation-vision-unfinished-to-finished-kitchen-2026-03-17-01-40-30-utc.webp";
 
 export const ABOUT = {
     title: "Rooted in the Triangle, Built on Trust",
@@ -36,8 +39,6 @@ export const ABOUT = {
     ],
     owner: "Jayson Chatham",
     ownerRole: "Owner",
-    image1: "/aditional-assets/images/Gallery-3.webp",
-    image2: "/aditional-assets/images/Gallery-6.webp",
 };
 
 export const KEY_BENEFITS = [
@@ -45,7 +46,7 @@ export const KEY_BENEFITS = [
         tab: "Comprehensive Solutions",
         title: "Comprehensive Solutions for Every Need",
         text: "Whether it's restoration, property management, or construction, we're your one-stop shop for expert services.",
-        image: "/aditional-assets/images/water-damage-repair.jpeg",
+        image: "/aditional-assets/images/home-water-damage-restoration-with-air-movers-2026-03-16-06-05-33-utc.webp",
         points: [
             "Water damage repairs, mold remediation, crawlspace and insulation solutions, and more.",
             "Residential remodels, roofing, painting, and windows and doors to transform your home.",
@@ -56,7 +57,7 @@ export const KEY_BENEFITS = [
         tab: "30+ Years of Experience",
         title: "Expertise Backed by Over 30 Years of Experience",
         text: "We bring decades of industry knowledge and skilled craftsmanship to every project.",
-        image: "/aditional-assets/images/crawl-space-sealing-scaled.jpeg",
+        image: "/aditional-assets/images/man-installing-air-conditioning-ductwork-in-attic-2026-01-08-23-39-33-utc.webp",
         points: [
             "Solutions tailored to your property's unique needs and your personal vision.",
             "Attention to detail ensures long-lasting quality and exceptional results.",
@@ -66,7 +67,7 @@ export const KEY_BENEFITS = [
         tab: "Personalized Approach",
         title: "A Personalized Approach to Every Project",
         text: "Your property is unique, and we treat it that way by tailoring our services to fit your goals and lifestyle.",
-        image: "/aditional-assets/images/Gallery-6.webp",
+        image: "/aditional-assets/images/comparison-of-a-small-kitchen-room-in-an-apartment-2026-03-26-07-59-22-utc.webp",
         points: [
             "Custom designs, upgrades, and maintenance plans created just for you.",
             "Open communication throughout the process so you're always informed and involved.",
@@ -76,7 +77,7 @@ export const KEY_BENEFITS = [
         tab: "Stress-Free Service",
         title: "Stress-Free Service You Can Trust",
         text: "We handle the hard work, so you can focus on what matters most.",
-        image: "/aditional-assets/images/Sheetrock.png",
+        image: "/aditional-assets/images/hands-taping-drywall-and-applying-joint-compound-2026-03-24-07-37-20-utc.webp",
         points: [
             "Quick responses to emergencies and routine maintenance requests.",
             "Transparent pricing with detailed estimates to keep you in control.",
@@ -86,7 +87,7 @@ export const KEY_BENEFITS = [
         tab: "Long-Term Value",
         title: "Long-Term Value and Peace of Mind",
         text: "Our work is designed to enhance your property's performance, beauty, and value for years to come.",
-        image: "/aditional-assets/images/Gallery-4.png",
+        image: "/aditional-assets/images/interior-construction-of-a-new-home-2026-03-05-11-50-10-utc.webp",
         points: [
             "Energy-efficient upgrades that save money and boost comfort.",
             "Durable, high-quality materials and expert craftsmanship that stand the test of time.",
@@ -286,26 +287,26 @@ export const ABOUT_PAGE = {
     localHeadline: "A Local, Faith-Based Company Serving the Triangle with Integrity",
     localIntro: "Platinum Restoration and Construction is a local, faith-based company rooted in the Triangle community.",
     ownerLine: "Our owner, Jayson Chatham, born and raised here, understands the unique needs of our community and takes pride in serving all clients with integrity and excellence.",
-    image: "/aditional-assets/images/Gallery-6.webp",
-    imageSecondary: "/aditional-assets/images/crawl-space-sealing-scaled.jpeg",
+    image: "/aditional-assets/images/comparison-of-a-small-kitchen-room-in-an-apartment-2026-03-26-07-59-22-utc.webp",
+    imageSecondary: "/aditional-assets/images/man-installing-air-conditioning-ductwork-in-attic-2026-01-08-23-39-33-utc.webp",
     values: [
         {
             icon: "ri-shake-hands-line",
             title: "Faith and Integrity",
             text: "Honesty, transparency, and respect guide every interaction and project we undertake.",
-            image: "/aditional-assets/images/home-mold-treatment.jpeg",
+            image: "/aditional-assets/images/indoor-remediation-setup-with-ducting-and-plastic-2026-01-11-09-56-18-utc.webp",
         },
         {
             icon: "ri-user-heart-line",
             title: "Client-Centered Approach",
             text: "Your satisfaction is our top priority, and we strive to exceed your expectations at every step.",
-            image: "/aditional-assets/images/Gallery-4.png",
+            image: "/aditional-assets/images/interior-construction-of-a-new-home-2026-03-05-11-50-10-utc.webp",
         },
         {
             icon: "ri-award-line",
             title: "Unmatched Expertise",
             text: "With decades of experience, we bring the knowledge and skill needed to deliver exceptional results.",
-            image: "/aditional-assets/images/Gallery-5.png",
+            image: "/aditional-assets/images/wind-damaged-house-roof-with-missing-asphalt-shing-2026-03-16-04-59-05-utc.webp",
         },
     ],
     servicesIntro: "We specialize in a wide range of services designed to protect, restore, and elevate your property:",
@@ -315,7 +316,7 @@ export const ABOUT_PAGE = {
             icon: "ri-drop-line",
             title: "Restoration",
             href: "/restoration-services",
-            image: "/aditional-assets/images/water-damage-repair.jpeg",
+            image: "/aditional-assets/images/home-water-damage-restoration-with-air-movers-2026-03-16-06-05-33-utc.webp",
             items: [
                 "Water damage repairs",
                 "Mold inspections and remediation",
@@ -327,7 +328,7 @@ export const ABOUT_PAGE = {
             icon: "ri-hammer-line",
             title: "Construction",
             href: "/construction-services",
-            image: "/aditional-assets/images/Sheetrock.png",
+            image: "/aditional-assets/images/hands-taping-drywall-and-applying-joint-compound-2026-03-24-07-37-20-utc.webp",
             items: [
                 "Residential remodels tailored to your vision",
                 "Roofing repairs and replacements",
@@ -339,7 +340,7 @@ export const ABOUT_PAGE = {
             icon: "ri-building-line",
             title: "Property Management",
             href: "/property-management",
-            image: "/aditional-assets/images/Gallery-3.webp",
+            image: "/aditional-assets/images/industrial-warehouse-ceiling-2026-03-18-08-11-03-utc.webp",
             items: [
                 "Routine maintenance and proactive care",
                 "Tenant-focused services that simplify property ownership",
@@ -408,49 +409,49 @@ export const RESTORATION_SERVICES = [
         slug: "water-damage-repairs",
         icon: "ri-drop-line",
         title: "Water Damage Repairs",
-        image: "/aditional-assets/images/water-damage-repair.jpeg",
+        image: "/aditional-assets/images/home-water-damage-restoration-with-air-movers-2026-03-16-06-05-33-utc.webp",
         blurb: "Quickly addressing leaks, flooding, and water damage to prevent further issues and restore your home.",
     },
     {
         slug: "mold-inspections",
         icon: "ri-search-eye-line",
         title: "Mold Inspections",
-        image: "/aditional-assets/images/Mold-Inspection.jpg",
+        image: "/aditional-assets/images/infrared-thermometer-used-near-window-frame-indoor-2026-03-08-22-59-22-utc.webp",
         blurb: "Thorough assessments to identify and address mold problems before they escalate.",
     },
     {
         slug: "mold-remediation",
         icon: "ri-virus-line",
         title: "Mold Remediation",
-        image: "/aditional-assets/images/home-mold-treatment.jpeg",
+        image: "/aditional-assets/images/indoor-remediation-setup-with-ducting-and-plastic-2026-01-11-09-56-18-utc.webp",
         blurb: "Safely removing mold and preventing future growth for a healthier living space.",
     },
     {
         slug: "crawlspace-remediation",
         icon: "ri-layout-bottom-line",
         title: "Crawlspace Remediation",
-        image: "/aditional-assets/images/crawl-space-sealing-scaled.jpeg",
+        image: "/aditional-assets/images/man-installing-air-conditioning-ductwork-in-attic-2026-01-08-23-39-33-utc.webp",
         blurb: "Eliminating moisture, mold, and pests to protect your home from the ground up.",
     },
     {
         slug: "insulation-removal-installation",
         icon: "ri-stack-line",
         title: "Insulation Removal & Installation",
-        image: "/aditional-assets/images/insulation-removal-installation.png",
+        image: "/aditional-assets/images/worker-spraying-mineral-rock-wool-of-thermal-insul-2026-03-25-00-38-34-utc.webp",
         blurb: "Upgrading insulation to improve energy efficiency and comfort.",
     },
     {
         slug: "vapor-barrier-installation",
         icon: "ri-mist-line",
         title: "Vapor Barrier Installation",
-        image: "/aditional-assets/images/Vapor-Barrier-Installation.jpg",
+        image: "/aditional-assets/images/abstract-wrinkled-plastic-texture-background-in-sh-2026-04-15-05-13-45-utc.webp",
         blurb: "Sealing your crawlspace to block moisture and maintain a dry, stable environment.",
     },
     {
         slug: "dehumidifier-installation",
         icon: "ri-water-percent-line",
         title: "Dehumidifier Installation",
-        image: "/aditional-assets/images/Gallery-8.png",
+        image: "/aditional-assets/images/close-up-of-portable-floor-dryer-fan-used-in-publi-2026-03-20-03-28-32-utc.webp",
         blurb: "Managing humidity levels to protect your home and improve indoor air quality.",
     },
 ];
@@ -460,35 +461,35 @@ export const CONSTRUCTION_SERVICES = [
         slug: "residential-remodels",
         icon: "ri-pencil-ruler-2-line",
         title: "Residential Remodels",
-        image: "/aditional-assets/images/Gallery-6.webp",
+        image: "/aditional-assets/images/comparison-of-a-small-kitchen-room-in-an-apartment-2026-03-26-07-59-22-utc.webp",
         blurb: "Update and upgrade your living spaces with designs that reflect your style and enhance functionality.",
     },
     {
         slug: "sheetrock-painting",
         icon: "ri-paint-brush-line",
         title: "Sheetrock & Painting",
-        image: "/aditional-assets/images/Sheetrock.png",
+        image: "/aditional-assets/images/hands-taping-drywall-and-applying-joint-compound-2026-03-24-07-37-20-utc.webp",
         blurb: "Achieve flawless walls and vibrant finishes with professional drywall and painting services.",
     },
     {
         slug: "windows-doors",
         icon: "ri-door-open-line",
         title: "Windows & Doors",
-        image: "/aditional-assets/images/Gallery-4.png",
+        image: "/aditional-assets/images/worker-man-with-safety-helmet-construction-buildin-2026-03-26-23-01-09-utc.webp",
         blurb: "Enhance energy efficiency, security, and style with expertly installed and customized options.",
     },
     {
         slug: "roofing-repairs",
         icon: "ri-home-4-line",
         title: "Roofing & Repairs",
-        image: "/aditional-assets/images/Gallery-5.png",
+        image: "/aditional-assets/images/wind-damaged-house-roof-with-missing-asphalt-shing-2026-03-16-04-59-05-utc.webp",
         blurb: "Protect your home with durable roofing solutions, including repairs, replacements, and inspections.",
     },
     {
         slug: "drainage-solutions",
         icon: "ri-water-flash-line",
         title: "Drainage Solutions",
-        image: "/aditional-assets/images/Gallery-8.png",
+        image: "/aditional-assets/images/adult-installing-black-drain-pipe-in-green-yard-2026-03-24-23-46-09-utc.webp",
         blurb: "[Draft — no copy on old site] Grading, drains and gutter solutions that move water away from your home.",
     },
 ];
@@ -497,7 +498,7 @@ export const PROPERTY_MANAGEMENT = {
     slug: "property-management",
         icon: "ri-building-line",
     title: "Property Management & Repairs",
-    image: "/aditional-assets/images/Gallery-3.webp",
+    image: "/aditional-assets/images/industrial-warehouse-ceiling-2026-03-18-08-11-03-utc.webp",
     blurb: "Hassle-free maintenance, repairs, and tenant-focused management to keep your property running smoothly. Most routine requests are scheduled and resolved within 24 to 48 hours, with 24/7 emergency response for critical situations.",
 };
 
@@ -891,6 +892,77 @@ export const SERVICE_DETAILS = {
     },
 };
 
+// Privacy policy — same topics as the old site's policy, rewritten for the
+// new site. [Draft — legal review recommended before launch.]
+export const PRIVACY = {
+    intro: "Platinum Restoration and Construction is committed to protecting the privacy of everyone who contacts us or visits this website. This policy explains what information we collect, why we collect it, and the choices you have.",
+    effectiveDate: "Effective date: [to be set at launch]",
+    sections: [
+        {
+            id: "information-we-collect",
+            title: "Information We Collect",
+            body: "We only collect information that helps us respond to you and carry out the work you ask us to do.",
+            items: [
+                "Contact details you provide — your name, email address, phone number and property address — when you submit our consultation form, call us or email us.",
+                "Project information you share with us, such as photos, descriptions of damage, property details and your goals for the work.",
+                "Basic website analytics, such as pages visited and general location, collected through cookies to help us understand how the site is used.",
+            ],
+        },
+        {
+            id: "how-we-use-information",
+            title: "How We Use Your Information",
+            body: "Your information is used for the following purposes and nothing else:",
+            items: [
+                "To respond to your inquiry and provide an estimate or consultation.",
+                "To plan, schedule and carry out the services you request.",
+                "To keep you updated on your project, and — only if you have asked us to — to send occasional news or offers.",
+                "To meet our legal, insurance and record-keeping obligations.",
+            ],
+        },
+        {
+            id: "how-we-protect-information",
+            title: "How We Protect Your Information",
+            body: "We take reasonable steps to keep your information secure, including transmitting this website over an encrypted connection, limiting access to the people who need it to do their work, and reviewing our systems and practices. No method of transmission or storage is completely secure, but we work to protect your information as if it were our own.",
+        },
+        {
+            id: "sharing-your-information",
+            title: "Sharing Your Information",
+            body: "We do not sell, rent or trade your personal information. We share it only in these limited situations:",
+            items: [
+                "With trusted subcontractors and suppliers who need it to complete your project, and only for that purpose.",
+                "With service providers who help us operate this website or communicate with you.",
+                "When we are required to do so by law, or to protect our rights, safety or property.",
+            ],
+        },
+        {
+            id: "cookies-and-tracking",
+            title: "Cookies and Website Tracking",
+            body: "This website uses cookies to understand how visitors use our pages so we can improve them. You can block or delete cookies at any time in your browser settings; the site will still work, though some features may behave differently. Our contact page also embeds Google Maps, which loads content from Google and is covered by Google's own privacy policy.",
+        },
+        {
+            id: "your-rights",
+            title: "Your Rights and Choices",
+            body: "You are in control of your information. At any time you may:",
+            items: [
+                "Ask what personal information we hold about you and how it has been used.",
+                "Ask us to correct or update anything that is inaccurate or out of date.",
+                "Ask us to delete your information, where we are not required to keep it.",
+                "Opt out of marketing messages — every message includes a way to unsubscribe, or you can simply contact us.",
+            ],
+        },
+        {
+            id: "childrens-privacy",
+            title: "Children's Privacy",
+            body: "This website is intended for adults seeking restoration, construction and property management services. We do not knowingly collect personal information from children.",
+        },
+        {
+            id: "updates",
+            title: "Updates to This Policy",
+            body: "We may update this policy from time to time to reflect changes in our practices or legal requirements. When we do, we will post the revised version on this page along with a new effective date.",
+        },
+    ],
+};
+
 // At-a-glance fact tiles shown under each service hero.
 // [Draft — written for the redesign, based on the old site's own claims]
 export const SERVICE_FACTS = {
@@ -966,8 +1038,8 @@ export const PROCESS_STEPS = {
         },
     ],
     images: {
-        restoration: "/aditional-assets/images/crawl-space-sealing-scaled.jpeg",
-        construction: "/aditional-assets/images/Sheetrock.png",
+        restoration: "/aditional-assets/images/man-installing-air-conditioning-ductwork-in-attic-2026-01-08-23-39-33-utc.webp",
+        construction: "/aditional-assets/images/hands-taping-drywall-and-applying-joint-compound-2026-03-24-07-37-20-utc.webp",
     },
 };
 
@@ -994,11 +1066,11 @@ export const SERVICE_AREAS = [
 
 // Gallery images from the old site, used in the home "Our Work" slider.
 export const WORK_GALLERY = [
-    { image: "/aditional-assets/images/Gallery-6.webp", title: "Residential Remodels", href: "/construction-services/residential-remodels" },
-    { image: "/aditional-assets/images/water-damage-repair.jpeg", title: "Water Damage Repairs", href: "/restoration-services/water-damage-repairs" },
-    { image: "/aditional-assets/images/Gallery-3.webp", title: "Property Management", href: "/property-management" },
-    { image: "/aditional-assets/images/Sheetrock.png", title: "Sheetrock & Painting", href: "/construction-services/sheetrock-painting" },
-    { image: "/aditional-assets/images/Gallery-4.png", title: "Windows & Doors", href: "/construction-services/windows-doors" },
-    { image: "/aditional-assets/images/crawl-space-sealing-scaled.jpeg", title: "Crawlspace Remediation", href: "/restoration-services/crawlspace-remediation" },
+    { image: "/aditional-assets/images/comparison-of-a-small-kitchen-room-in-an-apartment-2026-03-26-07-59-22-utc.webp", title: "Residential Remodels", href: "/construction-services/residential-remodels" },
+    { image: "/aditional-assets/images/home-water-damage-restoration-with-air-movers-2026-03-16-06-05-33-utc.webp", title: "Water Damage Repairs", href: "/restoration-services/water-damage-repairs" },
+    { image: "/aditional-assets/images/industrial-warehouse-ceiling-2026-03-18-08-11-03-utc.webp", title: "Property Management", href: "/property-management" },
+    { image: "/aditional-assets/images/hands-taping-drywall-and-applying-joint-compound-2026-03-24-07-37-20-utc.webp", title: "Sheetrock & Painting", href: "/construction-services/sheetrock-painting" },
+    { image: "/aditional-assets/images/interior-construction-of-a-new-home-2026-03-05-11-50-10-utc.webp", title: "Windows & Doors", href: "/construction-services/windows-doors" },
+    { image: "/aditional-assets/images/man-installing-air-conditioning-ductwork-in-attic-2026-01-08-23-39-33-utc.webp", title: "Crawlspace Remediation", href: "/restoration-services/crawlspace-remediation" },
 ];
 

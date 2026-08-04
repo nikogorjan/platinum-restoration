@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PAGE_HEADER_IMAGE } from "../siteData";
 
 // Parametrized version of the template breadcrumb (BreadcumbTen markup).
 // `parent` is optional: { label, href } for a middle level.
@@ -8,7 +9,7 @@ const SiteBreadcrumb = ({ title, parent }) => {
             className="breadcumb-wrapper"
             style={{
                 backgroundImage:
-                    "linear-gradient(rgba(8, 15, 28, 0.62), rgba(8, 15, 28, 0.45)), url('/aditional-assets/images/Gallery-8.png')",
+                    `linear-gradient(rgba(8, 15, 28, 0.68), rgba(8, 15, 28, 0.5)), url('${PAGE_HEADER_IMAGE}')`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
