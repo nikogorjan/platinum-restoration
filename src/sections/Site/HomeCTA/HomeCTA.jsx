@@ -4,7 +4,7 @@ import { SITE, CTA_SECTION } from "../siteData";
 // Home-3 CTA band with the old site's closing pitch.
 const HomeCTA = () => {
     return (
-        <div className="cta-area-3 space-bottom">
+        <div className="cta-area-3 space-top space-bottom">
             <div className="container">
                 <div className="cta-wrap3 text-center background-image" data-overlay="title" data-opacity="6" style={{ backgroundImage: "url('/aditional-assets/images/Gallery-3.webp')" }}>
                     <div className="title-area mb-30">

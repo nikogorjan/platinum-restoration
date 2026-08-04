@@ -151,33 +151,42 @@ export const AboutServices = () => (
     </div>
 );
 
-// 4 — Trust: brand-blue band with blueprint grid + diamond decoration.
+// 4 — Trust: brand-blue band with blueprint grid, stacked reasons + photo.
 export const AboutTrust = () => (
     <div className="space-top">
         <div className="pm2-blueprint">
             <span className="pm2-blueprint-diamond" aria-hidden="true"></span>
             <div className="container">
-                <div className="row">
-                    <div className="col-lg-8">
+                <div className="row gy-50 gx-60 align-items-center">
+                    <div className="col-lg-6">
                         <Reveal>
                             <span className="pm2-blueprint-label">WHY PLATINUM</span>
                             <h2 className="pm2-blueprint-title">{A.trustHeadline}</h2>
                             <p className="pm2-blueprint-intro">{A.trustIntro}</p>
                         </Reveal>
-                    </div>
-                </div>
-                <div className="row gy-40 gx-60">
-                    {A.trust.map((reason, index) => (
-                        <div className="col-lg-4" key={reason.title}>
-                            <Reveal delay={index * 130}>
-                                <div className="pm2-trust-item">
-                                    <span className="num">{String(index + 1).padStart(2, "0")}</span>
-                                    <h4>{reason.title}</h4>
-                                    <p>{reason.text}</p>
-                                </div>
-                            </Reveal>
+                        <div className="pm2-trust-list">
+                            {A.trust.map((reason, index) => (
+                                <Reveal key={reason.title} delay={index * 130}>
+                                    <div className="pm2-trust-item">
+                                        <span className="num">{String(index + 1).padStart(2, "0")}</span>
+                                        <div>
+                                            <h4>{reason.title}</h4>
+                                            <p>{reason.text}</p>
+                                        </div>
+                                    </div>
+                                </Reveal>
+                            ))}
                         </div>
-                    ))}
+                    </div>
+                    <div className="col-lg-6">
+                        <Reveal delay={150}>
+                            <img
+                                className="pm2-blueprint-img"
+                                src={A.imageSecondary}
+                                alt="Platinum crew protecting a home from the ground up"
+                            />
+                        </Reveal>
+                    </div>
                 </div>
             </div>
         </div>

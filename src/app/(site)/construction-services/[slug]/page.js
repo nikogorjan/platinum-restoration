@@ -30,7 +30,9 @@ export default async function ConstructionServicePage({ params }) {
                 parent={{ label: "Construction Services", href: "/construction-services" }}
             />
             <ServiceDetailDraft service={service} area="construction" />
-            <SiteFaq />
+            <div className="space-bottom">
+                <SiteFaq />
+            </div>
             <SiteFooter />
             <Scroll />
         </div>

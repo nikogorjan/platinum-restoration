@@ -2,13 +2,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import SiteMobileMenu from "../SiteMobileMenu";
-import {
-    SITE,
-    RESTORATION_SERVICES,
-    CONSTRUCTION_SERVICES,
-    TEMPLATE_HOMEPAGES,
-    TEMPLATE_INNERPAGES,
-} from "../siteData";
+import { SITE, RESTORATION_SERVICES, CONSTRUCTION_SERVICES } from "../siteData";
 
 const SiteHeader = () => {
     const [isSticky, setIsSticky] = useState(false);
@@ -96,32 +90,6 @@ const SiteHeader = () => {
                                             </li>
                                             <li>
                                                 <Link href="/contact">CONTACT</Link>
-                                            </li>
-                                            {/* TEMPORARY: browse all template pages while wireframing — remove before launch */}
-                                            <li className="menu-item-has-children">
-                                                <Link href="#">TEMPLATE</Link>
-                                                <ul className="sub-menu">
-                                                    <li className="menu-item-has-children">
-                                                        <Link href="#">Homepages</Link>
-                                                        <ul className="sub-menu">
-                                                            {TEMPLATE_HOMEPAGES.map((page) => (
-                                                                <li key={page.href}>
-                                                                    <Link href={page.href}>{page.title}</Link>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </li>
-                                                    <li className="menu-item-has-children">
-                                                        <Link href="#">Inner pages</Link>
-                                                        <ul className="sub-menu">
-                                                            {TEMPLATE_INNERPAGES.map((page) => (
-                                                                <li key={page.href}>
-                                                                    <Link href={page.href}>{page.title}</Link>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </li>
-                                                </ul>
                                             </li>
                                         </ul>
                                     </nav>

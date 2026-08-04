@@ -1,13 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import {
-    SITE,
-    RESTORATION_SERVICES,
-    CONSTRUCTION_SERVICES,
-    TEMPLATE_HOMEPAGES,
-    TEMPLATE_INNERPAGES,
-} from "../siteData";
+import { SITE, RESTORATION_SERVICES, CONSTRUCTION_SERVICES } from "../siteData";
 
 // Right-hand slide-in drawer with iOS-style drill-down sub-panels.
 // Styles live in site-theme.css under .pm-menu-*.
@@ -26,9 +20,6 @@ const GROUPS = {
             ...CONSTRUCTION_SERVICES.map((s) => ({ title: s.title, href: `/construction-services/${s.slug}` })),
         ],
     },
-    // TEMPORARY — template browsing, remove before launch
-    "template-home": { title: "Template: Homepages", links: TEMPLATE_HOMEPAGES },
-    "template-inner": { title: "Template: Inner Pages", links: TEMPLATE_INNERPAGES },
 };
 
 const SiteMobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
@@ -85,20 +76,6 @@ const SiteMobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
                             </li>
                             <li><Link href="/property-management" onClick={close}>Property Management</Link></li>
                             <li><Link href="/contact" onClick={close}>Contact</Link></li>
-                        </ul>
-                        {/* TEMPORARY — template browsing, remove before launch */}
-                        <p className="pm-menu-note">Template preview (temporary)</p>
-                        <ul>
-                            <li>
-                                <button type="button" className="pm-menu-item" onClick={() => setActiveGroup("template-home")}>
-                                    Homepages <i className="ri-arrow-right-s-line"></i>
-                                </button>
-                            </li>
-                            <li>
-                                <button type="button" className="pm-menu-item" onClick={() => setActiveGroup("template-inner")}>
-                                    Inner Pages <i className="ri-arrow-right-s-line"></i>
-                                </button>
-                            </li>
                         </ul>
                         <div className="pm-menu-cta">
                             <a href={SITE.phoneHref} className="btn w-100">

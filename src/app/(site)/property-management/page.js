@@ -14,7 +14,9 @@ export default function PropertyManagementPage() {
             <SiteHeader />
             <SiteBreadcrumb title="Property Management & Repairs" />
             <ServiceDetailDraft service={PROPERTY_MANAGEMENT} area="property" />
-            <SiteFaq />
+            <div className="space-bottom">
+                <SiteFaq />
+            </div>
             <SiteFooter />
             <Scroll />
         </div>

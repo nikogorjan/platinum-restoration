@@ -6,7 +6,7 @@ import { SITE, FAQS } from "../siteData";
 // the full container width like the other sections.
 const SiteFaq = () => {
   return (
-    <div className="faq-area-1 space overflow-hidden">
+    <div className="faq-area-1 space-top overflow-hidden">
       <div className="container">
         <div className="row gy-50 gx-60">
           <div className="col-lg-5">

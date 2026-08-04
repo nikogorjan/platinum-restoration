@@ -5,9 +5,9 @@ import ServiceAreaGrid from "~/sections/Site/ServiceAreaGrid";
 import { RESTORATION_SERVICES, RESTORATION_OVERVIEW } from "~/sections/Site/siteData";
 import CoverageList from "~/sections/Site/CoverageList";
 import TrustStrip from "~/sections/Site/TrustStrip";
-import Process from "~/sections/Service/Process";
+import ProcessSteps from "~/sections/Site/ProcessSteps";
 import HomeTestimonial from "~/sections/Site/HomeTestimonial";
-import Contact from "~/sections/Service/Contact";
+import HomeContact from "~/sections/Site/HomeContact";
 import Scroll from "~/sections/Common/Scroll";
 
 export const metadata = { title: "Restoration Services" };
@@ -29,9 +29,11 @@ export default function RestorationServicesPage() {
             />
             <CoverageList title={RESTORATION_OVERVIEW.coverageTitle} items={RESTORATION_OVERVIEW.coverage} />
             <TrustStrip />
-            <Process />
+            <ProcessSteps area="restoration" />
             <HomeTestimonial />
-            <Contact />
+            <div className="space-bottom">
+                <HomeContact />
+            </div>
             <SiteFooter />
             <Scroll />
         </div>
