@@ -139,7 +139,7 @@ const ServiceDetailDraft = ({ service, area = "restoration" }) => {
                     <div className="pm-sv-boxes">
                         {detail.signs && (
                             <div className="pm-detail-box">
-                                <h4><i className="ri-search-eye-line"></i> {detail.signsTitle}</h4>
+                                <h4><i className="ri-list-check-2"></i> {detail.signsTitle}</h4>
                                 <ul>
                                     {detail.signs.map((sign) => (
                                         <li key={sign}>

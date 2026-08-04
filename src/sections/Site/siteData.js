@@ -1,4 +1,4 @@
-﻿// Single source of truth for the Platinum Restoration & Construction draft site.
+// Single source of truth for the Platinum Restoration & Construction draft site.
 // Copy is taken verbatim from platinumrestorationandconstruction.com (old site)
 // wherever it existed; anything invented is marked [Draft].
 
@@ -146,9 +146,9 @@ export const CHALLENGES = {
 // Slim trust strip ("Licensed and Insured Professionals" + company facts).
 export const TRUST_STRIP = [
     { icon: "ri-shield-check-line", text: "Licensed & Insured" },
-    { icon: "ri-award-line", text: "30+ Years of Experience" },
+    { icon: "ri-medal-line", text: "30+ Years of Experience" },
     { icon: "ri-community-line", text: "Faith-Based, Locally Owned" },
-    { icon: "ri-chat-check-line", text: "Free Consultations" },
+    { icon: "ri-customer-service-2-line", text: "Free Consultations" },
 ];
 
 // "Our Promise to You" trio + faith intro (old home page) — used on Contact.
@@ -161,7 +161,7 @@ export const PROMISE = {
             text: "You're our top priority, and we strive to deliver a seamless, stress-free experience.",
         },
         {
-            icon: "ri-medal-line",
+            icon: "ri-shield-star-line",
             title: "Professionalism You Can Count On",
             text: "From timely communication to precise execution, we approach every project with care and attention to detail.",
         },
@@ -290,7 +290,7 @@ export const ABOUT_PAGE = {
     imageSecondary: "/aditional-assets/images/crawl-space-sealing-scaled.jpeg",
     values: [
         {
-            icon: "ri-hand-heart-line",
+            icon: "ri-shake-hands-line",
             title: "Faith and Integrity",
             text: "Honesty, transparency, and respect guide every interaction and project we undertake.",
             image: "/aditional-assets/images/home-mold-treatment.jpeg",
@@ -336,7 +336,7 @@ export const ABOUT_PAGE = {
             ],
         },
         {
-            icon: "ri-home-gear-line",
+            icon: "ri-building-line",
             title: "Property Management",
             href: "/property-management",
             image: "/aditional-assets/images/Gallery-3.webp",
@@ -420,14 +420,14 @@ export const RESTORATION_SERVICES = [
     },
     {
         slug: "mold-remediation",
-        icon: "ri-shield-cross-line",
+        icon: "ri-virus-line",
         title: "Mold Remediation",
         image: "/aditional-assets/images/home-mold-treatment.jpeg",
         blurb: "Safely removing mold and preventing future growth for a healthier living space.",
     },
     {
         slug: "crawlspace-remediation",
-        icon: "ri-home-2-line",
+        icon: "ri-layout-bottom-line",
         title: "Crawlspace Remediation",
         image: "/aditional-assets/images/crawl-space-sealing-scaled.jpeg",
         blurb: "Eliminating moisture, mold, and pests to protect your home from the ground up.",
@@ -441,7 +441,7 @@ export const RESTORATION_SERVICES = [
     },
     {
         slug: "vapor-barrier-installation",
-        icon: "ri-layout-bottom-2-line",
+        icon: "ri-mist-line",
         title: "Vapor Barrier Installation",
         image: "/aditional-assets/images/Vapor-Barrier-Installation.jpg",
         blurb: "Sealing your crawlspace to block moisture and maintain a dry, stable environment.",
@@ -458,14 +458,14 @@ export const RESTORATION_SERVICES = [
 export const CONSTRUCTION_SERVICES = [
     {
         slug: "residential-remodels",
-        icon: "ri-home-heart-line",
+        icon: "ri-pencil-ruler-2-line",
         title: "Residential Remodels",
         image: "/aditional-assets/images/Gallery-6.webp",
         blurb: "Update and upgrade your living spaces with designs that reflect your style and enhance functionality.",
     },
     {
         slug: "sheetrock-painting",
-        icon: "ri-brush-line",
+        icon: "ri-paint-brush-line",
         title: "Sheetrock & Painting",
         image: "/aditional-assets/images/Sheetrock.png",
         blurb: "Achieve flawless walls and vibrant finishes with professional drywall and painting services.",
@@ -495,7 +495,7 @@ export const CONSTRUCTION_SERVICES = [
 
 export const PROPERTY_MANAGEMENT = {
     slug: "property-management",
-        icon: "ri-home-gear-line",
+        icon: "ri-building-line",
     title: "Property Management & Repairs",
     image: "/aditional-assets/images/Gallery-3.webp",
     blurb: "Hassle-free maintenance, repairs, and tenant-focused management to keep your property running smoothly. Most routine requests are scheduled and resolved within 24 to 48 hours, with 24/7 emergency response for critical situations.",
@@ -901,13 +901,13 @@ export const SERVICE_FACTS = {
         { icon: "ri-price-tag-3-line", label: "Estimates", value: "Always free" },
     ],
     construction: [
-        { icon: "ri-draft-line", label: "Planning", value: "Detailed written estimate" },
+        { icon: "ri-pencil-ruler-line", label: "Planning", value: "Detailed written estimate" },
         { icon: "ri-calendar-check-line", label: "Typical duration", value: "1 – 3 weeks" },
         { icon: "ri-shield-check-line", label: "Warranty", value: "Workmanship + materials" },
         { icon: "ri-price-tag-3-line", label: "Estimates", value: "Always free" },
     ],
     property: [
-        { icon: "ri-timer-flash-line", label: "Routine requests", value: "Resolved in 24 – 48 hrs" },
+        { icon: "ri-calendar-schedule-line", label: "Routine requests", value: "Resolved in 24 – 48 hrs" },
         { icon: "ri-alarm-warning-line", label: "Emergencies", value: "24/7 response" },
         { icon: "ri-shield-check-line", label: "Warranty", value: "Workmanship + materials" },
         { icon: "ri-price-tag-3-line", label: "Consultation", value: "Always free" },
@@ -987,7 +987,7 @@ export const SERVICE_AREAS = [
     {
         title: "Property Management",
         href: "/property-management",
-        icon: "ri-home-gear-line",
+        icon: "ri-building-line",
         blurb: "Hassle-free maintenance, repairs, and tenant-focused management to keep your property running smoothly.",
     },
 ];

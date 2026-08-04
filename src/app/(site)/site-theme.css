@@ -616,6 +616,12 @@ img[src*="client_shape"] {
   margin-top: var(--pm-header-h, 78px);
 }
 
+/* The template lays a second 80% dark overlay over the page header —
+   with our own gradient that double-darkens the photo. Drop it. */
+.breadcumb-wrapper:after {
+  display: none;
+}
+
 /* Hero sits 16px below the bar so its rounded top corners fully show. */
 .hero-3 {
   margin-top: calc(var(--pm-header-h, 78px) + 16px);
@@ -1373,7 +1379,6 @@ img[src*="client_shape"] {
   width: 100%;
   height: 440px;
   border: 0;
-  filter: grayscale(1) contrast(1.05);
 }
 
 @media (max-width: 767px) {

@@ -8,7 +8,7 @@ const SiteBreadcrumb = ({ title, parent }) => {
             className="breadcumb-wrapper"
             style={{
                 backgroundImage:
-                    "linear-gradient(rgba(8, 15, 28, 0.78), rgba(8, 15, 28, 0.78)), url('/aditional-assets/images/Gallery-8.png')",
+                    "linear-gradient(rgba(8, 15, 28, 0.62), rgba(8, 15, 28, 0.45)), url('/aditional-assets/images/Gallery-8.png')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
