@@ -28,6 +28,7 @@ export default async function ConstructionServicePage({ params }) {
             <SiteBreadcrumb
                 title={service.title}
                 parent={{ label: "Construction Services", href: "/construction-services" }}
+                image={service.image}
             />
             <ServiceDetailDraft service={service} area="construction" />
             <div className="space-bottom">

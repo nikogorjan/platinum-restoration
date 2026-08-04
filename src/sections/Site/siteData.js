@@ -22,8 +22,18 @@ export const HERO = {
     image: "/aditional-assets/images/construction-workers-silhouette-on-roof-of-buildin-2026-03-09-03-26-34-utc.webp",
 };
 
-// Ultra-wide banner behind the page titles on inner pages.
+// Fallback banner behind page titles.
 export const PAGE_HEADER_IMAGE = "/aditional-assets/images/rear-view-of-young-workman-wearing-blue-overalls-u-2026-03-24-23-15-33-utc.webp";
+
+// Page-specific header photos. Service detail pages use their own service
+// image instead. See IMAGE-WISHLIST.md for the gaps still to fill.
+export const PAGE_HEADERS = {
+    about: "/aditional-assets/images/rear-view-of-young-workman-wearing-blue-overalls-u-2026-03-24-23-15-33-utc.webp",
+    contact: "/aditional-assets/images/interior-construction-of-a-new-home-2026-03-05-11-50-10-utc.webp",
+    privacy: "/aditional-assets/images/blue-tarp-texture-with-spots-of-white-2026-01-05-06-16-36-utc.webp",
+    restoration: "/aditional-assets/images/man-installing-air-conditioning-ductwork-in-attic-2026-01-08-23-39-33-utc.webp",
+    construction: "/aditional-assets/images/dug-trench-filled-with-gravel-for-construction-pro-2026-01-07-00-24-40-utc.webp",
+};
 
 // Side-by-side composite (left = before, right = after) shown in the
 // interactive comparison widget in the About section.

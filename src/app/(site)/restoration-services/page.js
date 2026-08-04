@@ -2,7 +2,7 @@ import SiteHeader from "~/sections/Site/SiteHeader";
 import SiteFooter from "~/sections/Site/SiteFooter";
 import SiteBreadcrumb from "~/sections/Site/SiteBreadcrumb";
 import ServiceAreaGrid from "~/sections/Site/ServiceAreaGrid";
-import { RESTORATION_SERVICES, RESTORATION_OVERVIEW } from "~/sections/Site/siteData";
+import { RESTORATION_SERVICES, RESTORATION_OVERVIEW, PAGE_HEADERS } from "~/sections/Site/siteData";
 import CoverageList from "~/sections/Site/CoverageList";
 import TrustStrip from "~/sections/Site/TrustStrip";
 import ProcessSteps from "~/sections/Site/ProcessSteps";
@@ -16,7 +16,7 @@ export default function RestorationServicesPage() {
     return (
         <div style={{ overflow: "hidden" }}>
             <SiteHeader />
-            <SiteBreadcrumb title="Restoration Services" />
+            <SiteBreadcrumb title="Restoration Services" image={PAGE_HEADERS.restoration} />
             <ServiceAreaGrid
                 subTitle="Restoration"
                 title={RESTORATION_OVERVIEW.headline}

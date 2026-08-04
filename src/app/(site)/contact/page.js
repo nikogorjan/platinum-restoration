@@ -5,7 +5,7 @@ import HomeContact from "~/sections/Site/HomeContact";
 import ContactPromise from "~/sections/Site/ContactPromise";
 import SiteMap from "~/sections/Site/SiteMap";
 import Scroll from "~/sections/Common/Scroll";
-import { SITE } from "~/sections/Site/siteData";
+import { SITE, PAGE_HEADERS } from "~/sections/Site/siteData";
 
 export const metadata = { title: "Contact" };
 
@@ -19,7 +19,7 @@ export default function ContactPage() {
     return (
         <div style={{ overflow: "hidden" }}>
             <SiteHeader />
-            <SiteBreadcrumb title="Contact" />
+            <SiteBreadcrumb title="Contact" image={PAGE_HEADERS.contact} />
             <div className="space-top">
                 <div className="container">
                     <div className="row gy-30 gx-30 justify-content-center">

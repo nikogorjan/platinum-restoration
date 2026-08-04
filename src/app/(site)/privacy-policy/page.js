@@ -2,7 +2,7 @@ import SiteHeader from "~/sections/Site/SiteHeader";
 import SiteFooter from "~/sections/Site/SiteFooter";
 import SiteBreadcrumb from "~/sections/Site/SiteBreadcrumb";
 import Scroll from "~/sections/Common/Scroll";
-import { SITE, PRIVACY } from "~/sections/Site/siteData";
+import { SITE, PRIVACY, PAGE_HEADERS } from "~/sections/Site/siteData";
 
 export const metadata = { title: "Privacy Policy" };
 
@@ -10,7 +10,7 @@ export default function PrivacyPolicyPage() {
     return (
         <div style={{ overflow: "hidden" }}>
             <SiteHeader />
-            <SiteBreadcrumb title="Privacy Policy" />
+            <SiteBreadcrumb title="Privacy Policy" image={PAGE_HEADERS.privacy} />
             <div className="space-top space-bottom">
                 <div className="container">
                     <div className="row gy-50 gx-60">

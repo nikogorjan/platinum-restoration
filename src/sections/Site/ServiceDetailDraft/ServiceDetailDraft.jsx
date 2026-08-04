@@ -37,21 +37,18 @@ const ServiceDetailDraft = ({ service, area = "restoration" }) => {
     return (
         <div className="service-details-area space-top overflow-hidden">
             <div className="container3">
-                {/* Hero */}
+                {/* Intro — the page header above carries the photo */}
                 <Reveal>
-                    <div className="pm-sv-hero">
-                        <img src={service.image} alt={service.title} />
-                        <div className="pm-sv-hero-body">
-                            <span className="pm-sv-hero-tag">
-                                {area === "construction"
-                                    ? "Construction Service"
-                                    : area === "property"
-                                        ? "Property Management"
-                                        : "Restoration Service"}
-                            </span>
-                            <h2>{detail.headline || service.title}</h2>
-                            <p>{detail.intro || service.blurb}</p>
-                        </div>
+                    <div className="pm-sv-intro">
+                        <span className="pm-sv-hero-tag">
+                            {area === "construction"
+                                ? "Construction Service"
+                                : area === "property"
+                                    ? "Property Management"
+                                    : "Restoration Service"}
+                        </span>
+                        <h2>{detail.headline || service.title}</h2>
+                        <p>{detail.intro || service.blurb}</p>
                     </div>
                 </Reveal>
 

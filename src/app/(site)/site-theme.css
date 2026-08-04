@@ -622,6 +622,107 @@ img[src*="client_shape"] {
   display: none;
 }
 
+/* Page header — everything centered over a page-specific photo. */
+.pm-pagehead {
+  position: relative;
+  overflow: hidden;
+  padding: 250px 0;
+  background-color: #0C1526;
+}
+
+.pm-pagehead .breadcumb-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.pm-pagehead .breadcumb-title {
+  font-size: 46px;
+  margin: 0 0 20px;
+}
+
+/* Centered pill trail instead of the template's angled corner bar.
+   The template clips this element with a polygon and adds a 75px right
+   padding for that angle — both must be reset or the pill looks cut off. */
+.pm-pagehead .breadcumb-menu {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 18px;
+  margin: 0;
+  padding: 11px 24px;
+  list-style: none;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  clip-path: none;
+  max-width: 100%;
+}
+
+.pm-pagehead .breadcumb-menu::before,
+.pm-pagehead .breadcumb-menu::after {
+  display: none;
+}
+
+.pm-pagehead .breadcumb-menu li {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+}
+
+.pm-pagehead .breadcumb-menu li::before,
+.pm-pagehead .breadcumb-menu li::after {
+  content: none;
+}
+
+.pm-pagehead .breadcumb-menu li + li::before {
+  content: "";
+  position: absolute;
+  left: -11px;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  background: var(--theme-color);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.pm-pagehead .breadcumb-menu a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+}
+
+.pm-pagehead .breadcumb-menu a:hover {
+  color: var(--white-color);
+}
+
+.pm-pagehead .breadcumb-menu li.active {
+  color: var(--white-color);
+  text-decoration: none;
+}
+
+@media (max-width: 991px) {
+  .pm-pagehead {
+    padding: 170px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .pm-pagehead {
+    padding: 120px 0;
+  }
+
+  .pm-pagehead .breadcumb-title {
+    font-size: 30px;
+  }
+}
+
 /* Hero sits 16px below the bar so its rounded top corners fully show. */
 .hero-3 {
   margin-top: calc(var(--pm-header-h, 78px) + 16px);
@@ -2630,7 +2731,7 @@ img[src*="client_shape"] {
    Service detail page (.pm-sv-*): hero, facts, urgent bar, timeline,
    reference boxes, related services. Sections share a 60px rhythm.
    --------------------------------------------------------------------- */
-.pm-sv-hero,
+.pm-sv-intro,
 .pm-sv-facts,
 .pm-sv-urgent,
 .pm-sv-lead,
@@ -2672,6 +2773,19 @@ img[src*="client_shape"] {
   padding: 44px 48px;
 }
 
+.pm-sv-intro h2 {
+  font-size: 34px;
+  margin: 0 0 14px;
+  max-width: 820px;
+}
+
+.pm-sv-intro p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 820px;
+}
+
 .pm-sv-hero-tag {
   display: inline-flex;
   align-items: center;
@@ -2681,7 +2795,7 @@ img[src*="client_shape"] {
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--white-color);
+  color: var(--theme-color);
   margin-bottom: 14px;
 }
 

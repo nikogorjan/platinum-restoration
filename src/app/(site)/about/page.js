@@ -11,6 +11,7 @@ import {
 } from "~/sections/Site/About";
 import SiteMap from "~/sections/Site/SiteMap";
 import Scroll from "~/sections/Common/Scroll";
+import { PAGE_HEADERS } from "~/sections/Site/siteData";
 
 export const metadata = { title: "About Us" };
 
@@ -18,7 +19,7 @@ export default function AboutPage() {
     return (
         <div style={{ overflow: "hidden" }}>
             <SiteHeader />
-            <SiteBreadcrumb title="About Us" />
+            <SiteBreadcrumb title="About Us" image={PAGE_HEADERS.about} />
             <AboutStory />
             <AboutValues />
             <AboutServices />
