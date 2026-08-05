@@ -1,14 +1,25 @@
 import SiteHeader from "~/sections/Site/SiteHeader";
 import SiteFooter from "~/sections/Site/SiteFooter";
 import SiteBreadcrumb from "~/sections/Site/SiteBreadcrumb";
+import StructuredData from "~/sections/Site/StructuredData";
 import Scroll from "~/sections/Common/Scroll";
-import { SITE, PRIVACY, PAGE_HEADERS } from "~/sections/Site/siteData";
+import { SITE, PRIVACY, PAGE_HEADERS, SEO } from "~/sections/Site/siteData";
 
-export const metadata = { title: "Privacy Policy" };
+export const metadata = {
+    title: SEO.privacy.title,
+    description: SEO.privacy.description,
+    alternates: { canonical: "/privacy-policy" },
+    openGraph: {
+        url: "/privacy-policy",
+        title: SEO.privacy.title,
+        description: SEO.privacy.description,
+    },
+};
 
 export default function PrivacyPolicyPage() {
     return (
         <div style={{ overflow: "hidden" }}>
+            <StructuredData breadcrumbs={[{ name: "Home", path: "/" }, { name: "Privacy Policy", path: "/privacy-policy" }]} />
             <SiteHeader />
             <SiteBreadcrumb title="Privacy Policy" image={PAGE_HEADERS.privacy} />
             <div className="space-top space-bottom">

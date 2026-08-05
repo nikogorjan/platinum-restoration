@@ -2,19 +2,30 @@ import SiteHeader from "~/sections/Site/SiteHeader";
 import SiteFooter from "~/sections/Site/SiteFooter";
 import SiteBreadcrumb from "~/sections/Site/SiteBreadcrumb";
 import ServiceAreaGrid from "~/sections/Site/ServiceAreaGrid";
-import { CONSTRUCTION_SERVICES, CONSTRUCTION_OVERVIEW, PAGE_HEADERS } from "~/sections/Site/siteData";
+import { CONSTRUCTION_SERVICES, CONSTRUCTION_OVERVIEW, PAGE_HEADERS, SEO } from "~/sections/Site/siteData";
 import CoverageList from "~/sections/Site/CoverageList";
 import TrustStrip from "~/sections/Site/TrustStrip";
 import ProcessSteps from "~/sections/Site/ProcessSteps";
 import HomeTestimonial from "~/sections/Site/HomeTestimonial";
 import HomeContact from "~/sections/Site/HomeContact";
+import StructuredData from "~/sections/Site/StructuredData";
 import Scroll from "~/sections/Common/Scroll";
 
-export const metadata = { title: "Construction Services" };
+export const metadata = {
+    title: SEO.construction.title,
+    description: SEO.construction.description,
+    alternates: { canonical: "/construction-services" },
+    openGraph: {
+        url: "/construction-services",
+        title: SEO.construction.title,
+        description: SEO.construction.description,
+    },
+};
 
 export default function ConstructionServicesPage() {
     return (
         <div style={{ overflow: "hidden" }}>
+            <StructuredData breadcrumbs={[{ name: "Home", path: "/" }, { name: "Construction Services", path: "/construction-services" }]} />
             <SiteHeader />
             <SiteBreadcrumb title="Construction Services" image={PAGE_HEADERS.construction} />
             <ServiceAreaGrid

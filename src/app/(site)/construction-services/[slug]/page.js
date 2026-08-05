@@ -3,7 +3,8 @@ import SiteHeader from "~/sections/Site/SiteHeader";
 import SiteFooter from "~/sections/Site/SiteFooter";
 import SiteBreadcrumb from "~/sections/Site/SiteBreadcrumb";
 import ServiceDetailDraft from "~/sections/Site/ServiceDetailDraft";
-import { CONSTRUCTION_SERVICES } from "~/sections/Site/siteData";
+import StructuredData from "~/sections/Site/StructuredData";
+import { CONSTRUCTION_SERVICES, SERVICE_DETAILS } from "~/sections/Site/siteData";
 import SiteFaq from "~/sections/Site/SiteFaq";
 import Scroll from "~/sections/Common/Scroll";
 
@@ -14,7 +15,23 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }) {
     const { slug } = await params;
     const service = CONSTRUCTION_SERVICES.find((s) => s.slug === slug);
-    return { title: service ? service.title : "Construction Services" };
+    if (!service) return { title: "Construction Services" };
+
+    const detail = SERVICE_DETAILS[slug] || {};
+    const description = `${service.blurb} Serving Garner and the Triangle area of North Carolina — licensed, insured and backed by 30+ years of experience. Free consultation.`;
+    const url = `/construction-services/${slug}`;
+
+    return {
+        title: service.title,
+        description,
+        alternates: { canonical: url },
+        openGraph: {
+            url,
+            title: `${service.title} | ${detail.headline || "Construction Services"}`,
+            description,
+            images: [{ url: service.image, alt: service.title }],
+        },
+    };
 }
 
 export default async function ConstructionServicePage({ params }) {
@@ -24,6 +41,15 @@ export default async function ConstructionServicePage({ params }) {
 
     return (
         <div style={{ overflow: "hidden" }}>
+            <StructuredData
+                service={{ ...service, url: `/construction-services/${slug}` }}
+                breadcrumbs={[
+                    { name: "Home", path: "/" },
+                    { name: "Construction Services", path: "/construction-services" },
+                    { name: service.title, path: `/construction-services/${slug}` },
+                ]}
+                includeFaq
+            />
             <SiteHeader />
             <SiteBreadcrumb
                 title={service.title}

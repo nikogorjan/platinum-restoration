@@ -4,10 +4,20 @@ import SiteBreadcrumb from "~/sections/Site/SiteBreadcrumb";
 import HomeContact from "~/sections/Site/HomeContact";
 import ContactPromise from "~/sections/Site/ContactPromise";
 import SiteMap from "~/sections/Site/SiteMap";
+import StructuredData from "~/sections/Site/StructuredData";
 import Scroll from "~/sections/Common/Scroll";
-import { SITE, PAGE_HEADERS } from "~/sections/Site/siteData";
+import { SITE, PAGE_HEADERS, SEO } from "~/sections/Site/siteData";
 
-export const metadata = { title: "Contact" };
+export const metadata = {
+    title: SEO.contact.title,
+    description: SEO.contact.description,
+    alternates: { canonical: "/contact" },
+    openGraph: {
+        url: "/contact",
+        title: SEO.contact.title,
+        description: SEO.contact.description,
+    },
+};
 
 const CONTACT_TILES = [
     { icon: "ri-phone-fill", label: "Call us any time", value: SITE.phone, href: SITE.phoneHref },
@@ -18,6 +28,7 @@ const CONTACT_TILES = [
 export default function ContactPage() {
     return (
         <div style={{ overflow: "hidden" }}>
+            <StructuredData type="contact" breadcrumbs={[{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }]} />
             <SiteHeader />
             <SiteBreadcrumb title="Contact" image={PAGE_HEADERS.contact} />
             <div className="space-top">

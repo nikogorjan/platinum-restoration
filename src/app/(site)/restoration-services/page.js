@@ -2,19 +2,30 @@ import SiteHeader from "~/sections/Site/SiteHeader";
 import SiteFooter from "~/sections/Site/SiteFooter";
 import SiteBreadcrumb from "~/sections/Site/SiteBreadcrumb";
 import ServiceAreaGrid from "~/sections/Site/ServiceAreaGrid";
-import { RESTORATION_SERVICES, RESTORATION_OVERVIEW, PAGE_HEADERS } from "~/sections/Site/siteData";
+import { RESTORATION_SERVICES, RESTORATION_OVERVIEW, PAGE_HEADERS, SEO } from "~/sections/Site/siteData";
 import CoverageList from "~/sections/Site/CoverageList";
 import TrustStrip from "~/sections/Site/TrustStrip";
 import ProcessSteps from "~/sections/Site/ProcessSteps";
 import HomeTestimonial from "~/sections/Site/HomeTestimonial";
 import HomeContact from "~/sections/Site/HomeContact";
+import StructuredData from "~/sections/Site/StructuredData";
 import Scroll from "~/sections/Common/Scroll";
 
-export const metadata = { title: "Restoration Services" };
+export const metadata = {
+    title: SEO.restoration.title,
+    description: SEO.restoration.description,
+    alternates: { canonical: "/restoration-services" },
+    openGraph: {
+        url: "/restoration-services",
+        title: SEO.restoration.title,
+        description: SEO.restoration.description,
+    },
+};
 
 export default function RestorationServicesPage() {
     return (
         <div style={{ overflow: "hidden" }}>
+            <StructuredData breadcrumbs={[{ name: "Home", path: "/" }, { name: "Restoration Services", path: "/restoration-services" }]} />
             <SiteHeader />
             <SiteBreadcrumb title="Restoration Services" image={PAGE_HEADERS.restoration} />
             <ServiceAreaGrid

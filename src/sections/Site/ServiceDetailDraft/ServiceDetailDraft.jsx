@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Reveal from "../Reveal";
+import BeforeAfter from "../BeforeAfter";
 import {
     SITE,
     DETAIL_CONTENT,
@@ -111,6 +112,34 @@ const ServiceDetailDraft = ({ service, area = "restoration" }) => {
                                 </div>
                             </div>
                         </div>
+                    </Reveal>
+                )}
+
+                {/* Before / after comparison */}
+                {detail.beforeAfter && (
+                    <Reveal>
+                        <figure className="pm-sv-figure">
+                            <BeforeAfter
+                                image={detail.beforeAfter}
+                                altBefore={`${service.title} — before`}
+                                altAfter={`${service.title} — after`}
+                            />
+                            {detail.beforeAfterCaption && (
+                                <figcaption>{detail.beforeAfterCaption}</figcaption>
+                            )}
+                        </figure>
+                    </Reveal>
+                )}
+
+                {/* Showcase image */}
+                {detail.showcase && (
+                    <Reveal>
+                        <figure className="pm-sv-figure">
+                            <img src={detail.showcase} alt={service.title} />
+                            {detail.showcaseCaption && (
+                                <figcaption>{detail.showcaseCaption}</figcaption>
+                            )}
+                        </figure>
                     </Reveal>
                 )}
 

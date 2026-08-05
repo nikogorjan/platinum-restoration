@@ -4,6 +4,15 @@
 
 export const SITE = {
     name: "Platinum Restoration & Construction",
+    legalName: "Platinum Restoration and Construction",
+    // Update if the new site launches on a different domain.
+    url: "https://platinumrestorationandconstruction.com",
+    city: "Garner",
+    state: "NC",
+    postalCode: "27529",
+    street: "267 Timber Dr. Unit 407",
+    areaServed: "Triangle area, North Carolina",
+    founded: "1995",
     phone: "(984) 520-7175",
     phoneHref: "tel:9845207175",
     email: "platinumrestorationandconstruction@outlook.com",
@@ -20,6 +29,46 @@ export const HERO = {
     titleLine2: "Our Expertise.",
     text: "Transforming Your Property Into a Sanctuary and Investment You Can Trust. We bring your vision to life with expert craftsmanship, reliable service, and a commitment to excellence.",
     image: "/aditional-assets/images/construction-workers-silhouette-on-roof-of-buildin-2026-03-09-03-26-34-utc.webp",
+};
+
+// SEO: unique title + meta description per non-service page.
+// Service pages build theirs from the service data.
+export const SEO = {
+    home: {
+        title: "Restoration & Construction in the Triangle, NC",
+        description:
+            "Water damage repair, mold remediation, crawlspace services, remodeling and property management in Garner and the Triangle. 30+ years, licensed and insured. Free consultation — call (984) 520-7175.",
+    },
+    about: {
+        title: "About Us",
+        description:
+            "A local, faith-based company serving the Triangle with integrity. Owner Jayson Chatham brings 30+ years of restoration, construction and property management experience to every project.",
+    },
+    contact: {
+        title: "Contact Us",
+        description:
+            "Get a free consultation from Platinum Restoration and Construction. Call (984) 520-7175, email us, or send a message. Serving Garner and the Triangle area of North Carolina.",
+    },
+    privacy: {
+        title: "Privacy Policy",
+        description:
+            "How Platinum Restoration and Construction collects, uses and protects the information you share with us.",
+    },
+    restoration: {
+        title: "Restoration Services",
+        description:
+            "Water damage repairs, mold inspections and remediation, crawlspace remediation, insulation, vapor barriers and dehumidifiers. Serving the Triangle area for 30+ years.",
+    },
+    construction: {
+        title: "Construction Services",
+        description:
+            "Residential remodels, roofing and repairs, sheetrock and painting, windows and doors, and drainage solutions from a licensed, insured Triangle-area contractor.",
+    },
+    property: {
+        title: "Property Management & Repairs",
+        description:
+            "Routine maintenance, prompt repairs and 24/7 emergency response for residential, commercial and industrial properties. Most requests resolved in 24–48 hours.",
+    },
 };
 
 // Fallback banner behind page titles.
@@ -426,7 +475,7 @@ export const RESTORATION_SERVICES = [
         slug: "mold-inspections",
         icon: "ri-search-eye-line",
         title: "Mold Inspections",
-        image: "/aditional-assets/images/infrared-thermometer-used-near-window-frame-indoor-2026-03-08-22-59-22-utc.webp",
+        image: "/aditional-assets/images/Mold-Inspection.jpg",
         blurb: "Thorough assessments to identify and address mold problems before they escalate.",
     },
     {
@@ -440,21 +489,21 @@ export const RESTORATION_SERVICES = [
         slug: "crawlspace-remediation",
         icon: "ri-layout-bottom-line",
         title: "Crawlspace Remediation",
-        image: "/aditional-assets/images/man-installing-air-conditioning-ductwork-in-attic-2026-01-08-23-39-33-utc.webp",
+        image: "/aditional-assets/images/crawl-space-sealing-scaled.jpeg",
         blurb: "Eliminating moisture, mold, and pests to protect your home from the ground up.",
     },
     {
         slug: "insulation-removal-installation",
         icon: "ri-stack-line",
         title: "Insulation Removal & Installation",
-        image: "/aditional-assets/images/worker-spraying-mineral-rock-wool-of-thermal-insul-2026-03-25-00-38-34-utc.webp",
+        image: "/aditional-assets/images/insulation-removal-installation.png",
         blurb: "Upgrading insulation to improve energy efficiency and comfort.",
     },
     {
         slug: "vapor-barrier-installation",
         icon: "ri-mist-line",
         title: "Vapor Barrier Installation",
-        image: "/aditional-assets/images/abstract-wrinkled-plastic-texture-background-in-sh-2026-04-15-05-13-45-utc.webp",
+        image: "/aditional-assets/images/Vapor-Barrier-Installation.jpg",
         blurb: "Sealing your crawlspace to block moisture and maintain a dry, stable environment.",
     },
     {
@@ -517,6 +566,8 @@ export const PROPERTY_MANAGEMENT = {
 // structure every old service page follows.
 export const SERVICE_DETAILS = {
     "water-damage-repairs": {
+        beforeAfter: "/aditional-assets/images/repair-water-damaged-home-scaled.jpeg",
+        beforeAfterCaption: "A water-damaged living space, fully restored.",
         headline: "Fast Action, Reliable Results: Your Water Damage Experts",
         intro: "When water wreaks havoc on your home or business, you need a trusted team to restore what matters most. Water damage doesn't wait, and neither do we — whether it's a burst pipe, storm flooding, or hidden leaks, our skilled team responds quickly and effectively.",
         problemsTitle: "The Hidden Problem That Can't Be Ignored",
@@ -541,6 +592,8 @@ export const SERVICE_DETAILS = {
         ],
     },
     "mold-inspections": {
+        showcase: "/aditional-assets/images/infrared-thermometer-used-near-window-frame-indoor-2026-03-08-22-59-22-utc.webp",
+        showcaseCaption: "We use thermal and moisture detection tools to find problems behind walls and around window frames — before they become visible.",
         headline: "Comprehensive Mold Inspections That Bring Peace of Mind",
         intro: "When mold invades your home or business, it's more than an eyesore — it's a health hazard. We provide thorough mold inspections to uncover hidden issues, safeguard your property, and protect your loved ones.",
         problemsTitle: "The Hidden Problem You Can't Ignore",
@@ -642,6 +695,8 @@ export const SERVICE_DETAILS = {
         ],
     },
     "insulation-removal-installation": {
+        showcase: "/aditional-assets/images/worker-spraying-mineral-rock-wool-of-thermal-insul-2026-03-25-00-38-34-utc.webp",
+        showcaseCaption: "Spray-applied mineral wool, batt and blown-in insulation — matched to your home and the space being treated.",
         headline: "Enhance Your Home's Comfort and Efficiency",
         intro: "Proper insulation is key to maintaining a comfortable and energy-efficient home. We handle removal of old or damaged insulation and installation of high-quality replacements.",
         problemsTitle: "The Hidden Costs of Poor Insulation",
@@ -666,6 +721,8 @@ export const SERVICE_DETAILS = {
         ],
     },
     "vapor-barrier-installation": {
+        showcase: "/aditional-assets/images/abstract-wrinkled-plastic-texture-background-in-sh-2026-04-15-05-13-45-utc.webp",
+        showcaseCaption: "Heavy-duty barrier material that seals your crawlspace against ground moisture.",
         headline: "Your Shield Against Moisture Intrusion",
         intro: "Moisture can silently compromise your home's foundation and air quality. We specialize in professional vapor barrier installation, safeguarding your property from the ground up.",
         problemsTitle: "The Hidden Dangers of Moisture in Your Crawl Space",
@@ -1075,12 +1132,16 @@ export const SERVICE_AREAS = [
 ];
 
 // Gallery images from the old site, used in the home "Our Work" slider.
+// The client's own gallery photos from their old site — finished projects,
+// which is exactly what this slider should showcase.
 export const WORK_GALLERY = [
-    { image: "/aditional-assets/images/comparison-of-a-small-kitchen-room-in-an-apartment-2026-03-26-07-59-22-utc.webp", title: "Residential Remodels", href: "/construction-services/residential-remodels" },
-    { image: "/aditional-assets/images/home-water-damage-restoration-with-air-movers-2026-03-16-06-05-33-utc.webp", title: "Water Damage Repairs", href: "/restoration-services/water-damage-repairs" },
-    { image: "/aditional-assets/images/industrial-warehouse-ceiling-2026-03-18-08-11-03-utc.webp", title: "Property Management", href: "/property-management" },
-    { image: "/aditional-assets/images/hands-taping-drywall-and-applying-joint-compound-2026-03-24-07-37-20-utc.webp", title: "Sheetrock & Painting", href: "/construction-services/sheetrock-painting" },
-    { image: "/aditional-assets/images/interior-construction-of-a-new-home-2026-03-05-11-50-10-utc.webp", title: "Windows & Doors", href: "/construction-services/windows-doors" },
-    { image: "/aditional-assets/images/man-installing-air-conditioning-ductwork-in-attic-2026-01-08-23-39-33-utc.webp", title: "Crawlspace Remediation", href: "/restoration-services/crawlspace-remediation" },
+    { image: "/aditional-assets/images/Gallery-6.webp", title: "Residential Remodels", href: "/construction-services/residential-remodels" },
+    { image: "/aditional-assets/images/Gallery-5.png", title: "Roofing & Repairs", href: "/construction-services/roofing-repairs" },
+    { image: "/aditional-assets/images/Gallery-8.png", title: "Sheetrock & Painting", href: "/construction-services/sheetrock-painting" },
+    { image: "/aditional-assets/images/Gallery-4.png", title: "Windows & Doors", href: "/construction-services/windows-doors" },
+    { image: "/aditional-assets/images/Gallery-3.webp", title: "Property Management", href: "/property-management" },
+    { image: "/aditional-assets/images/home-mold-treatment.jpeg", title: "Mold Remediation", href: "/restoration-services/mold-remediation" },
+    { image: "/aditional-assets/images/water-damage-repair.jpeg", title: "Water Damage Repairs", href: "/restoration-services/water-damage-repairs" },
+    { image: "/aditional-assets/images/Sheetrock.png", title: "Interior Painting", href: "/construction-services/sheetrock-painting" },
 ];
 

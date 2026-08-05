@@ -2731,6 +2731,7 @@ img[src*="client_shape"] {
    Service detail page (.pm-sv-*): hero, facts, urgent bar, timeline,
    reference boxes, related services. Sections share a 60px rhythm.
    --------------------------------------------------------------------- */
+.pm-sv-figure,
 .pm-sv-intro,
 .pm-sv-facts,
 .pm-sv-urgent,
@@ -2771,6 +2772,27 @@ img[src*="client_shape"] {
   bottom: 0;
   z-index: 2;
   padding: 44px 48px;
+}
+
+/* Inline image / before-after figure with caption */
+.pm-sv-figure {
+  margin: 0;
+}
+
+.pm-sv-figure > img {
+  width: 100%;
+  max-height: 460px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  display: block;
+}
+
+.pm-sv-figure figcaption {
+  margin-top: 14px;
+  font-size: 15px;
+  color: var(--body-color);
+  border-left: 3px solid var(--theme-color);
+  padding-left: 14px;
 }
 
 .pm-sv-intro h2 {

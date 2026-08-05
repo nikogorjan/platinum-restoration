@@ -7,24 +7,66 @@ import "~/public/main-assets/css/slick.min.css";
 import "~/public/main-assets/css/style.css";
 import "~/public/main-assets/css/react-adjustment.css";
 import "./site-theme.css";
+import { SITE, SEO } from "~/sections/Site/siteData";
 
 export const metadata = {
+  metadataBase: new URL(SITE.url),
   title: {
-    default: "Platinum Restoration & Construction",
-    template: "%s | Platinum Restoration & Construction",
+    default: `${SITE.legalName} | ${SEO.home.title}`,
+    template: `%s | ${SITE.name}`,
   },
-  description:
-    "Water damage repair, mold remediation, crawlspace services and quality construction. Call Platinum Restoration & Construction any time.",
+  description: SEO.home.description,
+  applicationName: SITE.name,
+  authors: [{ name: SITE.legalName }],
+  generator: "Next.js",
+  keywords: [
+    "water damage repair",
+    "mold remediation",
+    "mold inspection",
+    "crawlspace remediation",
+    "vapor barrier installation",
+    "insulation installation",
+    "dehumidifier installation",
+    "residential remodeling",
+    "roofing repair",
+    "sheetrock and painting",
+    "windows and doors",
+    "drainage solutions",
+    "property management",
+    "Garner NC",
+    "Triangle area North Carolina",
+  ],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: SITE.legalName,
+    locale: "en_US",
+    url: SITE.url,
+    title: `${SITE.legalName} | ${SEO.home.title}`,
+    description: SEO.home.description,
+    images: [{ url: SITE.logo, alt: SITE.legalName }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE.legalName} | ${SEO.home.title}`,
+    description: SEO.home.description,
+    images: [SITE.logo],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: {
-    icon: [
-      { rel: "icon", type: "image/png", url: "/aditional-assets/logo/favicon.png" },
-    ],
-    apple: [
-      { rel: "apple-touch-icon", url: "/aditional-assets/logo/favicon.png" },
-    ],
-    shortcut: [
-      { rel: "shortcut icon", url: "/aditional-assets/logo/favicon.png" },
-    ],
+    icon: [{ rel: "icon", type: "image/png", url: SITE.favicon }],
+    apple: [{ rel: "apple-touch-icon", url: SITE.favicon }],
+    shortcut: [{ rel: "shortcut icon", url: SITE.favicon }],
   },
 };
 
