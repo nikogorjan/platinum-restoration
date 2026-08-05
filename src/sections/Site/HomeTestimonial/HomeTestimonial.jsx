@@ -1,27 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Slider from "react-slick";
 import { SITE, TESTIMONIALS } from "../siteData";
 
-// Home-3 testimonial slider with the two real reviews from the old site
-// (shortened for card display — full text lives in siteData.js).
+// Two real reviews from the old site. Deliberately a plain responsive grid
+// rather than a carousel: with only two items a slider adds JS and hides
+// half the proof, and slick's width measuring fought the layout on mobile.
 const HomeTestimonial = () => {
   const [expanded, setExpanded] = useState(null);
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    arrows: false,
-    responsive: [
-      { breakpoint: 992, settings: { slidesToShow: 1, dots: true } },
-    ],
-  };
 
   return (
     <div className="testimonial-area-3 overflow-hidden space-top">
@@ -29,57 +15,57 @@ const HomeTestimonial = () => {
         <div className="row">
           <div className="col-lg-7">
             <div className="title-area blog-area-content-text-extra-style">
-              <span className="sub-title text-theme">
-                Testimonials <i className="ri-arrow-right-down-line"></i>
-              </span>
+              <span className="sub-title text-theme">Testimonials</span>
               <h2 className="sec-title">What our clients say about us</h2>
             </div>
           </div>
         </div>
 
-        <Slider {...settings} className="row global-carousel testi-slider3 slider-shadow">
+        <div className="pm-testi-grid">
           {TESTIMONIALS.map((testimonial, index) => (
-            <div className="col-lg-6" key={testimonial.name}>
-              <div className="testi-card style3 testi-static">
-                <div className="testi-card-thumb">
-                  <img src={SITE.favicon} alt="Platinum" style={{ maxWidth: "70px", background: "#fff", padding: "10px" }} />
-                  <div className="media-body">
-                    <h4 className="testi-card_title">{testimonial.title}</h4>
-                    <div className="testi-card_review">
-                      <i className="ri-star-fill"></i>
-                      <i className="ri-star-fill"></i>
-                      <i className="ri-star-fill"></i>
-                      <i className="ri-star-fill"></i>
-                      <i className="ri-star-fill"></i>
-                    </div>
+            <div className="testi-card style3 testi-static" key={testimonial.name}>
+              <div className="testi-card-thumb">
+                <img
+                  src={SITE.favicon}
+                  alt="Platinum"
+                  style={{ maxWidth: "70px", background: "#fff", padding: "10px" }}
+                />
+                <div className="media-body">
+                  <h4 className="testi-card_title">{testimonial.title}</h4>
+                  <div className="testi-card_review">
+                    <i className="ri-star-fill"></i>
+                    <i className="ri-star-fill"></i>
+                    <i className="ri-star-fill"></i>
+                    <i className="ri-star-fill"></i>
+                    <i className="ri-star-fill"></i>
                   </div>
                 </div>
-                <div className="testi-card_content">
-                  <p className="testi-card_text">
-                    {expanded === index ? testimonial.fullText : testimonial.text}
-                  </p>
-                  {testimonial.fullText && (
-                    <button
-                      type="button"
-                      className="pm-testi-toggle"
-                      onClick={() => setExpanded(expanded === index ? null : index)}
-                    >
-                      {expanded === index ? "Show less" : "Read full review"}{" "}
-                      <i className={expanded === index ? "ri-arrow-up-s-line" : "ri-arrow-down-s-line"}></i>
-                    </button>
-                  )}
-                  <div className="testi-card-profile">
-                    <h4 className="testi-profile-title">{testimonial.name}</h4>
-                    <span className="testi-profile-desig">/ {testimonial.location}</span>
-                  </div>
+              </div>
+              <div className="testi-card_content">
+                <p className="testi-card_text">
+                  {expanded === index ? testimonial.fullText : testimonial.text}
+                </p>
+                {testimonial.fullText && (
+                  <button
+                    type="button"
+                    className="pm-testi-toggle"
+                    onClick={() => setExpanded(expanded === index ? null : index)}
+                  >
+                    {expanded === index ? "Show less" : "Read full review"}{" "}
+                    <i className={expanded === index ? "ri-arrow-up-s-line" : "ri-arrow-down-s-line"}></i>
+                  </button>
+                )}
+                <div className="testi-card-profile">
+                  <h4 className="testi-profile-title">{testimonial.name}</h4>
+                  <span className="testi-profile-desig">/ {testimonial.location}</span>
                 </div>
-                <div className="quote-icon">
-                  <img src="/main-assets/img/icon/quote3.svg" alt="img" />
-                </div>
+              </div>
+              <div className="quote-icon">
+                <img src="/main-assets/img/icon/quote3.svg" alt="" />
               </div>
             </div>
           ))}
-        </Slider>
+        </div>
       </div>
     </div>
   );

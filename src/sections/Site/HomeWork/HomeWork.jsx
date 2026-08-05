@@ -1,17 +1,12 @@
 'use client'
 
-import { useState } from 'react';
 import Slider from 'react-slick';
-import Lightbox from 'yet-another-react-lightbox';
-import Zoom from 'yet-another-react-lightbox/plugins/zoom';
-import 'yet-another-react-lightbox/styles.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Link from 'next/link';
 import { WORK_GALLERY } from '../siteData';
 
-// Prev/next buttons for the slider — react-slick injects className/onClick;
-// "work-arrow" gets template-matching styling from site-theme.css.
+// Prev/next buttons — react-slick injects className/onClick.
 const WorkArrow = ({ className, style, onClick, icon, side }) => (
   <button
     type="button"
@@ -31,13 +26,12 @@ const WorkArrow = ({ className, style, onClick, icon, side }) => (
   </button>
 );
 
-// Home-3 portfolio slider using the photos pulled from the old Platinum site.
+// Portfolio slider of the client's own finished-project photos.
+// Center mode (peeking neighbours) is desktop-only — on smaller screens the
+// card takes the full width so it stays readable.
 const HomeWork = () => {
-  const [photoIndex, setPhotoIndex] = useState(-1);
-
   const settings = {
     dots: true,
-    focusOnSelect: true,
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -49,25 +43,29 @@ const HomeWork = () => {
     autoplay: true,
     speed: 1500,
     autoplaySpeed: 5000,
+    // Card stays centered at every size — only the peek shrinks, so the
+    // centre card gets wider as the screen gets smaller.
     responsive: [
       {
-        breakpoint: 768,
-        settings: { centerMode: false, centerPadding: "0%", dots: true }
+        breakpoint: 1200,
+        settings: { centerMode: true, centerPadding: "15%" },
       },
       {
-        breakpoint: 767,
-        settings: { centerMode: false, centerPadding: "0%", dots: false }
-      }
-    ]
+        breakpoint: 992,
+        settings: { centerMode: true, centerPadding: "12%" },
+      },
+      {
+        breakpoint: 768,
+        settings: { centerMode: true, centerPadding: "8%" },
+      },
+    ],
   };
 
   return (
     <div className="portfolio-area-1 space-top">
       <div className="container">
         <div className="title-area text-center">
-          <span className="sub-title text-theme">
-            Our Work <i className="ri-arrow-right-down-line"></i>
-          </span>
+          <span className="sub-title text-theme">Our Work</span>
           <h2 className="sec-title">See the difference we make</h2>
           <p className="sec-text">From emergency restoration to finished remodels — photos from real Platinum projects</p>
         </div>
@@ -75,12 +73,9 @@ const HomeWork = () => {
           <Slider {...settings}>
             {WORK_GALLERY.map((work, index) => (
               <div key={index}>
-                <div className="portfolio-card" style={{ margin: "0px 1rem" }}>
+                <div className="portfolio-card pm-work-card">
                   <div className="portfolio-card-thumb">
-                    <img src={work.image} alt={work.title} style={{ width: "100%", aspectRatio: "16/9", objectFit: "cover" }} />
-                    <button className="icon-btn popup-image" onClick={() => setPhotoIndex(index)}>
-                      <i className="ri-eye-line"></i>
-                    </button>
+                    <img src={work.image} alt={work.title} />
                   </div>
                   <div className="portfolio-card-details">
                     <div className="media-left">
@@ -98,13 +93,6 @@ const HomeWork = () => {
           </Slider>
         </div>
       </div>
-      <Lightbox
-        open={photoIndex >= 0}
-        index={Math.max(photoIndex, 0)}
-        close={() => setPhotoIndex(-1)}
-        slides={WORK_GALLERY.map((work) => ({ src: work.image }))}
-        plugins={[Zoom]}
-      />
     </div>
   );
 };
