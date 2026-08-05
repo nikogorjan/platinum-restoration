@@ -12,13 +12,15 @@ const WorkArrow = ({ className, style, onClick, icon, side }) => (
   <button
     type="button"
     className={`${className || ""} work-arrow`}
+    // Sits in the control row below the cards, not on top of the photos.
     style={{
       ...style,
-      left: side === "left" ? "20px" : "auto",
-      right: side === "right" ? "20px" : "auto",
-      top: "50%",
+      left: "auto",
+      right: side === "left" ? "68px" : "0",
+      top: "auto",
+      bottom: "16px",
       marginTop: 0,
-      transform: "translateY(-50%)",
+      transform: "none",
     }}
     onClick={onClick}
     aria-label={side === "left" ? "Previous slide" : "Next slide"}

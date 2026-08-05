@@ -52,8 +52,85 @@
 /* Our Work slider — the card stays centered with neighbours peeking on
    both sides; the peek narrows on smaller screens so the centre card gets
    more room. Gap between cards comes from the slide margin below. */
+/* The template gives .portfolio-card square corners with overflow:hidden,
+   which clips the rounded thumb back to a square. Round the card itself so
+   the image, the details overlay and the button all share the same corner. */
 .pm-work-card {
   margin: 0 15px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  padding-bottom: 0;
+}
+
+/* Photos have different native ratios — lock them to one aspect so every
+   card in the slider is exactly the same size. */
+.pm-work-card .portfolio-card-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .pm-work-card .portfolio-card-thumb img {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* Equal-height slides regardless of content. */
+.portfolio-slider1 .slick-track {
+  display: flex;
+  align-items: stretch;
+}
+
+.portfolio-slider1 .slick-slide {
+  height: auto;
+}
+
+.portfolio-slider1 .slick-slide > div {
+  height: 100%;
+}
+
+.portfolio-slider1 .pm-work-card {
+  height: 100%;
+}
+
+/* The template's gradient stops 30px short of the bottom (it allowed for
+   the card's old bottom padding) — cover the whole card instead. */
+.pm-work-card:after {
+  inset: 0;
+  border-radius: var(--radius-lg);
+}
+
+/* Lift the Explore button off the bottom edge of the card. */
+.portfolio-slider1 .slick-current .pm-work-card .btn {
+  bottom: 24px;
+}
+
+@media (max-width: 767px) {
+  .portfolio-slider1 .slick-current .pm-work-card .btn {
+    bottom: 20px;
+  }
+}
+
+/* Control row under the slider: dots on the left, arrows on the right. */
+.portfolio-slider1 .slick-slider {
+  padding-bottom: 84px;
+}
+
+.portfolio-slider1 .slick-dots {
+  bottom: 30px;
+  left: 0;
+  width: auto;
+  text-align: left;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .portfolio-slider1 .slick-dots {
+    display: none !important;
+  }
 }
 
 @media (max-width: 991px) {
