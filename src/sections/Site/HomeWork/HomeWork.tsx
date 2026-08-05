@@ -1,14 +1,23 @@
 'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type CSSProperties, type MouseEventHandler } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Image from 'next/image';
 import Link from 'next/link';
 import { WORK_GALLERY } from '../siteData';
 
-// Prev/next buttons — react-slick injects className/onClick.
-const WorkArrow = ({ className, style, onClick, icon, side }) => (
+// Prev/next buttons — react-slick injects className/style/onClick.
+interface WorkArrowProps {
+  className?: string;
+  style?: CSSProperties;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  icon: string;
+  side: "left" | "right";
+}
+
+const WorkArrow = ({ className, style, onClick, icon, side }: WorkArrowProps) => (
   <button
     type="button"
     className={`${className || ""} work-arrow`}
@@ -35,7 +44,7 @@ const WorkArrow = ({ className, style, onClick, icon, side }) => (
 // How much of the neighbouring cards peeks in at each width. Driven from
 // React rather than slick's `responsive` option, which does not reliably
 // re-evaluate here — leaving the card stuck at the desktop peek on phones.
-const peekFor = (width) => {
+const peekFor = (width: number): string => {
   if (width < 576) return "6%";
   if (width < 768) return "8%";
   if (width < 992) return "10%";
@@ -81,8 +90,14 @@ const HomeWork = () => {
             {WORK_GALLERY.map((work, index) => (
               <div key={index}>
                 <div className="portfolio-card pm-work-card">
-                  <div className="portfolio-card-thumb">
-                    <img src={work.image} alt={work.title} />
+                  <div className="portfolio-card-thumb pm-work-thumb">
+                    <Image
+                      src={work.image}
+                      alt={work.title}
+                      fill
+                      sizes="(max-width: 768px) 90vw, (max-width: 1200px) 70vw, 800px"
+                      style={{ objectFit: "cover" }}
+                    />
                   </div>
                   <div className="portfolio-card-details">
                     <div className="media-left">

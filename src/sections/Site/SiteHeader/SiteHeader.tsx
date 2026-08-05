@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import SiteMobileMenu from "../SiteMobileMenu";
@@ -7,7 +8,7 @@ import { SITE, RESTORATION_SERVICES, CONSTRUCTION_SERVICES } from "../siteData";
 const SiteHeader = () => {
     const [isSticky, setIsSticky] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const headerRef = useRef(null);
+    const headerRef = useRef<HTMLElement | null>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -46,10 +47,13 @@ const SiteHeader = () => {
                                 <div className="col-auto">
                                     <div className="header-logo">
                                         <Link href="/">
-                                            <img
+                                            <Image
                                                 src={SITE.logo}
                                                 alt={SITE.name}
-                                                style={{ maxHeight: "54px", width: "auto" }}
+                                                width={260}
+                                                height={54}
+                                                priority
+                                                style={{ maxHeight: "54px", width: "auto", height: "auto" }}
                                             />
                                         </Link>
                                     </div>

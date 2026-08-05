@@ -62,18 +62,17 @@
   padding-bottom: 0;
 }
 
-/* Photos have different native ratios — lock them to one aspect so every
-   card in the slider is exactly the same size. */
-.pm-work-card .portfolio-card-thumb img {
-  display: block;
+/* Photos have different native ratios — the thumb sets one aspect so every
+   card in the slider is exactly the same size (next/image fills it). */
+.pm-work-thumb {
+  position: relative;
   width: 100%;
-  height: auto;
   aspect-ratio: 3 / 2;
-  object-fit: cover;
+  overflow: hidden;
 }
 
 @media (max-width: 767px) {
-  .pm-work-card .portfolio-card-thumb img {
+  .pm-work-thumb {
     aspect-ratio: 4 / 3;
   }
 }

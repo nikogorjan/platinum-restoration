@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../Reveal";
 import { SITE, ABOUT_PAGE as A } from "../siteData";
@@ -33,7 +34,7 @@ export const AboutStory = () => {
                             </Reveal>
                             <Reveal delay={200}>
                                 <div className="pm-owner-card">
-                                    <img src={SITE.favicon} alt="Platinum mark" />
+                                    <Image src={SITE.favicon} alt="" width={52} height={52} style={{ width: "52px", height: "auto" }} />
                                     <div>
                                         <h6>{A.localHeadline}</h6>
                                         <p>{A.localIntro}</p>
@@ -45,7 +46,7 @@ export const AboutStory = () => {
                         <div className="col-xl-6">
                             <Reveal delay={150}>
                                 <div className="pm2-story-media">
-                                    <img src={A.image} alt="A finished Platinum project" />
+                                    <Image src={A.image} alt="A finished Platinum project" width={880} height={660} sizes="(max-width: 1199px) 92vw, 560px" style={{ width: "100%", height: "auto" }} />
                                     <div className="pm-about-badge">
                                         <span className="num">30+</span>
                                         <span className="label">Years of<br />Experience</span>
@@ -83,7 +84,7 @@ export const AboutValues = () => (
                         <div className="pm2-ledger-row">
                             <span className="pm2-ledger-num">{String(index + 1).padStart(2, "0")}</span>
                             <div className="pm2-ledger-thumb">
-                                <img src={value.image} alt={value.title} />
+                                <Image src={value.image} alt={value.title} width={300} height={200} sizes="150px" style={{ width: "100%", height: "auto" }} />
                             </div>
                             <div className="pm2-ledger-body">
                                 <h4>{value.title}</h4>
@@ -120,7 +121,7 @@ export const AboutServices = () => (
                     {A.serviceColumns.map((column, index) => (
                         <div className="pm2-spec-col" key={column.title}>
                             <div className="pm2-spec-media">
-                                <img src={column.image} alt={column.title} />
+                                <Image src={column.image} alt={column.title} width={560} height={245} sizes="(max-width: 991px) 92vw, 380px" style={{ width: "100%", height: "auto" }} />
                             </div>
                             <div className="pm2-spec-head">
                                 <span className="pm2-spec-icon"><i className={column.icon}></i></span>
@@ -180,11 +181,11 @@ export const AboutTrust = () => (
                     </div>
                     <div className="col-lg-6">
                         <Reveal delay={150}>
-                            <img
+                            <Image
                                 className="pm2-blueprint-img"
                                 src={A.imageSecondary}
                                 alt="Platinum crew protecting a home from the ground up"
-                            />
+                            width={900} height={675} sizes="(max-width: 991px) 92vw, 560px" />
                         </Reveal>
                     </div>
                 </div>

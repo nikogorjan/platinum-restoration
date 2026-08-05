@@ -4,7 +4,15 @@ import { PAGE_HEADER_IMAGE } from "../siteData";
 // Page header: title + breadcrumb trail centered over a page-specific
 // photo. Pass `image` to give each page its own; falls back to the
 // shared header photo.
-const SiteBreadcrumb = ({ title, parent, image }) => {
+interface SiteBreadcrumbProps {
+    title: string;
+    /** Optional middle level in the trail. */
+    parent?: { label: string; href: string };
+    /** Page-specific background photo; falls back to the shared one. */
+    image?: string;
+}
+
+const SiteBreadcrumb = ({ title, parent, image }: SiteBreadcrumbProps) => {
     const bg = image || PAGE_HEADER_IMAGE;
 
     return (

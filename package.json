@@ -23,7 +23,12 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "@types/node": "^26.1.2",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@types/react-slick": "^0.23.13",
     "eslint": "^9.39.0",
-    "eslint-config-next": "^16.2.12"
+    "eslint-config-next": "^16.2.12",
+    "typescript": "^6.0.3"
   }
 }

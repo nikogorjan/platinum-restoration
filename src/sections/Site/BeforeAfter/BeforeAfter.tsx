@@ -1,13 +1,24 @@
 "use client";
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
+
+interface BeforeAfterProps {
+    /** Side-by-side composite: left half = before, right half = after. */
+    image: string;
+    altBefore?: string;
+    altAfter?: string;
+}
 
 // Interactive before/after comparison built from a single side-by-side
 // composite image (left half = before, right half = after). Drag the
 // divider to compare. No extra dependencies.
-const BeforeAfter = ({ image, altBefore = "Before", altAfter = "After" }) => {
+const BeforeAfter = ({
+    image,
+    altBefore = "Before",
+    altAfter = "After",
+}: BeforeAfterProps) => {
     const [pos, setPos] = useState(50);
 
-    const halfStyle = {
+    const halfStyle: CSSProperties = {
         position: "absolute",
         inset: 0,
         backgroundImage: `url('${image}')`,
@@ -15,7 +26,7 @@ const BeforeAfter = ({ image, altBefore = "Before", altAfter = "After" }) => {
         backgroundRepeat: "no-repeat",
     };
 
-    const labelStyle = {
+    const labelStyle: CSSProperties = {
         position: "absolute",
         top: "14px",
         padding: "4px 12px",

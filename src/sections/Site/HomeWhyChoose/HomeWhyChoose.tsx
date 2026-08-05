@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { KEY_BENEFITS } from "../siteData";
@@ -66,7 +67,7 @@ const HomeWhyChoose = () => {
 
                     <div className="pm-why-stage" key={active} role="tabpanel">
                         <div className="pm-why-media">
-                            <img src={benefit.image} alt={benefit.title} />
+                            <Image src={benefit.image} alt={benefit.title} width={520} height={390} sizes="(max-width: 1199px) 90vw, 420px" style={{ width: "100%", height: "auto", objectFit: "cover" }} />
                             <span className="pm-why-ghost">{String(active + 1).padStart(2, "0")}</span>
                         </div>
                         <div className="pm-why-card">

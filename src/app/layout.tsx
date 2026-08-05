@@ -28,7 +28,11 @@ const primaryFont = Plus_Jakarta_Sans({
   variable: "--font-primary",
 });
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className={primaryFont.variable}>

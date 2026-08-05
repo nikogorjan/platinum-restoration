@@ -1,9 +1,14 @@
+import Image from "next/image";
 import Reveal from "../Reveal";
 import { PROCESS_STEPS } from "../siteData";
 
 // "How we work" — real four-step process with a real project photo,
 // replacing the template's lorem-ipsum "Why choose us" block.
-const ProcessSteps = ({ area = "restoration" }) => (
+interface ProcessStepsProps {
+    area?: "restoration" | "construction";
+}
+
+const ProcessSteps = ({ area = "restoration" }: ProcessStepsProps) => (
     <div className="space-top">
         <div className="container">
             <div className="row gy-50 gx-60 align-items-center">
@@ -13,10 +18,13 @@ const ProcessSteps = ({ area = "restoration" }) => (
                         <h2 className="sec-title">{PROCESS_STEPS.title}</h2>
                     </Reveal>
                     <Reveal delay={120}>
-                        <img
+                        <Image
                             className="pm-process-img"
                             src={PROCESS_STEPS.images[area]}
                             alt="Platinum team at work"
+                            width={720}
+                            height={540}
+                            sizes="(max-width: 991px) 90vw, 460px"
                         />
                     </Reveal>
                 </div>

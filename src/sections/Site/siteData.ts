@@ -2,7 +2,30 @@
 // Copy is taken verbatim from platinumrestorationandconstruction.com (old site)
 // wherever it existed; anything invented is marked [Draft].
 
-export const SITE = {
+import type {
+    AboutIntro,
+    AboutPage,
+    DetailContent,
+    Challenges,
+    CtaSection,
+    Faq,
+    Hero,
+    KeyBenefit,
+    OverviewContent,
+    Privacy,
+    ProcessSteps,
+    Promise as PromiseContent,
+    SeoEntry,
+    Service,
+    ServiceAreaCard,
+    ServiceDetail,
+    ServiceFact,
+    SiteInfo,
+    Testimonial,
+    TrustItem,
+    WorkItem,
+} from "./types";
+export const SITE: SiteInfo = {
     name: "Platinum Restoration & Construction",
     legalName: "Platinum Restoration and Construction",
     // Update if the new site launches on a different domain.
@@ -23,7 +46,7 @@ export const SITE = {
     favicon: "/aditional-assets/logo/favicon.png",
 };
 
-export const HERO = {
+export const HERO: Hero = {
     subtitle: "30+ Years of Restoration, Property Management & Construction",
     titleLine1: "Your Home. Your Vision.",
     titleLine2: "Our Expertise.",
@@ -33,7 +56,7 @@ export const HERO = {
 
 // SEO: unique title + meta description per non-service page.
 // Service pages build theirs from the service data.
-export const SEO = {
+export const SEO: Record<string, SeoEntry> = {
     home: {
         title: "Restoration & Construction in the Triangle, NC",
         description:
@@ -72,11 +95,11 @@ export const SEO = {
 };
 
 // Fallback banner behind page titles.
-export const PAGE_HEADER_IMAGE = "/aditional-assets/images/rear-view-of-young-workman-wearing-blue-overalls-u-2026-03-24-23-15-33-utc.webp";
+export const PAGE_HEADER_IMAGE: string = "/aditional-assets/images/rear-view-of-young-workman-wearing-blue-overalls-u-2026-03-24-23-15-33-utc.webp";
 
 // Page-specific header photos. Service detail pages use their own service
 // image instead. See IMAGE-WISHLIST.md for the gaps still to fill.
-export const PAGE_HEADERS = {
+export const PAGE_HEADERS: Record<string, string> = {
     about: "/aditional-assets/images/rear-view-of-young-workman-wearing-blue-overalls-u-2026-03-24-23-15-33-utc.webp",
     contact: "/aditional-assets/images/interior-construction-of-a-new-home-2026-03-05-11-50-10-utc.webp",
     privacy: "/aditional-assets/images/blue-tarp-texture-with-spots-of-white-2026-01-05-06-16-36-utc.webp",
@@ -86,9 +109,9 @@ export const PAGE_HEADERS = {
 
 // Side-by-side composite (left = before, right = after) shown in the
 // interactive comparison widget in the About section.
-export const BEFORE_AFTER_IMAGE = "/aditional-assets/images/renovation-vision-unfinished-to-finished-kitchen-2026-03-17-01-40-30-utc.webp";
+export const BEFORE_AFTER_IMAGE: string = "/aditional-assets/images/renovation-vision-unfinished-to-finished-kitchen-2026-03-17-01-40-30-utc.webp";
 
-export const ABOUT = {
+export const ABOUT: AboutIntro = {
     title: "Rooted in the Triangle, Built on Trust",
     text: "At Platinum Restoration and Construction, we're more than just a service provider — we're a local company with deep roots in the Triangle area.",
     text2: "Born and raised here, our owner understands the unique needs of our community and is committed to delivering exceptional results that reflect our shared values.",
@@ -100,7 +123,7 @@ export const ABOUT = {
     ownerRole: "Owner",
 };
 
-export const KEY_BENEFITS = [
+export const KEY_BENEFITS: KeyBenefit[] = [
     {
         tab: "Comprehensive Solutions",
         title: "Comprehensive Solutions for Every Need",
@@ -156,7 +179,7 @@ export const KEY_BENEFITS = [
 
 // Problem → solution pairs from the old home page ("When Challenges Arise,
 // We Provide Solutions That Last" + "Comprehensive Coverage for Your Property").
-export const CHALLENGES = {
+export const CHALLENGES: Challenges = {
     headline: "When Challenges Arise, We Provide Solutions That Last",
     painHeadline: "Living With Property Issues With No End in Sight?",
     pains: [
@@ -204,7 +227,7 @@ export const CHALLENGES = {
 };
 
 // Slim trust strip ("Licensed and Insured Professionals" + company facts).
-export const TRUST_STRIP = [
+export const TRUST_STRIP: TrustItem[] = [
     { icon: "ri-shield-check-line", text: "Licensed & Insured" },
     { icon: "ri-medal-line", text: "30+ Years of Experience" },
     { icon: "ri-community-line", text: "Faith-Based, Locally Owned" },
@@ -212,7 +235,7 @@ export const TRUST_STRIP = [
 ];
 
 // "Our Promise to You" trio + faith intro (old home page) — used on Contact.
-export const PROMISE = {
+export const PROMISE: PromiseContent = {
     intro: "As a faith-based company, honesty and integrity are at the heart of everything we do. We believe that success isn't just measured by the quality of our work but by the relationships we build with our clients.",
     items: [
         {
@@ -235,7 +258,7 @@ export const PROMISE = {
 
 // Category-level detail content assembled from the old site's expanded
 // service lists and long-form FAQ articles — powers the service detail pages.
-export const DETAIL_CONTENT = {
+export const DETAIL_CONTENT: DetailContent = {
     restoration: {
         description: "We specialize in restoring properties affected by water damage, mold, and other issues, ensuring your home or business is safe and sound.",
         includes: [
@@ -272,7 +295,7 @@ export const DETAIL_CONTENT = {
     warranty: "Our work is backed by a workmanship warranty — installation or construction issues are fixed promptly at no additional cost — plus manufacturer's warranties on quality materials ranging from 10 years to lifetime coverage. You receive all warranty details in writing.",
 };
 
-export const TESTIMONIALS = [
+export const TESTIMONIALS: Testimonial[] = [
     {
         name: "Shelia Beach",
         location: "Clayton, NC",
@@ -289,7 +312,7 @@ export const TESTIMONIALS = [
     },
 ];
 
-export const FAQS = [
+export const FAQS: Faq[] = [
     {
         question: "How long will my project take?",
         answer: "At Platinum Restoration and Construction, we understand that your time is valuable. Whether it's a restoration, remodeling, or repair project, we strive to provide realistic timelines and deliver results efficiently without compromising quality.",
@@ -338,7 +361,7 @@ export const FAQS = [
 ];
 
 // About page content — verbatim from the old site's About page.
-export const ABOUT_PAGE = {
+export const ABOUT_PAGE: AboutPage = {
     headline: "Building Trust, Restoring Value, Transforming Spaces",
     intro: "At Platinum Restoration and Construction, we believe your property is more than just a structure — it's your sanctuary, your investment, and a reflection of who you are.",
     experience: "With over 30 years of experience, we have built a reputation for delivering high-quality restoration, property management, and construction services throughout the Triangle area.",
@@ -429,14 +452,14 @@ export const ABOUT_PAGE = {
     ctaText: "We're passionate about turning your vision into reality and solving your property's challenges with expertise and care. Contact us today to learn more about how we can help you protect, restore, and transform your space.",
 };
 
-export const CTA_SECTION = {
+export const CTA_SECTION: CtaSection = {
     subtitle: "Ready to Protect, Restore, and Transform Your Property?",
     titleLine1: "Let's Build",
     titleLine2: "Something Amazing",
     text: "Call us today at 984-520-7175 for your FREE consultation and discover how Platinum can make your home or property the best it can be. Let's build something amazing together!",
 };
 
-export const RESTORATION_OVERVIEW = {
+export const RESTORATION_OVERVIEW: OverviewContent = {
     headline: "Restore Your Home, Restore Your Peace of Mind",
     intro: "When life throws unexpected challenges your way, Platinum Restoration and Construction is here to bring your home back to its best. With our comprehensive restoration services, we'll restore not only your property but also your peace of mind.",
     coverageTitle: "Everything we cover",
@@ -450,7 +473,7 @@ export const RESTORATION_OVERVIEW = {
     ],
 };
 
-export const CONSTRUCTION_OVERVIEW = {
+export const CONSTRUCTION_OVERVIEW: OverviewContent = {
     headline: "Reimagine Your Home with Platinum Construction Services",
     intro: "Your home is more than just a structure — it's where life happens. At Platinum Restoration and Construction, we bring your vision to life with expert craftsmanship and personalized solutions.",
     coverageTitle: "Everything we cover",
@@ -463,7 +486,7 @@ export const CONSTRUCTION_OVERVIEW = {
     ],
 };
 
-export const RESTORATION_SERVICES = [
+export const RESTORATION_SERVICES: Service[] = [
     {
         slug: "water-damage-repairs",
         icon: "ri-drop-line",
@@ -515,7 +538,7 @@ export const RESTORATION_SERVICES = [
     },
 ];
 
-export const CONSTRUCTION_SERVICES = [
+export const CONSTRUCTION_SERVICES: Service[] = [
     {
         slug: "residential-remodels",
         icon: "ri-pencil-ruler-2-line",
@@ -553,7 +576,7 @@ export const CONSTRUCTION_SERVICES = [
     },
 ];
 
-export const PROPERTY_MANAGEMENT = {
+export const PROPERTY_MANAGEMENT: Service = {
     slug: "property-management",
         icon: "ri-building-line",
     title: "Property Management & Repairs",
@@ -564,7 +587,7 @@ export const PROPERTY_MANAGEMENT = {
 // Per-service content from each individual old-site service page.
 // Shape: headline, intro, problems[], solutions[], benefits[] — the
 // structure every old service page follows.
-export const SERVICE_DETAILS = {
+export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     "water-damage-repairs": {
         beforeAfter: "/aditional-assets/images/repair-water-damaged-home-scaled.jpeg",
         beforeAfterCaption: "A water-damaged living space, fully restored.",
@@ -961,7 +984,7 @@ export const SERVICE_DETAILS = {
 
 // Privacy policy — same topics as the old site's policy, rewritten for the
 // new site. [Draft — legal review recommended before launch.]
-export const PRIVACY = {
+export const PRIVACY: Privacy = {
     intro: "Platinum Restoration and Construction is committed to protecting the privacy of everyone who contacts us or visits this website. This policy explains what information we collect, why we collect it, and the choices you have.",
     effectiveDate: "Effective date: [to be set at launch]",
     sections: [
@@ -1032,7 +1055,7 @@ export const PRIVACY = {
 
 // At-a-glance fact tiles shown under each service hero.
 // [Draft — written for the redesign, based on the old site's own claims]
-export const SERVICE_FACTS = {
+export const SERVICE_FACTS: Record<string, ServiceFact[]> = {
     restoration: [
         { icon: "ri-timer-flash-line", label: "Response", value: "Fast, same-day contact" },
         { icon: "ri-calendar-check-line", label: "Typical duration", value: "1 day – 1+ week" },
@@ -1055,7 +1078,7 @@ export const SERVICE_FACTS = {
 
 // Cross-links shown at the bottom of each service page.
 // [Draft — curated for the redesign]
-export const RELATED_SERVICES = {
+export const RELATED_SERVICES: Record<string, string[]> = {
     "water-damage-repairs": ["mold-inspections", "crawlspace-remediation", "dehumidifier-installation"],
     "mold-inspections": ["mold-remediation", "crawlspace-remediation", "dehumidifier-installation"],
     "mold-remediation": ["mold-inspections", "water-damage-repairs", "insulation-removal-installation"],
@@ -1073,7 +1096,7 @@ export const RELATED_SERVICES = {
 
 // Services where an urgent-help banner makes sense.
 // [Draft — written for the redesign]
-export const URGENT_SERVICES = {
+export const URGENT_SERVICES: Record<string, string> = {
     "water-damage-repairs": "Water damage doesn't wait — and neither do we.",
     "mold-remediation": "Mold spreads fast. The sooner it's contained, the less it costs.",
     "roofing-repairs": "Storm damage or an active leak? We provide emergency roof repairs.",
@@ -1083,7 +1106,7 @@ export const URGENT_SERVICES = {
 // "How we work" — the four-step approach every old-site service page
 // describes (detailed planning, transparent estimates, skilled execution,
 // post-project inspection and warranty).
-export const PROCESS_STEPS = {
+export const PROCESS_STEPS: ProcessSteps = {
     title: "How we work",
     subtitle: "OUR PROCESS",
     steps: [
@@ -1110,7 +1133,7 @@ export const PROCESS_STEPS = {
     },
 };
 
-export const SERVICE_AREAS = [
+export const SERVICE_AREAS: ServiceAreaCard[] = [
     {
         title: "Restoration Services",
         href: "/restoration-services",
@@ -1134,7 +1157,7 @@ export const SERVICE_AREAS = [
 // Gallery images from the old site, used in the home "Our Work" slider.
 // The client's own gallery photos from their old site — finished projects,
 // which is exactly what this slider should showcase.
-export const WORK_GALLERY = [
+export const WORK_GALLERY: WorkItem[] = [
     { image: "/aditional-assets/images/Gallery-6.webp", title: "Residential Remodels", href: "/construction-services/residential-remodels" },
     { image: "/aditional-assets/images/Gallery-5.png", title: "Roofing & Repairs", href: "/construction-services/roofing-repairs" },
     { image: "/aditional-assets/images/Gallery-8.png", title: "Sheetrock & Painting", href: "/construction-services/sheetrock-painting" },

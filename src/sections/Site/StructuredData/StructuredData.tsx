@@ -1,4 +1,13 @@
 import { SITE, FAQS } from "../siteData";
+import type { Breadcrumb } from "../types";
+
+interface StructuredDataProps {
+    /** Which schema blocks to emit. */
+    type?: "page" | "home" | "contact";
+    breadcrumbs?: Breadcrumb[];
+    service?: { title: string; blurb: string; url?: string };
+    includeFaq?: boolean;
+}
 
 // JSON-LD structured data. `type` selects which schema blocks to emit.
 // Rendered as a plain script tag so it ships in the static HTML.
@@ -30,8 +39,8 @@ const StructuredData = ({
     breadcrumbs = [],
     service,
     includeFaq = false,
-}) => {
-    const graph = [];
+}: StructuredDataProps) => {
+    const graph: Record<string, unknown>[] = [];
 
     if (type === "home" || type === "contact") {
         graph.push(businessSchema);

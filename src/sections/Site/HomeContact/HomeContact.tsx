@@ -57,7 +57,7 @@ const HomeContact = () => {
                                         <SiteContactDropdown />
                                         <div className="col-12">
                                             <div className="form-group ">
-                                                <textarea name="message" id="message" cols="30" rows="4" className="form-control" placeholder="Tell us about your project..."></textarea>
+                                                <textarea name="message" id="message" cols={30} rows={4} className="form-control" placeholder="Tell us about your project..."></textarea>
                                             </div>
                                         </div>
                                         <div className="form-btn col-12">

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
     SITE,
@@ -15,7 +16,13 @@ const SiteFooter = () => {
                 <div className="pm-footer-top">
                     <div className="pm-footer-brand">
                         <Link href="/" className="pm-footer-logo">
-                            <img src={SITE.logo} alt={SITE.name} />
+                            <Image
+                                src={SITE.logo}
+                                alt={SITE.name}
+                                width={280}
+                                height={58}
+                                style={{ width: "auto", height: "auto" }}
+                            />
                         </Link>
                         <p>
                             With over 30 years of experience, we combine expertise,

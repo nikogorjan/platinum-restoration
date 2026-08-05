@@ -1,6 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../Reveal";
 import BeforeAfter from "../BeforeAfter";
+import type { LinkedService, Service, ServiceArea } from "../types";
 import {
     SITE,
     DETAIL_CONTENT,
@@ -14,7 +16,7 @@ import {
 } from "../siteData";
 
 // Resolve a slug to its service object + URL, across all three areas.
-const findService = (slug) => {
+const findService = (slug: string): LinkedService | null => {
     const restoration = RESTORATION_SERVICES.find((s) => s.slug === slug);
     if (restoration) return { ...restoration, href: `/restoration-services/${slug}` };
     const construction = CONSTRUCTION_SERVICES.find((s) => s.slug === slug);
@@ -28,12 +30,19 @@ const findService = (slug) => {
 // Service detail page body: image hero, at-a-glance facts, problem/solution
 // split, connected process timeline, benefits, reference boxes, pricing,
 // related services and a closing action bar.
-const ServiceDetailDraft = ({ service, area = "restoration" }) => {
+interface ServiceDetailProps {
+    service: Service;
+    area?: ServiceArea;
+}
+
+const ServiceDetailDraft = ({ service, area = "restoration" }: ServiceDetailProps) => {
     const content = DETAIL_CONTENT[area];
     const detail = SERVICE_DETAILS[service.slug] || {};
     const facts = SERVICE_FACTS[area] || [];
     const urgent = URGENT_SERVICES[service.slug];
-    const related = (RELATED_SERVICES[service.slug] || []).map(findService).filter(Boolean);
+    const related = (RELATED_SERVICES[service.slug] || [])
+        .map(findService)
+        .filter((item): item is LinkedService => item !== null);
 
     return (
         <div className="service-details-area space-top overflow-hidden">
@@ -135,7 +144,7 @@ const ServiceDetailDraft = ({ service, area = "restoration" }) => {
                 {detail.showcase && (
                     <Reveal>
                         <figure className="pm-sv-figure">
-                            <img src={detail.showcase} alt={service.title} />
+                            <Image src={detail.showcase} alt={service.title} width={1200} height={640} sizes="(max-width: 1200px) 92vw, 1140px" style={{ width: "100%", height: "auto" }} />
                             {detail.showcaseCaption && (
                                 <figcaption>{detail.showcaseCaption}</figcaption>
                             )}
@@ -225,7 +234,7 @@ const ServiceDetailDraft = ({ service, area = "restoration" }) => {
                             <div className="pm-sv-related-grid">
                                 {related.map((item) => (
                                     <Link href={item.href} className="pm-sv-related-card" key={item.slug}>
-                                        <img src={item.image} alt={item.title} />
+                                        <Image src={item.image} alt={item.title} width={480} height={270} sizes="(max-width: 767px) 92vw, 360px" style={{ width: "100%", height: "auto" }} />
                                         <div className="body">
                                             <h5>{item.title}</h5>
                                             <span className="link">

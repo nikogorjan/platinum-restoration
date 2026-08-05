@@ -11,7 +11,26 @@ const FALLBACK_ICONS = [
     "ri-brush-line",
 ];
 
-const ServiceAreaGrid = ({ subTitle = "What We Do", title, text, items }) => {
+interface ServiceAreaGridItem {
+    title: string;
+    href: string;
+    blurb: string;
+    icon?: string;
+}
+
+interface ServiceAreaGridProps {
+    subTitle?: string;
+    title: string;
+    text?: string;
+    items: ServiceAreaGridItem[];
+}
+
+const ServiceAreaGrid = ({
+    subTitle = "What We Do",
+    title,
+    text,
+    items,
+}: ServiceAreaGridProps) => {
     return (
         <div className="service-area-4 space-top overflow-hidden">
             <div className="container">

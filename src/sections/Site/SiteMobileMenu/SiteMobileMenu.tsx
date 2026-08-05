@@ -1,11 +1,22 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { SITE, RESTORATION_SERVICES, CONSTRUCTION_SERVICES } from "../siteData";
 
+interface MenuLink {
+    title: string;
+    href: string;
+}
+
+interface MenuGroup {
+    title: string;
+    links: MenuLink[];
+}
+
 // Right-hand slide-in drawer with iOS-style drill-down sub-panels.
 // Styles live in site-theme.css under .pm-menu-*.
-const GROUPS = {
+const GROUPS: Record<string, MenuGroup> = {
     restoration: {
         title: "Restoration",
         links: [
@@ -22,8 +33,13 @@ const GROUPS = {
     },
 };
 
-const SiteMobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
-    const [activeGroup, setActiveGroup] = useState(null);
+interface SiteMobileMenuProps {
+    isMenuOpen: boolean;
+    setIsMenuOpen: (open: boolean) => void;
+}
+
+const SiteMobileMenu = ({ isMenuOpen, setIsMenuOpen }: SiteMobileMenuProps) => {
+    const [activeGroup, setActiveGroup] = useState<string | null>(null);
 
     const close = () => {
         setIsMenuOpen(false);
@@ -38,7 +54,7 @@ const SiteMobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
     }, [isMenuOpen]);
 
     useEffect(() => {
-        const onKey = (e) => {
+        const onKey = (e: KeyboardEvent) => {
             if (e.key === "Escape") close();
         };
         document.addEventListener("keydown", onKey);
@@ -53,7 +69,13 @@ const SiteMobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
             <aside className="pm-menu-panel" role="dialog" aria-label="Menu">
                 <div className="pm-menu-head">
                     <Link href="/" onClick={close}>
-                        <img src={SITE.logo} alt={SITE.name} />
+                        <Image
+                            src={SITE.logo}
+                            alt={SITE.name}
+                            width={200}
+                            height={42}
+                            style={{ width: "auto", height: "auto" }}
+                        />
                     </Link>
                     <button type="button" className="pm-menu-close" onClick={close} aria-label="Close menu">
                         <i className="ri-close-line"></i>
@@ -94,7 +116,7 @@ const SiteMobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
                             <>
                                 <h4 className="pm-menu-sub-title">{group.title}</h4>
                                 <ul>
-                                    {group.links.map((link) => (
+                                    {group.links.map((link: MenuLink) => (
                                         <li key={link.href}>
                                             <Link href={link.href} onClick={close}>{link.title}</Link>
                                         </li>

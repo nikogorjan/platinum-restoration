@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { SITE, TESTIMONIALS } from "../siteData";
 
@@ -7,7 +8,7 @@ import { SITE, TESTIMONIALS } from "../siteData";
 // rather than a carousel: with only two items a slider adds JS and hides
 // half the proof, and slick's width measuring fought the layout on mobile.
 const HomeTestimonial = () => {
-  const [expanded, setExpanded] = useState(null);
+  const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
     <div className="testimonial-area-3 overflow-hidden space-top">
@@ -25,10 +26,12 @@ const HomeTestimonial = () => {
           {TESTIMONIALS.map((testimonial, index) => (
             <div className="testi-card style3 testi-static" key={testimonial.name}>
               <div className="testi-card-thumb">
-                <img
+                <Image
                   src={SITE.favicon}
-                  alt="Platinum"
-                  style={{ maxWidth: "70px", background: "#fff", padding: "10px" }}
+                  alt=""
+                  width={70}
+                  height={70}
+                  style={{ maxWidth: "70px", height: "auto", background: "#fff", padding: "10px" }}
                 />
                 <div className="media-body">
                   <h4 className="testi-card_title">{testimonial.title}</h4>
@@ -61,7 +64,7 @@ const HomeTestimonial = () => {
                 </div>
               </div>
               <div className="quote-icon">
-                <img src="/main-assets/img/icon/quote3.svg" alt="" />
+                <Image src="/main-assets/img/icon/quote3.svg" alt="" width={60} height={48} />
               </div>
             </div>
           ))}

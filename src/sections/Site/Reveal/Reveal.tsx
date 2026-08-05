@@ -1,10 +1,17 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+
+interface RevealProps {
+    children: ReactNode;
+    /** Stagger delay in milliseconds. */
+    delay?: number;
+    className?: string;
+}
 
 // Scroll-triggered reveal: fades/slides children in the first time they
 // enter the viewport. Respects prefers-reduced-motion via CSS.
-const Reveal = ({ children, delay = 0, className = "" }) => {
-    const ref = useRef(null);
+const Reveal = ({ children, delay = 0, className = "" }: RevealProps) => {
+    const ref = useRef<HTMLDivElement | null>(null);
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
