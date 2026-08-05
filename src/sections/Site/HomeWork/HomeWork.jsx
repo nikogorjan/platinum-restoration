@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -29,7 +30,27 @@ const WorkArrow = ({ className, style, onClick, icon, side }) => (
 // Portfolio slider of the client's own finished-project photos.
 // Center mode (peeking neighbours) is desktop-only — on smaller screens the
 // card takes the full width so it stays readable.
+// How much of the neighbouring cards peeks in at each width. Driven from
+// React rather than slick's `responsive` option, which does not reliably
+// re-evaluate here — leaving the card stuck at the desktop peek on phones.
+const peekFor = (width) => {
+  if (width < 576) return "6%";
+  if (width < 768) return "8%";
+  if (width < 992) return "10%";
+  if (width < 1200) return "15%";
+  return "20%";
+};
+
 const HomeWork = () => {
+  const [centerPadding, setCenterPadding] = useState("20%");
+
+  useEffect(() => {
+    const update = () => setCenterPadding(peekFor(window.innerWidth));
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -39,26 +60,10 @@ const HomeWork = () => {
     prevArrow: <WorkArrow icon="ri-arrow-left-line" side="left" />,
     nextArrow: <WorkArrow icon="ri-arrow-right-line" side="right" />,
     centerMode: true,
-    centerPadding: "20%",
+    centerPadding,
     autoplay: true,
     speed: 1500,
     autoplaySpeed: 5000,
-    // Card stays centered at every size — only the peek shrinks, so the
-    // centre card gets wider as the screen gets smaller.
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: { centerMode: true, centerPadding: "15%" },
-      },
-      {
-        breakpoint: 992,
-        settings: { centerMode: true, centerPadding: "12%" },
-      },
-      {
-        breakpoint: 768,
-        settings: { centerMode: true, centerPadding: "8%" },
-      },
-    ],
   };
 
   return (
