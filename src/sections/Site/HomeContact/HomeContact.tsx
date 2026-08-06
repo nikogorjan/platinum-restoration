@@ -1,9 +1,9 @@
-import SiteContactDropdown from "../SiteContactDropdown";
+import ContactForm from "../ContactForm";
 import { SITE, TRUST_STRIP } from "../siteData";
 
 // Consultation section: dark panel (matching the challenges panel) with a
 // supporting column left and the form on an elevated white card right.
-// The form is wireframe-only — it does not submit anywhere yet.
+// The form itself is a client component (ContactForm) that posts to /api/contact.
 const HomeContact = () => {
     return (
         <section className="contact-area-2 space-top overflow-hidden" id="contact-sec">
@@ -37,39 +37,7 @@ const HomeContact = () => {
                         <div className="col-lg-7">
                             <div className="pm-quote-card">
                                 <h3 className="pm-quote-card-title">Request your free consultation</h3>
-                                <form className="contact-form">
-                                    <div className="row gy-4">
-                                        <div className="col-md-6">
-                                            <div className="form-group">
-                                                <input type="text" className="form-control" name="name" id="name" placeholder="Your Name" />
-                                            </div>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <div className="form-group">
-                                                <input type="email" className="form-control" name="email" id="email" placeholder="Email Address" />
-                                            </div>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <div className="form-group">
-                                                <input type="tel" className="form-control" name="number" id="number" placeholder="Phone Number" />
-                                            </div>
-                                        </div>
-                                        <SiteContactDropdown />
-                                        <div className="col-12">
-                                            <div className="form-group ">
-                                                <textarea name="message" id="message" cols={30} rows={4} className="form-control" placeholder="Tell us about your project..."></textarea>
-                                            </div>
-                                        </div>
-                                        <div className="form-btn col-12">
-                                            <button className="btn w-100">
-                                                Request Free Consultation <i className="ri-arrow-right-up-line"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <p className="pm-quote-note">
-                                        No obligation — we&apos;ll never share your details.
-                                    </p>
-                                </form>
+                                <ContactForm />
                             </div>
                         </div>
                     </div>

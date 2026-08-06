@@ -6,6 +6,7 @@ import {
     AboutValues,
     AboutServices,
     AboutTrust,
+    AboutServiceArea,
     AboutMission,
     AboutCTA,
 } from "~/sections/Site/About";
@@ -35,6 +36,7 @@ export default function AboutPage() {
             <AboutValues />
             <AboutServices />
             <AboutTrust />
+            <AboutServiceArea />
             <AboutMission />
             <AboutCTA />
             <SiteMap />

@@ -8,6 +8,8 @@ import "~/public/main-assets/css/style.css";
 import "~/public/main-assets/css/react-adjustment.css";
 import "./site-theme.css";
 import { SITE, SEO } from "~/sections/Site/siteData";
+import StickyCallBar from "~/sections/Site/StickyCallBar";
+import Analytics from "~/sections/Site/Analytics";
 
 export const metadata = {
   metadataBase: new URL(SITE.url),
@@ -71,5 +73,11 @@ export const metadata = {
 };
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      {children}
+      <StickyCallBar />
+      <Analytics />
+    </>
+  );
 }

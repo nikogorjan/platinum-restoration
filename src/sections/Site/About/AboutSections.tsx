@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../Reveal";
-import { SITE, ABOUT_PAGE as A } from "../siteData";
+import { SITE, ABOUT_PAGE as A, SERVICE_TOWNS } from "../siteData";
 
 // About page sections — distinct from the homepage, copy verbatim from the
 // old site. Styles: site-theme.css ("About v2" block, .pm2-*).
@@ -190,6 +190,35 @@ export const AboutTrust = () => (
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+);
+
+// 4b — Service area: the Triangle towns we cover.
+export const AboutServiceArea = () => (
+    <div className="space-top">
+        <div className="container">
+            <Reveal>
+                <div className="pm-towns">
+                    <div className="pm-towns-head">
+                        <span className="sub-title text-theme">{SERVICE_TOWNS.title}</span>
+                        <h2 className="sec-title">Serving the Triangle area</h2>
+                        <p>{SERVICE_TOWNS.intro}</p>
+                    </div>
+                    <ul className="pm-towns-list">
+                        {SERVICE_TOWNS.towns.map((town) => (
+                            <li key={town}>
+                                <i className="ri-map-pin-2-line"></i>
+                                {town}
+                            </li>
+                        ))}
+                    </ul>
+                    <p className="pm-towns-note">
+                        <i className="ri-navigation-line"></i>
+                        {SERVICE_TOWNS.note}
+                    </p>
+                </div>
+            </Reveal>
         </div>
     </div>
 );

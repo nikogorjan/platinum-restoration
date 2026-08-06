@@ -54,6 +54,28 @@ export const HERO: Hero = {
     image: "/aditional-assets/images/construction-workers-silhouette-on-roof-of-buildin-2026-03-09-03-26-34-utc.webp",
 };
 
+// Towns we serve, shown on the About page. Kept as one section rather than
+// separate landing pages for now — see the notes in CONTENT-PLAN.md.
+export const SERVICE_TOWNS = {
+    title: "Where We Work",
+    intro: "Platinum Restoration and Construction serves homeowners and property owners across the Triangle. If your town isn't listed, call us — we very likely cover it.",
+    towns: [
+        "Garner",
+        "Raleigh",
+        "Cary",
+        "Apex",
+        "Clayton",
+        "Holly Springs",
+        "Fuquay-Varina",
+        "Knightdale",
+        "Wake Forest",
+        "Morrisville",
+        "Willow Spring",
+        "Smithfield",
+    ],
+    note: "Based in Garner, NC — serving the greater Triangle area.",
+};
+
 // SEO: unique title + meta description per non-service page.
 // Service pages build theirs from the service data.
 export const SEO: Record<string, SeoEntry> = {
@@ -572,7 +594,9 @@ export const CONSTRUCTION_SERVICES: Service[] = [
         icon: "ri-water-flash-line",
         title: "Drainage Solutions",
         image: "/aditional-assets/images/adult-installing-black-drain-pipe-in-green-yard-2026-03-24-23-46-09-utc.webp",
-        blurb: "[Draft — no copy on old site] Grading, drains and gutter solutions that move water away from your home.",
+        // NEEDS CLIENT SIGN-OFF: drainage has no page on the old site, so this
+        // copy was written for the redesign from the service list.
+        blurb: "Grading, French drains and gutter solutions that move water away from your foundation and crawlspace.",
     },
 ];
 
@@ -589,8 +613,6 @@ export const PROPERTY_MANAGEMENT: Service = {
 // structure every old service page follows.
 export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     "water-damage-repairs": {
-        beforeAfter: "/aditional-assets/images/repair-water-damaged-home-scaled.jpeg",
-        beforeAfterCaption: "A water-damaged living space, fully restored.",
         headline: "Fast Action, Reliable Results: Your Water Damage Experts",
         intro: "When water wreaks havoc on your home or business, you need a trusted team to restore what matters most. Water damage doesn't wait, and neither do we — whether it's a burst pipe, storm flooding, or hidden leaks, our skilled team responds quickly and effectively.",
         problemsTitle: "The Hidden Problem That Can't Be Ignored",
@@ -794,6 +816,8 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
         ],
     },
     "residential-remodels": {
+        beforeAfter: "/aditional-assets/images/repair-water-damaged-home-scaled.jpeg",
+        beforeAfterCaption: "From stripped-back shell to finished living space — drag to compare.",
         headline: "Transform Your Space, Elevate Your Life",
         intro: "Your home should reflect your style and meet your needs, but over time it may need an update to keep up with your life. We turn your vision into reality, creating spaces you'll love coming home to.",
         problemsTitle: "The Remodel Journey: From Problems to Possibilities",
@@ -928,7 +952,8 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
     },
     "drainage-solutions": {
         headline: "Keep Water Away From Your Foundation",
-        intro: "[Draft — no dedicated page on the old site] Comprehensive drainage solutions that move water away from your home and protect what's underneath it.",
+        // NEEDS CLIENT SIGN-OFF — written for the redesign (no source page).
+        intro: "Standing water and poor runoff are where most crawlspace and foundation problems begin. We assess how water moves across your property and put in the grading, drains and gutter work that carries it safely away.",
         problemsTitle: "What Poor Drainage Causes",
         problems: [
             { title: "Standing water", text: "Pooling around the foundation after every heavy rain." },

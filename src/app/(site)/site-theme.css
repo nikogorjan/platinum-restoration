@@ -138,6 +138,197 @@
   }
 }
 
+/* ---------------------------------------------------------------------
+   Contact form states, sticky mobile bar, service-area towns.
+   --------------------------------------------------------------------- */
+/* Honeypot field — off-screen for people, visible to bots. */
+.pm-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.pm-form-success {
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.pm-form-success i {
+  font-size: 54px;
+  color: var(--theme-color);
+  line-height: 1;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.pm-form-success h4 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.pm-form-success p {
+  margin: 0;
+}
+
+.pm-form-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0 0;
+  font-size: 15px;
+  color: var(--theme-color);
+}
+
+.contact-form .btn:disabled {
+  opacity: 0.75;
+  cursor: wait;
+}
+
+/* Sticky mobile action bar */
+.pm-sticky-bar {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .pm-sticky-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    background: var(--white-color);
+    box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.16);
+  }
+
+  .pm-sticky-call,
+  .pm-sticky-quote {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    font-family: var(--title-font);
+  }
+
+  .pm-sticky-call {
+    color: var(--title-color);
+  }
+
+  .pm-sticky-call i {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background: var(--theme-color);
+    color: var(--white-color);
+    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+  }
+
+  .pm-sticky-call .label {
+    display: block;
+    font-size: 11px;
+    color: var(--body-color);
+    line-height: 1.2;
+  }
+
+  .pm-sticky-call .num {
+    display: block;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .pm-sticky-quote {
+    background: var(--brand-blue);
+    color: var(--white-color);
+    font-size: 14px;
+    font-weight: 600;
+    gap: 6px;
+  }
+
+  .pm-sticky-quote:hover {
+    color: var(--white-color);
+  }
+
+  /* Keep the footer and scroll button clear of the bar. */
+  .pm-footer-bottom {
+    padding-bottom: 84px;
+  }
+
+  .scroll-top {
+    bottom: 86px;
+  }
+}
+
+/* Service-area towns */
+.pm-towns {
+  background: var(--smoke-color3);
+  border-radius: var(--radius-md);
+  padding: 44px 48px;
+}
+
+@media (max-width: 767px) {
+  .pm-towns {
+    padding: 30px 22px;
+  }
+}
+
+.pm-towns-head {
+  max-width: 720px;
+  margin-bottom: 30px;
+}
+
+.pm-towns-head p {
+  margin: 0;
+}
+
+.pm-towns-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px 24px;
+}
+
+@media (max-width: 991px) {
+  .pm-towns-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.pm-towns-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--title-font);
+  font-weight: 600;
+  color: var(--title-color);
+}
+
+.pm-towns-list li i {
+  color: var(--theme-color);
+  font-size: 18px;
+}
+
+.pm-towns-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 28px 0 0;
+  font-size: 15px;
+  color: var(--body-color);
+}
+
+.pm-towns-note i {
+  color: var(--theme-color);
+}
+
 /* Testimonials: two equal columns, stacked on smaller screens. */
 .pm-testi-grid {
   display: grid;

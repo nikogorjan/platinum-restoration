@@ -41,8 +41,12 @@ const HomeHero = () => {
                     <div className="row">
                         <div className="col-lg-12">
                             <span className="hero-subtitle">{HERO.subtitle}</span>
-                            <h1 className="hero-title">{HERO.titleLine1}</h1>
-                            <h1 className="hero-title style2">{HERO.titleLine2}</h1>
+                            {/* One h1 per page: the second line is a span, not
+                                a second heading. */}
+                            <h1 className="hero-title">
+                                {HERO.titleLine1}
+                                <span className="hero-title style2 d-block">{HERO.titleLine2}</span>
+                            </h1>
                             <p className="hero-text">{HERO.text}</p>
                             <Link href="/contact" className="btn style2">GET A QUOTE <i className="ri-arrow-right-up-line"></i></Link>
                         </div>
