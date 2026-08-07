@@ -27,6 +27,7 @@ export default function HomePage() {
             <StructuredData type="home" includeFaq />
             <SiteHeader />
             <HomeHero />
+            <TrustStrip flush />
             <HomeAbout />
             <HomeChallenges />
             <ServiceAreaGrid
@@ -35,7 +36,6 @@ export default function HomePage() {
                 items={SERVICE_AREAS}
             />
             <HomeWhyChoose />
-            <TrustStrip />
             <HomeWork />
             <HomeTestimonial />
             <HomeContact />

@@ -1,118 +1,101 @@
-'use client'
+"use client";
 
-import { useEffect, useState, type CSSProperties, type MouseEventHandler } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Image from 'next/image';
-import Link from 'next/link';
-import { WORK_GALLERY } from '../siteData';
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { WORK_GALLERY } from "../siteData";
 
-// Prev/next buttons — react-slick injects className/style/onClick.
-interface WorkArrowProps {
-  className?: string;
-  style?: CSSProperties;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
-  icon: string;
-  side: "left" | "right";
-}
-
-const WorkArrow = ({ className, style, onClick, icon, side }: WorkArrowProps) => (
-  <button
-    type="button"
-    className={`${className || ""} work-arrow`}
-    // Sits in the control row below the cards, not on top of the photos.
-    style={{
-      ...style,
-      left: "auto",
-      right: side === "left" ? "68px" : "0",
-      top: "auto",
-      bottom: "16px",
-      marginTop: 0,
-      transform: "none",
-    }}
-    onClick={onClick}
-    aria-label={side === "left" ? "Previous slide" : "Next slide"}
-  >
-    <i className={icon}></i>
-  </button>
-);
-
-// Portfolio slider of the client's own finished-project photos.
-// Center mode (peeking neighbours) is desktop-only — on smaller screens the
-// card takes the full width so it stays readable.
-// How much of the neighbouring cards peeks in at each width. Driven from
-// React rather than slick's `responsive` option, which does not reliably
-// re-evaluate here — leaving the card stuck at the desktop peek on phones.
-const peekFor = (width: number): string => {
-  if (width < 576) return "6%";
-  if (width < 768) return "8%";
-  if (width < 992) return "10%";
-  if (width < 1200) return "15%";
-  return "20%";
-};
-
+// "Our Work" — native scroll-snap gallery strip that bleeds to the right
+// viewport edge, with round prev/next buttons in the section head.
+// Replaces the old react-slick carousel (whose width measuring repeatedly
+// fought the layout). Styles: modern.css (.pmx-work-*).
 const HomeWork = () => {
-  const [centerPadding, setCenterPadding] = useState("20%");
+  const stripRef = useRef<HTMLDivElement | null>(null);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
+
+  const updateEnds = () => {
+    const el = stripRef.current;
+    if (!el) return;
+    setAtStart(el.scrollLeft <= 4);
+    setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 4);
+  };
 
   useEffect(() => {
-    const update = () => setCenterPadding(peekFor(window.innerWidth));
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
+    updateEnds();
+    const el = stripRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", updateEnds, { passive: true });
+    window.addEventListener("resize", updateEnds);
+    return () => {
+      el.removeEventListener("scroll", updateEnds);
+      window.removeEventListener("resize", updateEnds);
+    };
   }, []);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: true,
-    prevArrow: <WorkArrow icon="ri-arrow-left-line" side="left" />,
-    nextArrow: <WorkArrow icon="ri-arrow-right-line" side="right" />,
-    centerMode: true,
-    centerPadding,
-    autoplay: true,
-    speed: 1500,
-    autoplaySpeed: 5000,
+  const scrollByCard = (direction: 1 | -1) => {
+    const el = stripRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>(".pmx-work-card");
+    const step = card ? card.offsetWidth + 24 : el.clientWidth * 0.6;
+    el.scrollBy({ left: direction * step, behavior: "smooth" });
   };
 
   return (
-    <div className="portfolio-area-1 space-top">
-      <div className="container">
-        <div className="title-area text-center">
-          <span className="sub-title text-theme">Our Work</span>
-          <h2 className="sec-title">See the difference we make</h2>
-          <p className="sec-text">From emergency restoration to finished remodels — photos from real Platinum projects</p>
+    <div className="pmx-section pmx-work">
+      <div className="pmx-wrap">
+        <div className="pmx-sechead">
+          <div>
+            <span className="pmx-eyebrow">Our Work</span>
+            <h2 className="pmx-title">See the difference we make</h2>
+          </div>
+          <div className="pmx-sechead-side">
+            <p className="pmx-lead">
+              From emergency restoration to finished remodels — photos from
+              real Platinum projects.
+            </p>
+            <div className="pmx-work-nav">
+              <button
+                type="button"
+                onClick={() => scrollByCard(-1)}
+                disabled={atStart}
+                aria-label="Previous projects"
+              >
+                <i className="ri-arrow-left-line"></i>
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollByCard(1)}
+                disabled={atEnd}
+                aria-label="Next projects"
+              >
+                <i className="ri-arrow-right-line"></i>
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="portfolio-slider1 overflow-hidden">
-          <Slider {...settings}>
-            {WORK_GALLERY.map((work, index) => (
-              <div key={index}>
-                <div className="portfolio-card pm-work-card">
-                  <div className="portfolio-card-thumb pm-work-thumb">
-                    <Image
-                      src={work.image}
-                      alt={work.title}
-                      fill
-                      sizes="(max-width: 768px) 90vw, (max-width: 1200px) 70vw, 800px"
-                      style={{ objectFit: "cover" }}
-                    />
-                  </div>
-                  <div className="portfolio-card-details">
-                    <div className="media-left">
-                      <h4 className="portfolio-card-title">
-                        <Link href={work.href}>{work.title}</Link>
-                      </h4>
-                    </div>
-                  </div>
-                  <Link href={work.href} className="btn">
-                    Explore Service <i className="ri-arrow-right-up-line"></i>
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </Slider>
+
+        <div className="pmx-work-strip" ref={stripRef}>
+          {WORK_GALLERY.map((work, index) => (
+            <Link href={work.href} className="pmx-work-card" key={`${work.image}-${index}`}>
+              <Image
+                src={work.image}
+                alt={work.title}
+                fill
+                sizes="(max-width: 768px) 80vw, (max-width: 1200px) 45vw, 520px"
+                style={{ objectFit: "cover" }}
+              />
+              <span className="pmx-work-card-info">
+                <span>
+                  <span className="tag">{String(index + 1).padStart(2, "0")} — Project</span>
+                  <h4>{work.title}</h4>
+                </span>
+                <span className="go">
+                  <i className="ri-arrow-right-up-line"></i>
+                </span>
+              </span>
+            </Link>
+          ))}
         </div>
       </div>
     </div>

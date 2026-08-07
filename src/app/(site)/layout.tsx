@@ -7,6 +7,7 @@ import "~/public/main-assets/css/slick.min.css";
 import "~/public/main-assets/css/style.css";
 import "~/public/main-assets/css/react-adjustment.css";
 import "./site-theme.css";
+import "./modern.css";
 import { SITE, SEO } from "~/sections/Site/siteData";
 import StickyCallBar from "~/sections/Site/StickyCallBar";
 import Analytics from "~/sections/Site/Analytics";

@@ -6,16 +6,31 @@ import {
     CONSTRUCTION_SERVICES,
 } from "../siteData";
 
-// Custom footer (.pm-footer) — deep blue-black with a faint blueprint grid,
-// diamond-bulleted columns, and a prominent phone block. No template
-// widget classes, so none of their hover effects leak in.
+// Mega footer (.pmx-footer): CTA row up top, brand + link columns, a
+// giant ghost "PLATINUM" wordmark, then the bottom bar. The bottom bar
+// keeps the .pm-footer-bottom class so the sticky mobile call bar's
+// clearance rule in site-theme.css still applies.
 const SiteFooter = () => {
     return (
-        <footer className="pm-footer">
-            <div className="container">
-                <div className="pm-footer-top">
-                    <div className="pm-footer-brand">
-                        <Link href="/" className="pm-footer-logo">
+        <footer className="pmx-footer">
+            <div className="pmx-wrap">
+                <div className="pmx-footer-cta">
+                    <h3>
+                        Have a project in mind? <em>Let&apos;s talk.</em>
+                    </h3>
+                    <div className="pmx-footer-cta-actions">
+                        <Link href="/contact" className="pmx-btn">
+                            Get a Free Consultation <i className="ri-arrow-right-up-line"></i>
+                        </Link>
+                        <a href={SITE.phoneHref} className="pmx-btn pmx-btn--ghost-dark">
+                            <i className="ri-phone-fill"></i> {SITE.phone}
+                        </a>
+                    </div>
+                </div>
+
+                <div className="pmx-footer-grid">
+                    <div className="pmx-footer-brand">
+                        <Link href="/" className="pmx-footer-logo">
                             <Image
                                 src={SITE.logo}
                                 alt={SITE.name}
@@ -29,65 +44,71 @@ const SiteFooter = () => {
                             integrity, and personalized care to transform and protect
                             your property.
                         </p>
-                        <p className="pm-footer-serving">
+                        <p className="pmx-footer-serving">
                             <i className="ri-map-pin-2-line"></i>
                             {SITE.serviceArea}
                         </p>
-                        <div className="pm-footer-social">
+                        <div className="pmx-footer-social">
                             <Link href={SITE.facebook} aria-label="Facebook">
                                 <i className="ri-facebook-fill"></i>
                             </Link>
                         </div>
                     </div>
-                    <div className="pm-footer-cols">
-                        <div>
-                            <h4 className="pm-footer-title"><span className="d"></span>Restoration</h4>
-                            <ul>
-                                {RESTORATION_SERVICES.map((service) => (
-                                    <li key={service.slug}>
-                                        <Link href={`/restoration-services/${service.slug}`}>{service.title}</Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 className="pm-footer-title"><span className="d"></span>Construction</h4>
-                            <ul>
-                                {CONSTRUCTION_SERVICES.map((service) => (
-                                    <li key={service.slug}>
-                                        <Link href={`/construction-services/${service.slug}`}>{service.title}</Link>
-                                    </li>
-                                ))}
-                                <li>
-                                    <Link href="/property-management">Property Management</Link>
+
+                    <div className="pmx-footer-col">
+                        <h4>Restoration</h4>
+                        <ul>
+                            {RESTORATION_SERVICES.map((service) => (
+                                <li key={service.slug}>
+                                    <Link href={`/restoration-services/${service.slug}`}>{service.title}</Link>
                                 </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 className="pm-footer-title"><span className="d"></span>Get in Touch</h4>
-                            <a href={SITE.phoneHref} className="pm-footer-phone">
-                                <i className="ri-phone-fill"></i>
-                                <span>
-                                    <span className="label">Call us any time</span>
-                                    <span className="num">{SITE.phone}</span>
-                                </span>
-                            </a>
-                            <a href={`mailto:${SITE.email}`} className="pm-footer-line">
-                                <i className="ri-mail-line"></i>
-                                <span>{SITE.email}</span>
-                            </a>
-                            <p className="pm-footer-line">
-                                <i className="ri-map-pin-line"></i>
-                                <span>{SITE.address}</span>
-                            </p>
-                        </div>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div className="pmx-footer-col">
+                        <h4>Construction</h4>
+                        <ul>
+                            {CONSTRUCTION_SERVICES.map((service) => (
+                                <li key={service.slug}>
+                                    <Link href={`/construction-services/${service.slug}`}>{service.title}</Link>
+                                </li>
+                            ))}
+                            <li>
+                                <Link href="/property-management">Property Management</Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div className="pmx-footer-col">
+                        <h4>Get in Touch</h4>
+                        <a href={SITE.phoneHref} className="pmx-footer-phone">
+                            <i className="ri-phone-fill"></i>
+                            <span>
+                                <span className="label">Call us any time</span>
+                                <span className="num">{SITE.phone}</span>
+                            </span>
+                        </a>
+                        <a href={`mailto:${SITE.email}`} className="pmx-footer-line">
+                            <i className="ri-mail-line"></i>
+                            <span>{SITE.email}</span>
+                        </a>
+                        <p className="pmx-footer-line">
+                            <i className="ri-map-pin-line"></i>
+                            <span>{SITE.address}</span>
+                        </p>
                     </div>
                 </div>
             </div>
+
+            <span className="pmx-footer-wordmark" aria-hidden="true">
+                PLATINUM
+            </span>
+
             <div className="pm-footer-bottom">
-                <div className="container">
+                <div className="pmx-wrap pmx-footer-bottom-in">
                     <p>© 2026 <Link href="/">{SITE.name}</Link> | All rights reserved</p>
-                    <div className="pm-footer-bottom-links">
+                    <div className="pmx-footer-bottom-links">
                         <Link href="/privacy-policy">Privacy Policy</Link>
                         <Link href="/contact">Contact Us</Link>
                     </div>
