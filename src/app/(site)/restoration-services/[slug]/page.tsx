@@ -50,7 +50,6 @@ export default async function RestorationServicePage({ params }: Props) {
                     { name: "Restoration Services", path: "/restoration-services" },
                     { name: service.title, path: `/restoration-services/${slug}` },
                 ]}
-                includeFaq
             />
             <SiteHeader />
             <SiteBreadcrumb

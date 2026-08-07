@@ -1541,7 +1541,11 @@
   display: flex;
   gap: clamp(16px, 2vw, 28px);
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  /* proximity, not mandatory: mandatory snapping fights programmatic
+     smooth scrolling (it re-animates to the snap point after the scroll
+     settles) and resists free drags — both read as lag. */
+  scroll-snap-type: x proximity;
+  overscroll-behavior-x: contain;
   scrollbar-width: none;
   padding-right: var(--pmx-gutter);
   margin-right: calc(-1 * max(var(--pmx-gutter), (100vw - var(--pmx-wrap)) / 2));

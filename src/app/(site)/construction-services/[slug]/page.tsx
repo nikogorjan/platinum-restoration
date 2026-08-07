@@ -50,7 +50,6 @@ export default async function ConstructionServicePage({ params }: Props) {
                     { name: "Construction Services", path: "/construction-services" },
                     { name: service.title, path: `/construction-services/${slug}` },
                 ]}
-                includeFaq
             />
             <SiteHeader />
             <SiteBreadcrumb
