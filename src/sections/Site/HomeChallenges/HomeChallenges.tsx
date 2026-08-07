@@ -1,99 +1,88 @@
 import Link from "next/link";
 import Reveal from "../Reveal";
-import { CHALLENGES } from "../siteData";
+import { CHALLENGES, SITE } from "../siteData";
 
-// One dark panel that tells the whole story: pains ("Sound familiar?") →
-// divider → solutions (challenge/solution pair cards) → consultation CTA.
-// Echoes the hero's dark immersive mood; styles in site-theme (.pm-chal-*).
+// Full-bleed navy band: pains as a hairline ledger, then numbered
+// problem → solution rows that each link to the matching service area,
+// closed by a consultation CTA row. Styles: modern.css (.pmx-flip-*).
 const HomeChallenges = () => (
-    <div className="space-top">
-        <div className="container">
-            <div className="pm-chal-panel">
-                <div className="row gy-30 gx-60 align-items-end pm-chal-head">
-                    <div className="col-lg-7">
-                        <Reveal>
-                            <span className="sub-title">
-                                SOUND FAMILIAR? <i className="ri-arrow-right-down-line"></i>
-                            </span>
-                            <h2>{CHALLENGES.painHeadline}</h2>
-                        </Reveal>
-                    </div>
-                    <div className="col-lg-5">
-                        <Reveal delay={120}>
-                            <p className="pm-chal-lead">
-                                If any of this sounds like your property, you&apos;re not
-                                alone — and you don&apos;t have to live with it.
-                            </p>
-                        </Reveal>
-                    </div>
+    <div className="pmx-flip pmx-dark">
+        <div className="pmx-wrap">
+            <div className="pmx-sechead">
+                <div>
+                    <Reveal>
+                        <span className="pmx-eyebrow">Sound Familiar?</span>
+                        <h2 className="pmx-title">{CHALLENGES.painHeadline}</h2>
+                    </Reveal>
                 </div>
-
-                <div className="row gy-30 gx-30">
-                    {CHALLENGES.pains.map((pain, index) => (
-                        <div className="col-lg-4 d-flex" key={pain.title}>
-                            <Reveal delay={index * 120} className="w-100 d-flex">
-                                <div className="pm-pain-card">
-                                    <i className={pain.icon}></i>
-                                    <h5>{pain.title}</h5>
-                                    <p>{pain.text}</p>
-                                </div>
-                            </Reveal>
-                        </div>
-                    ))}
+                <div className="pmx-sechead-side">
+                    <Reveal delay={120}>
+                        <p className="pmx-lead">
+                            If any of this sounds like your property, you&apos;re not
+                            alone — and you don&apos;t have to live with it.
+                        </p>
+                    </Reveal>
                 </div>
-
-                <div className="pm-chal-divider" aria-hidden="true">
-                    <span></span>
-                    <i className="ri-arrow-down-line"></i>
-                    <span></span>
-                </div>
-
-                <div className="row justify-content-center">
-                    <div className="col-lg-9">
-                        <Reveal>
-                            <div className="text-center pm-chal-solutions-head">
-                                <span className="sub-title">
-                                    OUR SOLUTIONS <i className="ri-arrow-right-down-line"></i>
-                                </span>
-                                <h3>{CHALLENGES.headline}</h3>
-                            </div>
-                        </Reveal>
-                    </div>
-                </div>
-
-                <div className="row gy-30 gx-30 justify-content-center">
-                    {CHALLENGES.pairs.map((pair, index) => (
-                        <div className="col-xl-4 col-md-6 d-flex" key={pair.problemTitle}>
-                            <Reveal delay={index * 120} className="w-100 d-flex">
-                                <div className="pm-pair-card">
-                                    <div className="pm-pair-problem">
-                                        <span className="pm-pair-tag">THE CHALLENGE</span>
-                                        <h4>{pair.problemTitle}</h4>
-                                        <p>{pair.problem}</p>
-                                    </div>
-                                    <div className="pm-pair-arrow" aria-hidden="true">
-                                        <i className="ri-arrow-down-line"></i>
-                                    </div>
-                                    <div className="pm-pair-solution">
-                                        <span className="pm-pair-tag">OUR SOLUTION</span>
-                                        <h4>{pair.solutionTitle}</h4>
-                                        <p>{pair.solution}</p>
-                                        <Link href={pair.href} className="pm-pair-link">
-                                            Explore <i className="ri-arrow-right-line"></i>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </Reveal>
-                        </div>
-                    ))}
-                </div>
-
-                <Reveal>
-                    <p className="pm-chal-cta">
-                        <strong>{CHALLENGES.ctaTitle}</strong> {CHALLENGES.ctaText}
-                    </p>
-                </Reveal>
             </div>
+
+            <Reveal>
+                <div className="pmx-pains">
+                    {CHALLENGES.pains.map((pain) => (
+                        <div className="pmx-pain" key={pain.title}>
+                            <i className={pain.icon}></i>
+                            <h5>{pain.title}</h5>
+                            <p>{pain.text}</p>
+                        </div>
+                    ))}
+                </div>
+            </Reveal>
+
+            <Reveal>
+                <span className="pmx-eyebrow">Our Solutions</span>
+                <h3 className="pmx-title" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", marginBottom: "clamp(28px, 4vw, 44px)" }}>
+                    {CHALLENGES.headline}
+                </h3>
+            </Reveal>
+
+            <div className="pmx-flip-list">
+                {CHALLENGES.pairs.map((pair, index) => (
+                    <Reveal key={pair.problemTitle} delay={index * 100}>
+                        <Link href={pair.href} className="pmx-flip-row">
+                            <span className="pmx-flip-num">
+                                {String(index + 1).padStart(2, "0")}
+                            </span>
+                            <span className="pmx-flip-cell">
+                                <span className="tag">The Challenge</span>
+                                <h4>{pair.problemTitle}</h4>
+                                <p>{pair.problem}</p>
+                            </span>
+                            <span className="pmx-flip-arrow" aria-hidden="true">
+                                <i className="ri-arrow-right-line"></i>
+                            </span>
+                            <span className="pmx-flip-cell pmx-flip-cell--solution">
+                                <span className="tag red">Our Solution</span>
+                                <h4>{pair.solutionTitle}</h4>
+                                <p>{pair.solution}</p>
+                            </span>
+                            <span className="pmx-flip-go">
+                                <i className="ri-arrow-right-up-line"></i>
+                            </span>
+                        </Link>
+                    </Reveal>
+                ))}
+            </div>
+
+            <Reveal>
+                <div className="pmx-flip-cta">
+                    <p>
+                        <strong>{CHALLENGES.ctaTitle}</strong>
+                        {CHALLENGES.ctaText}
+                    </p>
+                    <a href={SITE.phoneHref} className="pmx-btn">
+                        <i className="ri-phone-fill"></i> {SITE.phone}
+                    </a>
+                </div>
+            </Reveal>
         </div>
     </div>
 );

@@ -1,17 +1,32 @@
-import { TRUST_STRIP } from "../siteData";
+import { TRUST_STRIP, SERVICE_AREAS } from "../siteData";
 
-// Slim dark strip of company facts (licensed & insured, 30+ years, …).
-const TrustStrip = () => (
-    <div className="space-top">
-        <div className="container">
-            <div className="pm-trust-strip">
-                {TRUST_STRIP.map((item) => (
-                    <div className="pm-trust-strip-item" key={item.text}>
-                        <i className={item.icon}></i>
-                        <span>{item.text}</span>
-                    </div>
-                ))}
-            </div>
+// Scrolling marquee ticker on navy — company facts interleaved with the
+// three service divisions, separated by brand diamonds. The track holds
+// two copies of the sequence; the CSS animation slides -50% for a
+// seamless loop (pauses on hover / reduced motion).
+const ITEMS = [
+    ...TRUST_STRIP.map((item) => item.text),
+    ...SERVICE_AREAS.map((area) => area.title),
+];
+
+// `flush` drops the top margin so the strip can sit directly against a
+// dark section (used on the homepage right under the hero).
+const TrustStrip = ({ flush = false }: { flush?: boolean }) => (
+    <div className={`pmx-marquee ${flush ? "" : "pmx-marquee--band"}`}>
+        <div className="pmx-marquee-track">
+            {[0, 1].map((copy) => (
+                <div
+                    className="pmx-marquee-seq"
+                    key={copy}
+                    aria-hidden={copy === 1 || undefined}
+                >
+                    {ITEMS.map((text) => (
+                        <span className="pmx-marquee-item" key={text}>
+                            {text}
+                        </span>
+                    ))}
+                </div>
+            ))}
         </div>
     </div>
 );

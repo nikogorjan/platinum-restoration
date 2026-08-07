@@ -1,24 +1,39 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SITE, CTA_SECTION } from "../siteData";
 
-// Home-3 CTA band with the old site's closing pitch.
+// Closing CTA — full-bleed project photo under layered navy gradients,
+// giant left-aligned display type, dual actions, and the red/blue brand
+// bar along the bottom edge. Styles: modern.css (.pmx-cta-*).
 const HomeCTA = () => {
     return (
-        <div className="cta-area-3 space-top space-bottom">
-            <div className="container">
-                <div className="cta-wrap3 text-center background-image" data-overlay="title" data-opacity="6" style={{ backgroundImage: "url('/aditional-assets/images/Gallery-3.webp')" }}>
-                    <div className="title-area mb-30">
-                        <span className="sub-title text-white">{CTA_SECTION.subtitle} <i className="ri-arrow-right-down-line"></i></span>
-                        <h2 className="cta-title style2">{CTA_SECTION.titleLine1}</h2>
-                        <h3 className="cta-title text-white">{CTA_SECTION.titleLine2}</h3>
-                        <p className="text-white" style={{ maxWidth: "620px", margin: "16px auto 0" }}>{CTA_SECTION.text}</p>
-                    </div>
-                    <div className="btn-wrap justify-content-center">
-                        <Link href="/contact" className="btn">Free Consultation <i className="ri-arrow-right-up-line"></i></Link>
-                        <Link href={SITE.phoneHref} className="btn style2">{SITE.phone} <i className="ri-phone-fill"></i></Link>
-                    </div>
+        <div className="pmx-cta">
+            <div className="pmx-cta-bg">
+                <Image
+                    src="/aditional-assets/images/Gallery-3.webp"
+                    alt=""
+                    fill
+                    sizes="100vw"
+                    style={{ objectFit: "cover" }}
+                />
+            </div>
+            <div className="pmx-wrap pmx-cta-in">
+                <span className="pmx-hero-eyebrow">{CTA_SECTION.subtitle}</span>
+                <h2 className="pmx-cta-title">
+                    {CTA_SECTION.titleLine1}{" "}
+                    <span className="accent">{CTA_SECTION.titleLine2}</span>
+                </h2>
+                <p>{CTA_SECTION.text}</p>
+                <div className="pmx-cta-actions">
+                    <Link href="/contact" className="pmx-btn">
+                        Free Consultation <i className="ri-arrow-right-up-line"></i>
+                    </Link>
+                    <a href={SITE.phoneHref} className="pmx-btn pmx-btn--ghost-dark">
+                        <i className="ri-phone-fill"></i> {SITE.phone}
+                    </a>
                 </div>
             </div>
+            <span className="pmx-cta-bar" aria-hidden="true"></span>
         </div>
     );
 };

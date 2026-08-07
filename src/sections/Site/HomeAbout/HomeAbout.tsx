@@ -1,65 +1,77 @@
 import Link from "next/link";
 import BeforeAfter from "../BeforeAfter";
-import { SITE, ABOUT, BEFORE_AFTER_IMAGE } from "../siteData";
+import Reveal from "../Reveal";
+import { SITE, ABOUT, BEFORE_AFTER_IMAGE, SERVICE_TOWNS } from "../siteData";
 
-// Home-3 About section with the real Platinum story and old-site photos.
-// The template's video popup and founder-signature block are dropped.
+// About — editorial split: story + hairline checklist left, interactive
+// before/after right, then a full-width row of big stat numerals
+// (Terahaus-style). Styles: modern.css (.pmx-about-*, .pmx-stats).
 const HomeAbout = () => {
     return (
-        <div>
-            <div className="about-area-3 space-top overflow-hidden" id="about-sec">
-                <div className="container">
-                    <div className="row gy-60 gx-40 align-items-center">
-                        <div className="col-xl-7">
-                            <div className="about-wrap3">
-                                <div className="title-area mb-25">
-                                    <span className="sub-title text-theme">ABOUT US <i className="ri-arrow-right-down-line"></i></span>
-                                    <h2 className="sec-title">{ABOUT.title}</h2>
-                                    <p className="sec-text">{ABOUT.text}</p>
-                                </div>
-                                <div className="checklist mb-35">
-                                    <ul>
-                                        {ABOUT.checklist.map((item) => (
-                                            <li key={item}>
-                                                <i className="ri-checkbox-circle-fill text-theme"></i>
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                <div className="btn-wrap">
-                                    <div className="cta-grid-wrap">
-                                        <div className="icon-btn">
-                                            <i className="ri-phone-fill"></i>
-                                        </div>
-                                        <div className="media-body">
-                                            <Link className="link" href={SITE.phoneHref}>{SITE.phone}</Link>
-                                            <h6 className="title">Need Help?</h6>
-                                        </div>
-                                    </div>
-                                    <div className="about-author-wrap">
-                                        <div className="media-body">
-                                            <div className="author-text"><strong>{ABOUT.owner}</strong> — {ABOUT.ownerRole}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+        <div className="pmx-section" id="about-sec">
+            <div className="pmx-wrap">
+                <div className="pmx-about-grid">
+                    <Reveal className="pmx-about-copy">
+                        <span className="pmx-eyebrow">About Us</span>
+                        <h2 className="pmx-title">{ABOUT.title}</h2>
+                        <p className="pmx-lead">{ABOUT.text}</p>
+                        <ul className="pmx-checklist">
+                            {ABOUT.checklist.map((item) => (
+                                <li key={item}>
+                                    <i className="ri-checkbox-circle-fill"></i>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                        <div className="pmx-about-owner">
+                            <span className="pmx-owner-sig">
+                                <span className="name">{ABOUT.owner}</span>
+                                <span className="role">{ABOUT.ownerRole}, born & raised in the Triangle</span>
+                            </span>
+                            <Link href="/about" className="pmx-btn pmx-btn--ghost">
+                                More About Us <i className="ri-arrow-right-up-line"></i>
+                            </Link>
                         </div>
-                        <div className="col-xl-5 col-md-8">
-                            <div className="mb-30">
-                                <BeforeAfter
-                                    image={BEFORE_AFTER_IMAGE}
-                                    altBefore="Water-damaged room before restoration"
-                                    altAfter="Fully restored living space"
-                                />
-                            </div>
-                            <p>{ABOUT.text2}</p>
-                            <div className="btn-group mt-35">
-                                <Link href="/about" className="btn">More About Us <i className="ri-arrow-right-up-line"></i></Link>
-                            </div>
+                    </Reveal>
+
+                    <Reveal delay={140} className="pmx-about-media">
+                        <BeforeAfter
+                            image={BEFORE_AFTER_IMAGE}
+                            altBefore="Water-damaged room before restoration"
+                            altAfter="Fully restored living space"
+                        />
+                        <p>{ABOUT.text2}</p>
+                    </Reveal>
+                </div>
+
+                <Reveal>
+                    <div className="pmx-stats">
+                        <div className="pmx-stat">
+                            <span className="num">
+                                30<em>+</em>
+                            </span>
+                            <span className="label">Years of experience</span>
+                            <span className="sub">Restoration, construction & property care</span>
+                        </div>
+                        <div className="pmx-stat">
+                            <span className="num">{SERVICE_TOWNS.towns.length}<em>+</em></span>
+                            <span className="label">Towns served</span>
+                            <span className="sub">Across the Triangle, North Carolina</span>
+                        </div>
+                        <div className="pmx-stat">
+                            <span className="num">
+                                24<em>–</em>48<em>h</em>
+                            </span>
+                            <span className="label">Typical response</span>
+                            <span className="sub">
+                                Most routine requests resolved fast —{" "}
+                                <a href={SITE.phoneHref} style={{ color: "var(--theme-color)", fontWeight: 600 }}>
+                                    call us
+                                </a>
+                            </span>
                         </div>
                     </div>
-                </div>
+                </Reveal>
             </div>
         </div>
     );

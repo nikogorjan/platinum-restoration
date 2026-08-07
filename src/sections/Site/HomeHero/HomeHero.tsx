@@ -1,56 +1,59 @@
+import Image from "next/image";
 import Link from "next/link";
-import { HERO } from "../siteData";
+import { HERO, SITE } from "../siteData";
 
-// Home-3 hero rebuilt for Platinum: real copy + old-site photo, and without
-// the jumping shape animation that sat bottom-left in the template version.
+// Full-bleed editorial hero: photo with layered navy gradients, copy
+// anchored to the bottom-left, and a translucent stat rail pinned to the
+// bottom edge. Styles: modern.css (.pmx-hero-*).
+const HERO_STATS = [
+    { num: "30", accent: "+", label: "Years of experience" },
+    { num: "3", accent: "", label: "Service divisions" },
+    { num: "24/7", accent: "", label: "Emergency response" },
+    { num: "100", accent: "%", label: "Licensed & insured" },
+];
+
 const HomeHero = () => {
     return (
-        <div className="hero-wrapper hero-3" id="hero">
-            {/* SVG filter that rounds the sharp corners of the mask path by ~8px:
-                blur the alpha channel, re-threshold it, keep original pixels */}
-            <svg aria-hidden="true" width="0" height="0" style={{ position: "absolute" }}>
-                <filter id="pm-round-corners">
-                    <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
-                    <feColorMatrix
-                        in="blur"
-                        mode="matrix"
-                        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                        result="rounded"
-                    />
-                    <feComposite in="SourceGraphic" in2="rounded" operator="atop" />
-                </filter>
-            </svg>
-            {/* Filter must sit on a WRAPPER: CSS applies masks after filters,
-                so filtering the masked element itself has no visible effect.
-                The wrapper receives the masked output and rounds its corners. */}
-            <div className="pm-hero-round" style={{ position: "absolute", inset: 0, zIndex: -1 }}>
-                {/* dark navy overlay keeps the white hero text readable on the light photo */}
-                <div className="hero-bg-3-1 background-image bg-mask"
-                    style={{
-                        backgroundImage: `linear-gradient(90deg, rgba(6, 18, 42, 0.78) 0%, rgba(6, 18, 42, 0.55) 45%, rgba(6, 18, 42, 0.25) 100%), url('${HERO.image}')`,
-                        backgroundPosition: "center",
-                        maskImage: "url('/main-assets/img/hero/hero_bg_mask_3_1.png')",
-                        backgroundRepeat: "no-repeat",
-                        backgroundSize: "cover",
-                        zIndex: 0,
-                    }}>
+        <div className="pmx-hero" id="hero">
+            <div className="pmx-hero-bg">
+                <Image
+                    src={HERO.image}
+                    alt="Platinum Restoration & Construction crew at work"
+                    fill
+                    priority
+                    sizes="100vw"
+                    style={{ objectFit: "cover" }}
+                />
+            </div>
+
+            <div className="pmx-wrap pmx-hero-in">
+                <span className="pmx-hero-eyebrow">{HERO.subtitle}</span>
+                <h1 className="pmx-hero-title">
+                    {HERO.titleLine1}
+                    <span className="accent d-block">{HERO.titleLine2}</span>
+                </h1>
+                <p className="pmx-hero-text">{HERO.text}</p>
+                <div className="pmx-hero-actions">
+                    <Link href="/contact" className="pmx-btn">
+                        Get a Free Consultation <i className="ri-arrow-right-up-line"></i>
+                    </Link>
+                    <a href={SITE.phoneHref} className="pmx-btn pmx-btn--ghost-dark">
+                        <i className="ri-phone-fill"></i> {SITE.phone}
+                    </a>
                 </div>
             </div>
-            <div className="container">
-                <div className="hero-style3">
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <span className="hero-subtitle">{HERO.subtitle}</span>
-                            {/* One h1 per page: the second line is a span, not
-                                a second heading. */}
-                            <h1 className="hero-title">
-                                {HERO.titleLine1}
-                                <span className="hero-title style2 d-block">{HERO.titleLine2}</span>
-                            </h1>
-                            <p className="hero-text">{HERO.text}</p>
-                            <Link href="/contact" className="btn style2">GET A QUOTE <i className="ri-arrow-right-up-line"></i></Link>
+
+            <div className="pmx-hero-stats">
+                <div className="pmx-wrap pmx-hero-stats-in">
+                    {HERO_STATS.map((stat) => (
+                        <div className="pmx-hero-stat" key={stat.label}>
+                            <span className="num">
+                                {stat.num}
+                                {stat.accent && <em>{stat.accent}</em>}
+                            </span>
+                            <span className="label">{stat.label}</span>
                         </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </div>

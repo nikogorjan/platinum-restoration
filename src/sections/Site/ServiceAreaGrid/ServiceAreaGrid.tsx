@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Reveal from "../Reveal";
 
-// Grid of service cards (template `service-card style3` markup) fed by data.
-// items: [{ title, href, blurb, icon? }] — icon is a remixicon class name;
-// falls back to a rotating set when not provided.
+// Numbered service ledger: full-width hairline rows (01 / icon+title /
+// blurb / arrow) with a red accent bar + indent on hover. Same props API
+// as the old card grid — the overview pages pass their own items.
+// Styles: modern.css (.pmx-svc-*).
 const FALLBACK_ICONS = [
     "ri-tools-line",
     "ri-home-gear-line",
@@ -32,56 +34,38 @@ const ServiceAreaGrid = ({
     items,
 }: ServiceAreaGridProps) => {
     return (
-        <div className="service-area-4 space-top overflow-hidden">
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-lg-8">
-                        <div className="title-area text-center">
-                            <span className="sub-title text-theme">
-                                {subTitle} <i className="ri-arrow-right-down-line"></i>
-                            </span>
-                            <h2 className="sec-title">{title}</h2>
-                            {text && <p>{text}</p>}
-                        </div>
+        <div className="pmx-section">
+            <div className="pmx-wrap">
+                <div className="pmx-sechead">
+                    <div>
+                        <span className="pmx-eyebrow">{subTitle}</span>
+                        <h2 className="pmx-title">{title}</h2>
+                    </div>
+                    <div className="pmx-sechead-side">
+                        {text && <p className="pmx-lead">{text}</p>}
+                        <span className="pmx-index">( Services )</span>
                     </div>
                 </div>
-                <div className="row gy-30 gx-30 justify-content-center">
+
+                <div className="pmx-svc-list">
                     {items.map((item, index) => (
-                        <div className="col-xl-4 col-md-6 d-flex" key={item.href}>
-                            <div className="service-card style3 w-100">
-                                <div className="service-card_content">
-                                    <div className="service-card_icon">
-                                        {/* box matches the 52px circle drawn by .service-card_icon:after,
-                                            cancelling the wrapper's 10px padding so the glyph centers in it */}
-                                        <i
-                                            className={item.icon || FALLBACK_ICONS[index % FALLBACK_ICONS.length]}
-                                            style={{
-                                                display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                                width: "52px",
-                                                height: "52px",
-                                                marginLeft: "-10px",
-                                                marginTop: "-10px",
-                                                fontSize: "26px",
-                                                lineHeight: 1,
-                                                color: "var(--theme-color)",
-                                            }}
-                                        ></i>
-                                    </div>
-                                    <h4 className="service-card_title">
-                                        <Link href={item.href}>{item.title}</Link>
-                                    </h4>
-                                    <p className="service-card_text">{item.blurb}</p>
-                                    <div className="btn-wrap">
-                                        <div className="icon-btn"><i className="ri-arrow-right-up-line"></i></div>
-                                        <Link href={item.href} className="btn">
-                                            Explore Service <i className="ri-arrow-right-up-line"></i>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <Reveal key={item.href} delay={index * 90}>
+                            <Link href={item.href} className="pmx-svc-row">
+                                <span className="pmx-svc-num">
+                                    {String(index + 1).padStart(2, "0")}
+                                </span>
+                                <span className="pmx-svc-main">
+                                    <span className="pmx-svc-icon">
+                                        <i className={item.icon || FALLBACK_ICONS[index % FALLBACK_ICONS.length]}></i>
+                                    </span>
+                                    <span className="pmx-svc-title">{item.title}</span>
+                                </span>
+                                <span className="pmx-svc-blurb">{item.blurb}</span>
+                                <span className="pmx-svc-arrow">
+                                    <i className="ri-arrow-right-up-line"></i>
+                                </span>
+                            </Link>
+                        </Reveal>
                     ))}
                 </div>
             </div>
