@@ -116,6 +116,12 @@ export const SEO: Record<string, SeoEntry> = {
     },
 };
 
+// Social share image (Open Graph / Twitter), 1200×630 JPEG generated
+// from Gallery-5.png. Next.js replaces the layout's openGraph object
+// wholesale when a page defines its own, so every page's openGraph must
+// reference this itself.
+export const OG_IMAGE: string = "/aditional-assets/images/og-image.jpg";
+
 // Fallback banner behind page titles.
 export const PAGE_HEADER_IMAGE: string = "/aditional-assets/images/rear-view-of-young-workman-wearing-blue-overalls-u-2026-03-24-23-15-33-utc.webp";
 

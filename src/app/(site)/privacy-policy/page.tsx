@@ -3,7 +3,7 @@ import SiteFooter from "~/sections/Site/SiteFooter";
 import SiteBreadcrumb from "~/sections/Site/SiteBreadcrumb";
 import StructuredData from "~/sections/Site/StructuredData";
 import Scroll from "~/sections/Common/Scroll";
-import { SITE, PRIVACY, PAGE_HEADERS, SEO } from "~/sections/Site/siteData";
+import { SITE, PRIVACY, PAGE_HEADERS, SEO, OG_IMAGE } from "~/sections/Site/siteData";
 
 export const metadata = {
     title: SEO.privacy.title,
@@ -13,6 +13,7 @@ export const metadata = {
         url: "/privacy-policy",
         title: SEO.privacy.title,
         description: SEO.privacy.description,
+        images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
     },
 };
 

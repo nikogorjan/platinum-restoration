@@ -2,7 +2,7 @@ import SiteHeader from "~/sections/Site/SiteHeader";
 import SiteFooter from "~/sections/Site/SiteFooter";
 import SiteBreadcrumb from "~/sections/Site/SiteBreadcrumb";
 import ServiceDetailDraft from "~/sections/Site/ServiceDetailDraft";
-import { PROPERTY_MANAGEMENT, SEO } from "~/sections/Site/siteData";
+import { PROPERTY_MANAGEMENT, SEO, OG_IMAGE } from "~/sections/Site/siteData";
 import SiteFaq from "~/sections/Site/SiteFaq";
 import StructuredData from "~/sections/Site/StructuredData";
 import Scroll from "~/sections/Common/Scroll";
@@ -15,6 +15,7 @@ export const metadata = {
         url: "/property-management",
         title: SEO.property.title,
         description: SEO.property.description,
+        images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
     },
 };
 

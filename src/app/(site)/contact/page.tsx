@@ -6,7 +6,7 @@ import ContactPromise from "~/sections/Site/ContactPromise";
 import SiteMap from "~/sections/Site/SiteMap";
 import StructuredData from "~/sections/Site/StructuredData";
 import Scroll from "~/sections/Common/Scroll";
-import { SITE, PAGE_HEADERS, SEO } from "~/sections/Site/siteData";
+import { SITE, PAGE_HEADERS, SEO, OG_IMAGE } from "~/sections/Site/siteData";
 
 export const metadata = {
     title: SEO.contact.title,
@@ -16,6 +16,7 @@ export const metadata = {
         url: "/contact",
         title: SEO.contact.title,
         description: SEO.contact.description,
+        images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
     },
 };
 

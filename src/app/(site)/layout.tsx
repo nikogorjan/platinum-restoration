@@ -8,7 +8,7 @@ import "~/public/main-assets/css/style.css";
 import "~/public/main-assets/css/react-adjustment.css";
 import "./site-theme.css";
 import "./modern.css";
-import { SITE, SEO } from "~/sections/Site/siteData";
+import { SITE, SEO, OG_IMAGE } from "~/sections/Site/siteData";
 import StickyCallBar from "~/sections/Site/StickyCallBar";
 import Analytics from "~/sections/Site/Analytics";
 
@@ -47,13 +47,13 @@ export const metadata = {
     url: SITE.url,
     title: `${SITE.legalName} | ${SEO.home.title}`,
     description: SEO.home.description,
-    images: [{ url: SITE.logo, alt: SITE.legalName }],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: SITE.legalName }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE.legalName} | ${SEO.home.title}`,
     description: SEO.home.description,
-    images: [SITE.logo],
+    images: [OG_IMAGE],
   },
   robots: {
     index: true,
