@@ -2011,6 +2011,14 @@
   border-top: 1px solid var(--pmx-line);
 }
 
+/* react-adjustment.css forces `border-top: 1px solid #dee2e6 !important`
+   onto every item after the first — stacked on the previous item's
+   border-bottom that reads as a 2px line between rows (vs 1px at the
+   top). Needs !important of its own to cancel. */
+.pmx-faq .accordion-item:not(:first-of-type) {
+  border-top: none !important;
+}
+
 .pmx-faq .accordion-button {
   position: relative;
   display: flex;
@@ -2038,6 +2046,18 @@
 .pmx-faq .accordion-button:focus-visible {
   outline: 2px solid var(--theme-color);
   outline-offset: -2px;
+}
+
+/* This bundle ships Bootstrap 5.0, which draws side borders on the open
+   panel (.accordion-collapse { border-width: 0 1px }) and a bottom edge
+   on the last item — the "box" around open answers. Flatten it. The
+   .accordion-item ancestor is included to out-rank the :last-of-type rule. */
+.pmx-faq .accordion-item .accordion-collapse,
+.pmx-faq .accordion-item:last-of-type .accordion-collapse {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
 }
 
 .pmx-faq .accordion-button::before {
