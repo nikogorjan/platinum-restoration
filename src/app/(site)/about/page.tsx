@@ -13,7 +13,7 @@ import {
 import SiteMap from "~/sections/Site/SiteMap";
 import StructuredData from "~/sections/Site/StructuredData";
 import Scroll from "~/sections/Common/Scroll";
-import { PAGE_HEADERS, SEO } from "~/sections/Site/siteData";
+import { PAGE_HEADERS, SEO, OG_IMAGE } from "~/sections/Site/siteData";
 
 export const metadata = {
     title: SEO.about.title,
@@ -23,6 +23,7 @@ export const metadata = {
         url: "/about",
         title: SEO.about.title,
         description: SEO.about.description,
+        images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
     },
 };
 

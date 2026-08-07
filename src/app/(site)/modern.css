@@ -2244,6 +2244,19 @@
   color: var(--white-color);
 }
 
+/* The generic footer link colors above out-specify the button rules
+   (.pmx-footer a:hover beats .pmx-btn--ghost-dark:hover), turning the
+   ghost button's hover text white-on-white. Re-assert button colors
+   with the footer scope included. */
+.pmx-footer a.pmx-btn,
+.pmx-footer a.pmx-btn:hover {
+  color: var(--white-color);
+}
+
+.pmx-footer a.pmx-btn--ghost-dark:hover {
+  color: var(--pmx-ink);
+}
+
 /* CTA row */
 .pmx-footer-cta {
   display: flex;

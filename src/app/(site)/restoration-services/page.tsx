@@ -2,7 +2,7 @@ import SiteHeader from "~/sections/Site/SiteHeader";
 import SiteFooter from "~/sections/Site/SiteFooter";
 import SiteBreadcrumb from "~/sections/Site/SiteBreadcrumb";
 import ServiceAreaGrid from "~/sections/Site/ServiceAreaGrid";
-import { RESTORATION_SERVICES, RESTORATION_OVERVIEW, PAGE_HEADERS, SEO } from "~/sections/Site/siteData";
+import { RESTORATION_SERVICES, RESTORATION_OVERVIEW, PAGE_HEADERS, SEO, OG_IMAGE } from "~/sections/Site/siteData";
 import CoverageList from "~/sections/Site/CoverageList";
 import TrustStrip from "~/sections/Site/TrustStrip";
 import ProcessSteps from "~/sections/Site/ProcessSteps";
@@ -19,6 +19,7 @@ export const metadata = {
         url: "/restoration-services",
         title: SEO.restoration.title,
         description: SEO.restoration.description,
+        images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
     },
 };
 
