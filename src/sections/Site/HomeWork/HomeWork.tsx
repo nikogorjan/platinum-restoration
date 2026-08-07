@@ -33,12 +33,27 @@ const HomeWork = () => {
     };
   }, []);
 
+  // Scroll to the exact offset of the next/previous card rather than by a
+  // guessed step: a step that misses the snap point by even a few px makes
+  // the snap run a second corrective animation after the smooth scroll —
+  // a visible double-settle. Exact targets also behave when clicking
+  // mid-animation (always advance from the current position).
   const scrollByCard = (direction: 1 | -1) => {
     const el = stripRef.current;
     if (!el) return;
-    const card = el.querySelector<HTMLElement>(".pmx-work-card");
-    const step = card ? card.offsetWidth + 24 : el.clientWidth * 0.6;
-    el.scrollBy({ left: direction * step, behavior: "smooth" });
+    const cards = Array.from(el.querySelectorAll<HTMLElement>(".pmx-work-card"));
+    if (cards.length === 0) return;
+    const stripLeft = el.getBoundingClientRect().left;
+    const offsets = cards.map(
+      (card) => el.scrollLeft + card.getBoundingClientRect().left - stripLeft
+    );
+    const epsilon = 8;
+    const target =
+      direction === 1
+        ? offsets.find((offset) => offset > el.scrollLeft + epsilon)
+        : [...offsets].reverse().find((offset) => offset < el.scrollLeft - epsilon);
+    if (target === undefined) return;
+    el.scrollTo({ left: target, behavior: "smooth" });
   };
 
   return (

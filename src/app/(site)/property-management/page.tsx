@@ -22,7 +22,7 @@ export const metadata = {
 export default function PropertyManagementPage() {
     return (
         <div style={{ overflow: "hidden" }}>
-            <StructuredData service={{ title: "Property Management & Repairs", blurb: SEO.property.description, url: "/property-management" }} breadcrumbs={[{ name: "Home", path: "/" }, { name: "Property Management & Repairs", path: "/property-management" }]} includeFaq />
+            <StructuredData service={{ title: "Property Management & Repairs", blurb: SEO.property.description, url: "/property-management" }} breadcrumbs={[{ name: "Home", path: "/" }, { name: "Property Management & Repairs", path: "/property-management" }]} />
             <SiteHeader />
             <SiteBreadcrumb title="Property Management & Repairs" image={PROPERTY_MANAGEMENT.image} />
             <ServiceDetailDraft service={PROPERTY_MANAGEMENT} area="property" />
