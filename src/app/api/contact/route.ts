@@ -1,17 +1,21 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import nodemailer, { type Transporter } from "nodemailer";
 import { SITE } from "~/sections/Site/siteData";
 
-// Contact form handler — delivers submissions by email via Resend.
+// Contact form handler — delivers submissions by email over SMTP.
 //
-// Why Resend rather than an SMTP/Nodemailer setup: SMTP would need the
-// client's Outlook password (or a Microsoft app password) stored as a
-// secret. Resend needs only an API key that we own, and the recipient is
-// set here in code — CONTACT_TO_EMAIL, defaulting to the address on the
-// site — so mail always lands in the client's inbox, not ours.
+// Sends through a cPanel mailbox (mail.nikogorjan.com, SSL on 465) that
+// forwards to the client's inbox. The From address must be the
+// authenticated mailbox (cPanel rejects other senders); the customer's
+// own address goes in Reply-To so replying from the inbox reaches them.
 //
-// Free tier: 3,000 emails/month (100/day), which is far more than a
-// contact form on a local contractor site will use.
+// Env (set in .env locally and in Vercel → Project Settings → Environment
+// Variables for production):
+//   SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS  — mailbox credentials
+//   CONTACT_TO_EMAIL                            — where enquiries land
+//                                                 (defaults to SMTP_USER)
+
+export const runtime = "nodejs";
 
 interface ContactPayload {
     name?: string;
@@ -23,12 +27,37 @@ interface ContactPayload {
     company?: string;
 }
 
+const MAX_FIELD = 200;
+const MAX_MESSAGE = 5000;
+
 const escapeHtml = (value: string) =>
     value
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;");
+
+// Header fields must be single-line — strip CR/LF so a submitted value
+// can never inject extra mail headers.
+const headerSafe = (value: string) => value.replace(/[\r\n]+/g, " ").trim();
+
+let transporter: Transporter | null = null;
+
+const getTransporter = () => {
+    if (transporter) return transporter;
+    const host = process.env.SMTP_HOST;
+    const user = process.env.SMTP_USER;
+    const pass = process.env.SMTP_PASS;
+    if (!host || !user || !pass) return null;
+    const port = Number(process.env.SMTP_PORT || 465);
+    transporter = nodemailer.createTransport({
+        host,
+        port,
+        secure: port === 465, // SSL/TLS on 465, STARTTLS otherwise
+        auth: { user, pass },
+    });
+    return transporter;
+};
 
 export async function POST(request: Request) {
     let body: ContactPayload;
@@ -44,11 +73,11 @@ export async function POST(request: Request) {
         return NextResponse.json({ ok: true });
     }
 
-    const name = body.name?.trim();
-    const email = body.email?.trim();
-    const phone = body.phone?.trim();
-    const service = body.subject?.trim();
-    const message = body.message?.trim();
+    const name = body.name?.trim().slice(0, MAX_FIELD);
+    const email = body.email?.trim().slice(0, MAX_FIELD);
+    const phone = body.phone?.trim().slice(0, MAX_FIELD);
+    const service = body.subject?.trim().slice(0, MAX_FIELD);
+    const message = body.message?.trim().slice(0, MAX_MESSAGE);
 
     if (!name || !message || (!email && !phone)) {
         return NextResponse.json(
@@ -57,12 +86,12 @@ export async function POST(request: Request) {
         );
     }
 
-    const apiKey = process.env.RESEND_API_KEY;
-    const to = process.env.CONTACT_TO_EMAIL || SITE.email;
-    const from = process.env.CONTACT_FROM_EMAIL;
+    const mailer = getTransporter();
+    const from = process.env.SMTP_USER;
+    const to = process.env.CONTACT_TO_EMAIL || from;
 
-    if (!apiKey || !from) {
-        console.error("RESEND_API_KEY or CONTACT_FROM_EMAIL is not set — contact form cannot deliver.");
+    if (!mailer || !from || !to) {
+        console.error("SMTP_HOST / SMTP_USER / SMTP_PASS are not set — contact form cannot deliver.");
         return NextResponse.json(
             { error: "The form is not configured yet. Please call us in the meantime." },
             { status: 503 }
@@ -77,13 +106,12 @@ export async function POST(request: Request) {
     ];
 
     try {
-        const resend = new Resend(apiKey);
-        const { error } = await resend.emails.send({
-            from,
-            to: [to],
+        await mailer.sendMail({
+            from: { name: `${SITE.name} Website`, address: from },
+            to,
             // Replying in the client's inbox goes straight back to the customer.
-            replyTo: email || undefined,
-            subject: `Website enquiry — ${service || "General"} — ${name}`,
+            replyTo: email ? { name: headerSafe(name), address: headerSafe(email) } : undefined,
+            subject: headerSafe(`Website enquiry — ${service || "General"} — ${name}`),
             text: [
                 ...rows.map(([label, value]) => `${label}: ${value}`),
                 "",
@@ -104,14 +132,6 @@ export async function POST(request: Request) {
                 <p style="font-family:Arial,sans-serif;white-space:pre-wrap">${escapeHtml(message)}</p>
             `,
         });
-
-        if (error) {
-            console.error("Resend rejected the submission", error);
-            return NextResponse.json(
-                { error: "We couldn't send your message. Please call us instead." },
-                { status: 502 }
-            );
-        }
 
         return NextResponse.json({ ok: true });
     } catch (caught) {

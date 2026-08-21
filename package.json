@@ -11,6 +11,7 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "next": "^16.2.12",
+    "nodemailer": "^9.0.5",
     "rc-slider": "^10.6.2",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.3",
@@ -20,11 +21,11 @@
     "react-nice-select": "^1.0.6",
     "react-responsive-modal": "^7.2.0",
     "react-slick": "^0.31.0",
-    "resend": "^6.18.1",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@types/node": "^26.1.2",
+    "@types/nodemailer": "^8.0.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@types/react-slick": "^0.23.13",
