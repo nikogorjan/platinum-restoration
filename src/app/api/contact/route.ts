@@ -24,7 +24,7 @@ interface ContactPayload {
     subject?: string;
     message?: string;
     /** Honeypot — real users never fill this in. */
-    company?: string;
+    ref_code?: string;
 }
 
 const MAX_FIELD = 200;
@@ -69,7 +69,9 @@ export async function POST(request: Request) {
     }
 
     // Silently accept bot submissions so they stop retrying.
-    if (body.company) {
+    if (body.ref_code) {
+        // Logged so a "form said success but nothing arrived" report is explainable.
+        console.info("Contact form: honeypot tripped, submission dropped.");
         return NextResponse.json({ ok: true });
     }
 
@@ -106,7 +108,7 @@ export async function POST(request: Request) {
     ];
 
     try {
-        await mailer.sendMail({
+        const info = await mailer.sendMail({
             from: { name: `${SITE.name} Website`, address: from },
             to,
             // Replying in the client's inbox goes straight back to the customer.
@@ -132,6 +134,9 @@ export async function POST(request: Request) {
                 <p style="font-family:Arial,sans-serif;white-space:pre-wrap">${escapeHtml(message)}</p>
             `,
         });
+
+        // The server queue id ("250 OK id=...") can be looked up in cPanel -> Track Delivery.
+        console.info("Contact form delivered", { to, messageId: info.messageId, response: info.response });
 
         return NextResponse.json({ ok: true });
     } catch (caught) {

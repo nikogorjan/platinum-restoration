@@ -24,7 +24,7 @@ const ContactForm = () => {
             phone: String(data.get("number") || ""),
             subject: String(data.get("subject") || ""),
             message: String(data.get("message") || ""),
-            company: String(data.get("company") || ""),
+            ref_code: String(data.get("ref_code") || ""),
         };
 
         try {
@@ -86,10 +86,12 @@ const ContactForm = () => {
                     </div>
                 </div>
 
-                {/* Honeypot — hidden from people, catches bots. */}
+                {/* Honeypot — hidden from people, catches bots. Named so browser
+                    autofill never recognises it ("company" was an autofill field,
+                    and a filled honeypot silently drops the submission). */}
                 <div className="pm-hp" aria-hidden="true">
-                    <label htmlFor="company">Company</label>
-                    <input type="text" name="company" id="company" tabIndex={-1} autoComplete="off" />
+                    <label htmlFor="ref_code">Reference code</label>
+                    <input type="text" name="ref_code" id="ref_code" tabIndex={-1} autoComplete="off" />
                 </div>
 
                 <div className="form-btn col-12">
